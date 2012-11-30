@@ -1,0 +1,6 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =4
+let g:netrw_dirhist_1='/Users/jake/Sites/_live/cgi/MT-5.12-en'
+let g:netrw_dirhist_2='/private/etc/paths.d'
+let g:netrw_dirhist_3='/Users/Jake/Desktop/SBCC/proto/one/app/styles/compass_twitter_bootstrap'
+let g:netrw_dirhist_4='/Users/Jake/Desktop/SBCC/proto/one/app/styles'

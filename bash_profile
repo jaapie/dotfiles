@@ -1,0 +1,77 @@
+export PATH=/usr/local/bin:/usr/local/sbin:~/bin:/usr/local/share/npm/bin/:$PATH
+
+export EDITOR=vim
+
+# command colouring
+export CLICOLOR=1
+export GREP_OPTIONS='--color=auto'
+
+# alias commands
+# alias sed=/usr/local/bin/sed
+alias ls='ls -lh'
+
+# Less Colors for Man Pages
+#export LESS_TERMCAP_mb=$'\E[01;31m'       # begin blinking
+#export LESS_TERMCAP_md=$'\E[01;38;5;74m'  # begin bold
+#export LESS_TERMCAP_me=$'\E[0m'           # end mode
+#export LESS_TERMCAP_se=$'\E[0m'           # end standout-mode
+#export LESS_TERMCAP_so=$'\E[38;5;246m'    # begin standout-mode - info box
+#export LESS_TERMCAP_ue=$'\E[0m'           # end underline
+#export LESS_TERMCAP_us=$'\E[04;38;5;146m' # begin underline
+
+# define colors
+C_DEFAULT="\[\033[m\]"
+C_RESET="\[\033[0m\]"
+
+C_BLACK="\[\033[0;30m\]"
+C_RED="\[\033[0;31m\]"
+C_GREEN="\[\033[0;32m\]"
+C_YELLOW="\[\033[0;33m\]"
+C_BLUE="\[\033[0;34m\]"
+C_MAGENTA="\[\033[0;35m\]"
+C_CYAN="\[\033[0;36m\]"
+C_WHITE="\[\033[0;37m\]"
+
+C_LIGHTBLACK="\[\033[1;30m\]"
+C_LIGHTRED="\[\033[1;31m\]"
+C_LIGHTGREEN="\[\033[1;32m\]"
+C_LIGHTYELLOW="\[\033[1;33m\]"
+C_LIGHTBLUE="\[\033[1;34m\]"
+C_LIGHTMAGENTA="\[\033[1;35m\]"
+C_LIGHTCYAN="\[\033[1;36m\]"
+C_LIGHTWHITE="\[\033[1;37m\]"
+
+C_BG_BLACK="\[\033[40m\]"
+C_BG_RED="\[\033[41m\]"
+C_BG_GREEN="\[\033[42m\]"
+C_BG_YELLOW="\[\033[43m\]"
+C_BG_BLUE="\[\033[44m\]"
+C_BG_MAGENTA="\[\033[45m\]"
+C_BG_CYAN="\[\033[46m\]"
+C_BG_WHITE="\[\033[47m\]"
+
+prompt_git() {
+	git branch &>/dev/null || return 1
+	HEAD="$(git symbolic-ref HEAD 2>/dev/null)"
+	BRANCH="${HEAD##*/}"
+	[[ -n "$(git status 2>/dev/null | grep -F 'working directory clean')" ]] || STATUS="*"
+		printf "\033[m on \033[0;33m%s" "${BRANCH:-unknown}${STATUS}"
+}
+
+PROMPT_COMMAND='echo -ne "\033]0;${PWD}\007"'
+
+#export PS1="\n$C_YELLOW\u@\h"'$(__git_ps1 "(%s)")'": \w\n\$$C_DEFAULT "
+#export PS1="\n$C_BLUE\@ $C_RESET$C_LIGHTBLUE\W$C_YELLOW"'$(prompt_git)'"$C_RESET $C_MAGENTA\$$C_DEFAULT "
+
+export PS1="$C_LIGHTBLUE\u$C_DEFAULT in $C_LIGHTBLUE\w"'$(prompt_git)'" $C_LIGHTGREEN\$$C_DEFAULT "
+
+if [ -f $(brew --prefix)/share/bash-completion/bash_completion ]; then
+	. $(brew --prefix)/share/bash-completion/bash_completion
+fi
+
+bind '"\e[A":history-search-backward'
+bind '"\e[B":history-search-forward'
+
+export HISTIGNORE="clear:bg:fg:jobs:cd -:git status"
+
+. /usr/local/Cellar/z/1.4/etc/profile.d/z.sh
