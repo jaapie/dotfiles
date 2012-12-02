@@ -21,3 +21,7 @@
 ## What&rsquo; to Come?
 
 What I want to do is create a simple installation script that symlinks all the dot files and folders into my ~ directory. Or if I like it I may use the dotfiles.py file that I came across.
+=======
+## Not So Important Stuff
+*	.ackrc: basic file to colourise the output of ack
+*	.siegerc: default settings for siege
