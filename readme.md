@@ -17,12 +17,11 @@
 
 ## Not So Important Stuff
 *	.ackrc: basic file to colourise the output of ack
-*	.siegerc: default settings for siege
 
 ## What&rsquo;s to Come?
 What I want to do is create a simple installation script that symlinks all the dot files and folders into my ~ directory. Or if I like it I may use the dotfiles.py file that I came across.
 
-### Copying
+## Copying
 Please feel free to copy whatever you want. It would be nice to get a little plug or reference in your file. 
 
 &mdash;Jacob Degeling (jaapie)

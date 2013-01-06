@@ -7,8 +7,9 @@ export CLICOLOR=1
 export GREP_OPTIONS='--color=auto'
 
 # alias commands
-# alias sed=/usr/local/bin/sed
-alias ls='ls -lh'
+alias ll='ls -alFh'
+alias la='ls -A'
+alias l='ls -CF'
 
 # Less Colors for Man Pages
 #export LESS_TERMCAP_mb=$'\E[01;31m'       # begin blinking

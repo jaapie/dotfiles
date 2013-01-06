@@ -95,6 +95,9 @@ snippet docxt
 snippet docx
 	<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
 	"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+# HTML comment
+snippet cmnt
+	<!-- ${1} -->
 snippet html
 	<html>
 	${1}
@@ -134,11 +137,18 @@ snippet div
 	<div id="${1:name}">
 		${2}
 	</div>
+snippet cdiv
+		<div id="${1:name}">
+			${2}
+		</div> <!-- $1 -->
 snippet divc
 	<div class="${1:name}">
 		${2}
 	</div>
-
+snippet cdivc
+		<div class="${1:name}">
+			${2}
+		</div> <!-- $1 -->
 # Embed QT Movie
 snippet movie
 	<object width="$2" height="$3" classid="clsid:02BF25D5-8C17-4B23-BC80-D3488ABDDC6B"
