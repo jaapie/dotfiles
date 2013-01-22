@@ -51,6 +51,8 @@ C_BG_MAGENTA="\[\033[45m\]"
 C_BG_CYAN="\[\033[46m\]"
 C_BG_WHITE="\[\033[47m\]"
 
+# functions
+
 prompt_git() {
 	git branch &>/dev/null || return 1
 	HEAD="$(git symbolic-ref HEAD 2>/dev/null)"
@@ -59,12 +61,23 @@ prompt_git() {
 		printf "\033[m on \033[0;33m%s" "${BRANCH:-unknown}${STATUS}"
 }
 
+md () { 
+	mkdir -p $1 && cd $1
+}
+
+cl () {
+	cd $1 && ls -lAh
+}
+
+# variables
+
 PROMPT_COMMAND='echo -ne "\033]0;${PWD}\007"'
 
 #export PS1="\n$C_YELLOW\u@\h"'$(__git_ps1 "(%s)")'": \w\n\$$C_DEFAULT "
 #export PS1="\n$C_BLUE\@ $C_RESET$C_LIGHTBLUE\W$C_YELLOW"'$(prompt_git)'"$C_RESET $C_MAGENTA\$$C_DEFAULT "
 
 export PS1="$C_LIGHTBLUE\u$C_DEFAULT in $C_LIGHTBLUE\w"'$(prompt_git)'" $C_LIGHTGREEN\$$C_DEFAULT "
+export HISTIGNORE="clear:bg:fg:jobs:cd -:git status"
 
 if [ -f $(brew --prefix)/share/bash-completion/bash_completion ]; then
 	. $(brew --prefix)/share/bash-completion/bash_completion
@@ -72,7 +85,5 @@ fi
 
 bind '"\e[A":history-search-backward'
 bind '"\e[B":history-search-forward'
-
-export HISTIGNORE="clear:bg:fg:jobs:cd -:git status"
 
 . /usr/local/Cellar/z/1.4/etc/profile.d/z.sh

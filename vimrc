@@ -52,6 +52,9 @@ set smartindent
 " Enable file type detection.
 filetype plugin indent on
 
+"jquery syntax file
+au BufRead,BufNewFile jquery.*.js set ft=javascript syntax=jquery
+
 " When editing a file, always jump to the last known cursor position.
 autocmd BufReadPost *
 	\ if line("'\"") > 1 && line("'\"") <= line("$") |
@@ -89,6 +92,11 @@ set tabstop=4
 " show line numbers
 set number
 
+" Load matchit.vim, but only if the user hasn't installed a newer version.
+if !exists('g:loaded_matchit') && findfile('plugin/matchit.vim', &rtp) ==# ''
+  runtime! macros/matchit.vim
+endif
+
 " Key mappings
 "======================
 
@@ -111,3 +119,7 @@ nnoremap - mao<esc>`a
 
 " Disable line wrap
 set nowrap
+
+" Make regex sane: search with perl regular expressions
+nnoremap / /\v
+vnoremap / /\v

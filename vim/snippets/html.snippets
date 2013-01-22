@@ -134,21 +134,21 @@ snippet base
 snippet r
 	<br`Close()[1:]`>
 snippet div
-	<div id="${1:name}">
+	<div id="${1:id}">
 		${2}
 	</div>
 snippet cdiv
-		<div id="${1:name}">
-			${2}
-		</div> <!-- $1 -->
+	<div id="${1:id}">
+		${2}
+	</div> <!-- $1 -->
 snippet divc
 	<div class="${1:name}">
 		${2}
 	</div>
 snippet cdivc
-		<div class="${1:name}">
-			${2}
-		</div> <!-- $1 -->
+	<div class="${1:name}">
+		${2}
+	</div> <!-- $1 -->
 # Embed QT Movie
 snippet movie
 	<object width="$2" height="$3" classid="clsid:02BF25D5-8C17-4B23-BC80-D3488ABDDC6B"
@@ -221,3 +221,5 @@ snippet menu
 			<li id="${6:$5}"><a href="#">${5:Item 3}</a></li>
 		</ul>
 	</div>
+snippet a
+	<a href="${1:#}">${2:link text}</a>
