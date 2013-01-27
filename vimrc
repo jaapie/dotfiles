@@ -24,13 +24,14 @@ set noerrorbells
 set novisualbell
 set pastetoggle=<F4>
 set nowrap
-set nolist listchars=tab:»\ ,trail:·
+set nolist listchars=tab:▸\ ,trail:·,extends:#,nbsp:·
+set foldmethod=marker
 
 " Don't use Ex mode, use Q for formatting
 map Q gq
 
-" CTRL-U in insert mode deletes a lot.  Use CTRL-G u to first break undo,
-" so that you can undo CTRL-U after inserting a line break.
+" CTRL-U in insert mode deletes a lot.  Use CTRL-G u to first break undo, so
+" that you can undo CTRL-U after inserting a line break.
 inoremap <C-U> <C-G>u<C-U>
 
 if has('mouse')
@@ -40,7 +41,7 @@ if has('mouse')
 		" doesn't work -- 'set ttymouse?' returns xterm2 but the mouse
 		" makes tmux enter copy mode instead of selecting or scrolling
 		" inside Vim -- but luckily, setting it up from within autocmds
-		" works                   
+		" works
 		autocmd VimEnter * set ttymouse=xterm2
 		autocmd FocusGained * set ttymouse=xterm2
 		autocmd BufEnter * set ttymouse=xterm2
@@ -77,8 +78,8 @@ autocmd BufReadPost *
 	\ endif
 
 " Convenient command to see the difference between the current buffer and the
-" file it was loaded from, thus the changes you made.
-" Only define it when not defined already.
+" file it was loaded from, thus the changes you made.  Only define it when not
+" defined already.
 if !exists(":DiffOrig")
   command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis
 		  \ | wincmd p | diffthis
@@ -121,11 +122,15 @@ nmap <F2> :w!<CR>
 imap <F2> <ESC>:w!<CR> i
 
 " clear last search result
-nnoremap <silent><F3> :let @/ = ""<CR>
+nnoremap <silent><F3> :nohlsearch<CR>
 
 " add lines above and below
 nnoremap + maO<esc>`a
 nnoremap - mao<esc>`a
+
+" Yank to the OS clipboard with ,y
+nnoremap <leader>y "+y
+nnoremap <leader>Y "+yy
 
 " Make regex sane: search with perl regular expressions
 nnoremap / /\v
@@ -138,9 +143,19 @@ map <leader>zc <C-y>,
 map <leader>ws :w<cr>:so %<cr>
 map <leader>pc "*p
 map <leader>/ :s/^/\/\//<cr><F3>
-imap jj <ESC>
+inoremap jj <ESC>
+map <silent><leader>i :set list!<cr>
+map <leader>ev :tabnew ~/.vimrc<cr>
+map <leader>sv :so ~/.vimrc<cr>
 
-" Opens a new tab with the current buffer's path
-" Super useful when editing files in the same directory
+" Opens a new tab with the current buffer's path Super useful when editing
+" files in the same directory
 map <Leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
 map <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
+
+" Jump to matching pairs easily, with Tab
+nnoremap <Tab> %
+vnoremap <Tab> %
+
+" fold HTML tag
+map <leader>ft Vatzf
