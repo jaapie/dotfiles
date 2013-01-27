@@ -7,9 +7,11 @@ export CLICOLOR=1
 export GREP_OPTIONS='--color=auto'
 
 # alias commands
+alias ls='ls -h'
 alias ll='ls -alFh'
-alias la='ls -A'
+alias la='ls -Ah'
 alias l='ls -CF'
+alias ios='open -a "iPhone Simulator.app"'
 
 # Less Colors for Man Pages
 #export LESS_TERMCAP_mb=$'\E[01;31m'       # begin blinking
@@ -50,6 +52,7 @@ C_BG_BLUE="\[\033[44m\]"
 C_BG_MAGENTA="\[\033[45m\]"
 C_BG_CYAN="\[\033[46m\]"
 C_BG_WHITE="\[\033[47m\]"
+:q
 
 # functions
 
@@ -72,9 +75,6 @@ cl () {
 # variables
 
 PROMPT_COMMAND='echo -ne "\033]0;${PWD}\007"'
-
-#export PS1="\n$C_YELLOW\u@\h"'$(__git_ps1 "(%s)")'": \w\n\$$C_DEFAULT "
-#export PS1="\n$C_BLUE\@ $C_RESET$C_LIGHTBLUE\W$C_YELLOW"'$(prompt_git)'"$C_RESET $C_MAGENTA\$$C_DEFAULT "
 
 export PS1="$C_LIGHTBLUE\u$C_DEFAULT in $C_LIGHTBLUE\w"'$(prompt_git)'" $C_LIGHTGREEN\$$C_DEFAULT "
 export HISTIGNORE="clear:bg:fg:jobs:cd -:git status"

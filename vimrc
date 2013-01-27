@@ -1,5 +1,8 @@
 set nocompatible
 
+" let pathogen do its thing
+execute pathogen#infect()
+
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
 
