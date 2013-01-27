@@ -17,6 +17,14 @@ set ruler		" show the cursor position all the time
 set showcmd		" display incomplete commands
 set incsearch		" do incremental searching
 set encoding=utf8
+set whichwrap+=<,>,h,l
+set magic
+set mat=2
+set noerrorbells
+set novisualbell
+set pastetoggle=<F4>
+set nowrap
+set nolist listchars=tab:»\ ,trail:·
 
 " Don't use Ex mode, use Q for formatting
 map Q gq
@@ -58,6 +66,10 @@ filetype plugin indent on
 "jquery syntax file
 au BufRead,BufNewFile jquery.*.js set ft=javascript syntax=jquery
 
+"Enable OmniComplete on different filetypes
+autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
+autocmd FileType css set omnifunc=csscomplete#CompleteCSS
+
 " When editing a file, always jump to the last known cursor position.
 autocmd BufReadPost *
 	\ if line("'\"") > 1 && line("'\"") <= line("$") |
@@ -95,13 +107,14 @@ set tabstop=4
 " show line numbers
 set number
 
-" Load matchit.vim, but only if the user hasn't installed a newer version.
-if !exists('g:loaded_matchit') && findfile('plugin/matchit.vim', &rtp) ==# ''
-  runtime! macros/matchit.vim
-endif
-
 " Key mappings
 "======================
+
+" Session management
+nmap <silent><F6> :mksession! ~/.vim_session <CR> " Quick write session with F2
+nmap <silent><F7> :source ~/.vim_session <CR>     " And load session with F3
+
+let mapleader = ","
 
 " F2 to save
 nmap <F2> :w!<CR>
@@ -110,19 +123,24 @@ imap <F2> <ESC>:w!<CR> i
 " clear last search result
 nnoremap <silent><F3> :let @/ = ""<CR>
 
-" paste toggle
-set pastetoggle=<F4>
-
 " add lines above and below
 nnoremap + maO<esc>`a
 nnoremap - mao<esc>`a
 
-" Don’t reset cursor to start of line when moving around.
-" set nostartofline
-
-" Disable line wrap
-set nowrap
-
 " Make regex sane: search with perl regular expressions
 nnoremap / /\v
 vnoremap / /\v
+
+map <leader>oo o<esc>o
+map <leader>d diw
+map <leader>= =iB
+map <leader>zc <C-y>,
+map <leader>ws :w<cr>:so %<cr>
+map <leader>pc "*p
+map <leader>/ :s/^/\/\//<cr><F3>
+imap jj <ESC>
+
+" Opens a new tab with the current buffer's path
+" Super useful when editing files in the same directory
+map <Leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
+map <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
