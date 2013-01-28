@@ -5,15 +5,8 @@ execute pathogen#infect()
 
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
-
-if has("vms")
-  set nobackup		" do not keep a backup file, use versions instead
-else
-  set backup		" keep a backup file
-endif
-
 set history=500		" keep 50 lines of command line history
-set ruler		" show the cursor position all the time
+set ruler	" show the cursor position all the time
 set showcmd		" display incomplete commands
 set incsearch		" do incremental searching
 set encoding=utf8
@@ -26,9 +19,6 @@ set pastetoggle=<F4>
 set nowrap
 set nolist listchars=tab:▸\ ,trail:·,extends:#,nbsp:·
 set foldmethod=marker
-
-" Don't use Ex mode, use Q for formatting
-map Q gq
 
 " CTRL-U in insert mode deletes a lot.  Use CTRL-G u to first break undo, so
 " that you can undo CTRL-U after inserting a line break.
@@ -63,9 +53,6 @@ set smartindent
 
 " Enable file type detection.
 filetype plugin indent on
-
-"jquery syntax file
-au BufRead,BufNewFile jquery.*.js set ft=javascript syntax=jquery
 
 "Enable OmniComplete on different filetypes
 autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
@@ -142,7 +129,6 @@ map <leader>= =iB
 map <leader>zc <C-y>,
 map <leader>ws :w<cr>:so %<cr>
 map <leader>pc "*p
-map <leader>/ :s/^/\/\//<cr><F3>
 inoremap jj <ESC>
 map <silent><leader>i :set list!<cr>
 map <leader>ev :tabnew ~/.vimrc<cr>

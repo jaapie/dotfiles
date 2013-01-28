@@ -52,7 +52,6 @@ C_BG_BLUE="\[\033[44m\]"
 C_BG_MAGENTA="\[\033[45m\]"
 C_BG_CYAN="\[\033[46m\]"
 C_BG_WHITE="\[\033[47m\]"
-:q
 
 # functions
 
