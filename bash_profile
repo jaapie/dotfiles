@@ -85,4 +85,4 @@ fi
 bind '"\e[A":history-search-backward'
 bind '"\e[B":history-search-forward'
 
-. /usr/local/Cellar/z/1.4/etc/profile.d/z.sh
+. $(brew --prefix)/etc/profile.d/z.sh

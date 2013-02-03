@@ -40,11 +40,16 @@ endif
 
 " Switch syntax highlighting on, when the terminal has colors
 " Also switch on highlighting the last used search pattern.
-if &t_Co > 2 || has("gui_running")
+if &t_Co > 2 
 	syntax on
 	set hlsearch
-	colorscheme default "solarized
+	colorscheme default 
 	set background=light
+endif
+
+if has("gui_running")
+	colorscheme solarized
+	set background=dark
 endif
 
 set smarttab " Enable smart tabs
@@ -126,13 +131,15 @@ vnoremap / /\v
 map <leader>oo o<esc>o
 map <leader>d diw
 map <leader>= =iB
-map <leader>zc <C-y>,
+imap <silent> <leader>zc <C-y>,
+nmap <silent> <leader>zc <C-y>,
 map <leader>ws :w<cr>:so %<cr>
 map <leader>pc "*p
 inoremap jj <ESC>
 map <silent><leader>i :set list!<cr>
 map <leader>ev :tabnew ~/.vimrc<cr>
 map <leader>sv :so ~/.vimrc<cr>
+map <leader>r <C-W>r
 
 " Opens a new tab with the current buffer's path Super useful when editing
 " files in the same directory
@@ -145,3 +152,8 @@ vnoremap <Tab> %
 
 " fold HTML tag
 map <leader>ft Vatzf
+
+" UtliSnips trigger keys
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
