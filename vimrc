@@ -18,7 +18,7 @@ set novisualbell
 set pastetoggle=<F4>
 set nowrap
 set nolist listchars=tab:▸\ ,trail:·,extends:#,nbsp:·
-set foldmethod=marker
+" set foldmethod=marker
 
 " CTRL-U in insert mode deletes a lot.  Use CTRL-G u to first break undo, so
 " that you can undo CTRL-U after inserting a line break.
@@ -49,7 +49,7 @@ endif
 
 if has("gui_running")
 	colorscheme solarized
-	set background=dark
+	set background=light
 endif
 
 set smarttab " Enable smart tabs
@@ -128,7 +128,7 @@ nnoremap <leader>Y "+yy
 nnoremap / /\v
 vnoremap / /\v
 
-map <leader>oo o<esc>o
+map <leader>oo o<cr>
 map <leader>d diw
 map <leader>= =iB
 imap <silent> <leader>zc <C-y>,
