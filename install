@@ -1,0 +1,36 @@
+# !/bin/bash
+#
+# installs dotfiles by symlinking them to $HOME
+#
+
+colour_green="\033[1;32m"
+colour_red="\033[1;31m"
+
+FILES="ackrc
+vimrc
+bash_profile
+vim"
+
+
+echo "Linking files to $HOME"
+
+for file in $FILES
+	do
+		if [ ! -e "$file" ]; then
+			echo -ne "${colour_red}Can't find $file" >&2
+			echo -e '\033[0m'
+			continue
+		fi
+
+		dot_file=~/.$file
+
+		if [ -e "$dot_file" ]; then 
+			echo -ne "${colour_red}$dot_file already exists. Delete it first." >&2
+			echo -e '\033[0m'
+			continue
+		fi
+
+		echo ln -s $(pwd)/$file ~/.$file
+
+	
+	done
