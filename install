@@ -15,22 +15,22 @@ vim"
 echo "Linking files to $HOME"
 
 for file in $FILES
-	do
-		if [ ! -e "$file" ]; then
-			echo -ne "${colour_red}Can't find $file" >&2
-			echo -e '\033[0m'
-			continue
-		fi
+do
+	if [ ! -e "$file" ]; then
+		echo -ne "${colour_red}Can't find $file" >&2
+		echo -e '\033[0m'
+		continue
+	fi
 
-		dot_file=~/.$file
+	dot_file=~/.$file
 
-		if [ -e "$dot_file" ]; then 
-			echo -ne "${colour_red}$dot_file already exists. Delete it first." >&2
-			echo -e '\033[0m'
-			continue
-		fi
+	if [ -e "$dot_file" ]; then 
+		echo -ne "${colour_red}$dot_file already exists. Delete it first." >&2
+		echo -e '\033[0m'
+		continue
+	fi
 
-		echo ln -s $(pwd)/$file ~/.$file
+	echo ln -s $(pwd)/$file ~/.$file
 
-	
-	done
+
+done
