@@ -64,3 +64,9 @@
 [submodule "vim/bundle/UltiSnips"]
 	path = vim/bundle/UltiSnips
 	url = git://github.com/vim-scripts/UltiSnips.git
+[submodule "vim/bundle/vim-fugitive"]
+	path = vim/bundle/vim-fugitive
+	url = git://github.com/tpope/vim-fugitive.git
+[submodule "vim/bundle/Tabular"]
+	path = vim/bundle/Tabular
+	url = git://github.com/godlygeek/tabular.git
