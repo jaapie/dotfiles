@@ -2,6 +2,7 @@ set nocompatible
 
 " let pathogen do its thing
 execute pathogen#infect()
+execute pathogen#helptags()
 
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
@@ -50,14 +51,14 @@ endif
 if has("gui_running")
 	colorscheme rdark 
 	set background=dark
-	set guifont=Source\ Code\ Pro
+	set guifont=Source\ Code\ Pro:h12
 endif
 
 if has('cmdline_info')
 	set ruler                  	" show the ruler
 	set rulerformat=%30(%=\:b%n%y%m%r%w\ %l,%c%V\ %P%) " a ruler on steroids
 	set showcmd                	" show partial commands in status line and
-	" selected characters/lines in visual mode
+								" selected characters/lines in visual mode
 endif
 
 if has('statusline')
@@ -66,7 +67,7 @@ if has('statusline')
 	" Broken down into easily includeable segments
 	set statusline=%<%f\    " Filename
 	set statusline+=%w%h%m%r " Options
-	" set statusline+=%{fugitive#statusline()} "  Git Hotness
+	set statusline+=%{fugitive#statusline()} "  Git Hotness
 	set statusline+=\ [%{&ff}/%Y]            " filetype
 	set statusline+=\ [%{getcwd()}]          " current dir
 	"set statusline+=\ [A=\%03.3b/H=\%02.2B] " ASCII / Hexadecimal value of char
@@ -99,22 +100,18 @@ if !exists(":DiffOrig")
 endif
 
 " Set directory for backup and swap files
-if filewritable("/tmp") && ! filewritable("/tmp/vim")
-	silent execute '!umask 002; mkdir /tmp/vim'
+silent !mkdir /tmp/vim > /dev/null 2>&1
 
-	set dir=/tmp/vim
-	set backupdir=/tmp/vim
+set dir=/tmp/vim
+set backupdir=/tmp/vim
 
-	" ================ Persistent Undo ==================
-	" Keep undo history across sessions, by storing in file.
-	" Only works all the time.
+" ================ Persistent Undo ==================
+" Keep undo history across sessions, by storing in file.
+" Only works all the time.
 
-	silent !mkdir /tmp/vim/backups > /dev/null 2>&1
-	set undodir=/tmp/vim/backups
-	set undofile
-
-endif
-
+silent !mkdir /tmp/vim/backups > /dev/null 2>&1
+set undodir=/tmp/vim/backups
+set undofile
 
 " tabstop settings
 set shiftwidth=4
