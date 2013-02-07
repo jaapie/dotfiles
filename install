@@ -6,13 +6,13 @@
 colour_green="\033[1;32m"
 colour_red="\033[1;31m"
 
-FILES="ackrc
-vimrc
-bash_profile
-vim"
+# FILES="ackrc
+# vimrc
+# bash_profile
+# vim"
+FILES=$(pwd)/_*
 
-
-echo "Linking files to $HOME"
+# echo "Linking files to $HOME"
 
 for file in $FILES
 do
@@ -22,15 +22,23 @@ do
 		continue
 	fi
 
-	dot_file=~/.$file
+	dot_file=$HOME/$(basename ${file/_/.})
+
+	echo -n Linking $file to $dot_file 
 
 	if [ -e "$dot_file" ]; then 
-		echo -ne "${colour_red}$dot_file already exists. Delete it first." >&2
+		echo -ne "\n${colour_red}$dot_file already exists. Delete it first." >&2
 		echo -e '\033[0m'
 		continue
 	fi
 
-	echo ln -s $(pwd)/$file ~/.$file
+	ln -s $file $dot_file
 
+	success=$?
 
+	if [ $success -eq 0 ]; then
+		echo -e " ${colour_green}✔\033[0m"
+	else
+		echo -e " ${colour_red}✘\033[0m"
+	fi
 done

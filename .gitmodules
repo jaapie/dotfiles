@@ -1,72 +1,72 @@
-[submodule "vim/bundle/vim-abolish"]
-	path = vim/bundle/vim-abolish
+[submodule "_vim/bundle/vim-abolish"]
+	path = _vim/bundle/vim-abolish
 	url = git://github.com/tpope/vim-abolish.git
-[submodule "vim/bundle/vim-repeat"]
-	path = vim/bundle/vim-repeat
+[submodule "_vim/bundle/vim-repeat"]
+	path = _vim/bundle/vim-repeat
 	url = git://github.com/tpope/vim-repeat.git
-[submodule "vim/bundle/vim-surround"]
-	path = vim/bundle/vim-surround
+[submodule "_vim/bundle/vim-surround"]
+	path = _vim/bundle/vim-surround
 	url = git://github.com/tpope/vim-surround.git
-[submodule "vim/bundle/vim-unimpaired"]
-	path = vim/bundle/vim-unimpaired
+[submodule "_vim/bundle/vim-unimpaired"]
+	path = _vim/bundle/vim-unimpaired
 	url = git://github.com/tpope/vim-unimpaired.git
-[submodule "vim/bundle/vim-commentary"]
-	path = vim/bundle/vim-commentary
+[submodule "_vim/bundle/vim-commentary"]
+	path = _vim/bundle/vim-commentary
 	url = git://github.com/tpope/vim-commentary.git
-[submodule "vim/bundle/html5.vim"]
-	path = vim/bundle/html5.vim
+[submodule "_vim/bundle/html5.vim"]
+	path = _vim/bundle/html5.vim
 	url = git://github.com/othree/html5.vim.git
-[submodule "vim/bundle/command-t"]
-	path = vim/bundle/command-t
+[submodule "_vim/bundle/command-t"]
+	path = _vim/bundle/command-t
 	url = http://git.wincent.com/command-t.git 
-[submodule "vim/bundle/vim-colors-solarized"]
-	path = vim/bundle/vim-colors-solarized
+[submodule "_vim/bundle/vim-colors-solarized"]
+	path = _vim/bundle/vim-colors-solarized
 	url = git://github.com/altercation/vim-colors-solarized.git
-[submodule "vim/bundle/zencoding-vim"]
-	path = vim/bundle/zencoding-vim
+[submodule "_vim/bundle/zencoding-vim"]
+	path = _vim/bundle/zencoding-vim
 	url = git://github.com/mattn/zencoding-vim.git
-[submodule "vim/bundle/vim-snpimate"]
-	path = vim/bundle/vim-snpimate
+[submodule "_vim/bundle/vim-snpimate"]
+	path = _vim/bundle/vim-snpimate
 	url = https://github.com/garbas/vim-snipmate
-[submodule "vim/bundle/vim-snipmate"]
-	path = vim/bundle/vim-snipmate
+[submodule "_vim/bundle/vim-snipmate"]
+	path = _vim/bundle/vim-snipmate
 	url = https://github.com/garbas/vim-snipmate
-[submodule "vim/bundle/snipmate-snippets"]
-	path = vim/bundle/snipmate-snippets
+[submodule "_vim/bundle/snipmate-snippets"]
+	path = _vim/bundle/snipmate-snippets
 	url = git://github.com/honza/snipmate-snippets.git
-[submodule "vim/bundle/jslint.vim"]
-	path = vim/bundle/jslint.vim
+[submodule "_vim/bundle/jslint.vim"]
+	path = _vim/bundle/jslint.vim
 	url = git://github.com/hallettj/jslint.vim.git
-[submodule "vim/bundle/vim-markdown"]
-	path = vim/bundle/vim-markdown
+[submodule "_vim/bundle/vim-markdown"]
+	path = _vim/bundle/vim-markdown
 	url = git://github.com/tpope/vim-markdown.git
-[submodule "vim/bundle/jQuery"]
-	path = vim/bundle/jQuery
+[submodule "_vim/bundle/jQuery"]
+	path = _vim/bundle/jQuery
 	url = git://github.com/vim-scripts/jQuery.git
-[submodule "vim/bundle/vim-jquery"]
-	path = vim/bundle/vim-jquery
+[submodule "_vim/bundle/vim-jquery"]
+	path = _vim/bundle/vim-jquery
 	url = git://github.com/itspriddle/vim-jquery.git
-[submodule "vim/bundle/scss-syntax.vim"]
-	path = vim/bundle/scss-syntax.vim
+[submodule "_vim/bundle/scss-syntax.vim"]
+	path = _vim/bundle/scss-syntax.vim
 	url = git://github.com/cakebaker/scss-syntax.vim.git
-[submodule "vim/bundle/syntastic"]
-	path = vim/bundle/syntastic
+[submodule "_vim/bundle/syntastic"]
+	path = _vim/bundle/syntastic
 	url = git://github.com/scrooloose/syntastic.git
-[submodule "vim/bundle/php.vim"]
-	path = vim/bundle/php.vim
+[submodule "_vim/bundle/php.vim"]
+	path = _vim/bundle/php.vim
 	url = git://github.com/StanAngeloff/php.vim.git
-[submodule "vim/bundle/vim-addon-mw-utils"]
-	path = vim/bundle/vim-addon-mw-utils
+[submodule "_vim/bundle/vim-addon-mw-utils"]
+	path = _vim/bundle/vim-addon-mw-utils
 	url = git://github.com/MarcWeber/vim-addon-mw-utils.git
-[submodule "vim/bundle/tlib_vim"]
-	path = vim/bundle/tlib_vim
+[submodule "_vim/bundle/tlib_vim"]
+	path = _vim/bundle/tlib_vim
 	url = git://github.com/tomtom/tlib_vim.git
-[submodule "vim/bundle/UltiSnips"]
-	path = vim/bundle/UltiSnips
+[submodule "_vim/bundle/UltiSnips"]
+	path = _vim/bundle/UltiSnips
 	url = git://github.com/vim-scripts/UltiSnips.git
-[submodule "vim/bundle/vim-fugitive"]
-	path = vim/bundle/vim-fugitive
+[submodule "_vim/bundle/vim-fugitive"]
+	path = _vim/bundle/vim-fugitive
 	url = git://github.com/tpope/vim-fugitive.git
-[submodule "vim/bundle/Tabular"]
-	path = vim/bundle/Tabular
+[submodule "_vim/bundle/Tabular"]
+	path = _vim/bundle/Tabular
 	url = git://github.com/godlygeek/tabular.git
