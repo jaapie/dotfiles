@@ -1,18 +1,69 @@
-# !/bin/bash
-#
+#!/bin/bash
+
 # installs dotfiles by symlinking them to $HOME
-#
+
+script_name=${0##*/}
+script_version='0.0.1'
 
 colour_green="\033[1;32m"
 colour_red="\033[1;31m"
+colour_blue="\033[1;34m"
+colour_yellow="\033[1;33m"
+force_install=0
 
-# FILES="ackrc
-# vimrc
-# bash_profile
-# vim"
+function usage {
+	echo "usage: ./${script_name} [-hvf]" >&2
+	echo '' >&2
+	echo 'Installs (symbolically links) files prepended with an ' >&2
+	echo 'underscore into your $HOME directory, renaming them by' >&2
+	echo 'replacing the underscore with a full-stop thereby' >&2 
+	echo 'creating a dotfile'
+	echo '' >&2
+	echo 'Options' >&2
+	echo ' -h	displays this help' >&2
+	echo ' -v	displays the version number' >&2
+	echo '' >&2
+	echo ' -f	forces the installation to occur even if the target file already exists.' >&2
+	echo '' >&2
+	echo 'Output legend' >&2
+	echo '' >&2
+	echo -e " ${colour_red}✘\033[0m : an error occurred" >&2
+	echo -e " ${colour_yellow}✔\033[0m : the link was made forcefully" >&2
+	echo -e " ${colour_green}✔\033[0m : success" >&2
+	echo -e " ${colour_blue}●\033[0m : nothing was done" >&2
+	echo ''
+	echo 'Written by Jacob Degeling' >&2
+	echo 'Bugs to <me@jacobdegeling.com>' >&2
+
+	exit 1
+}
+
+# Parse command line options
+while getopts ":hvf" opt; do
+	case $opt in
+		f) 
+			force_install=1	
+			;;
+		h) 
+			usage
+			;;
+		v) 
+			echo $script_version
+			exit 0
+			;;
+		\?)
+			echo "Invalid option: -$OPTARG" >&2
+			usage
+			;;
+		:)
+			echo "-$OPTARG requires an argument" >&2
+			usage
+			;;
+	esac
+done
+
+
 FILES=$(pwd)/_*
-
-# echo "Linking files to $HOME"
 
 for file in $FILES
 do
@@ -22,19 +73,19 @@ do
 		continue
 	fi
 
-	dot_file=$HOME/$(basename ${file/_/.})
+	basename=${file##*/} # remove characters up to last backslash
+	dot_file=$HOME/${basename/_/.} # replace underscore with dot
 
 	echo -n Linking $file to $dot_file 
 
 	if [ -e "$dot_file" ]; then 
-		echo -ne "\n${colour_red}$dot_file already exists. Delete it first." >&2
-		echo -e '\033[0m'
+		echo -e " ${colour_blue}●\033[0m" # file exists
 		continue
 	fi
 
 	ln -s $file $dot_file
 
-	success=$?
+	success=$? # $? contains the return status or exit code of the previously run command
 
 	if [ $success -eq 0 ]; then
 		echo -e " ${colour_green}✔\033[0m"

@@ -1,27 +1,26 @@
 # Jaapie&rsquo;s Dotfiles
 ---
 ## Important Stuff
-*	Vim: .vimrc and vim plugins/colours/etc. folder
+*	Vim: .vimrc and .vim folder
 
-	My .vimrc file is a conglomeration of a lot of little tips and tricks that I found from many others&rsquo; .vimrcs. Thank you for making my &lsquo;vimitiation&rsquo; a little easier. 
-	I will attempt to give credit for the different parts in the future.
-	I have a only few different plugins installed, namely snipMate, clang_complete, and surround.vim. I have a few colour schemes, and a few different file indentation and syntax files.
+	My .vimrc file is a conglomeration of a lot of little tips and tricks that I found from many others&rsquo; .vimrcs. Thank you for making my &lsquo;vimitiation&rsquo; a little easier. I have a number of plugins that I include as git submodules. This is something new I learnt about git which I think is awesome. Hopefully it makes it easier to keep my plugins up-to-date.
 
-*	Bash: .bash_profile
+*	Bash: .bash_profile/.bashrc
 
-	The file is also a comglomeration of bits and pieces I&rsquo;ve found on the &rsquo;net. I have a minimal prompt consisting of username, current directory, and git branch (if applicable).
+	I recently updated these files so that .bash_profile sources .bashrc. I did this so that I can clone this repo onto my linux machine and have it just work.The file is also a comglomeration of bits and pieces I&rsquo;ve found on the &rsquo;net. I have a minimal prompt consisting of username, current directory, and git branch (if applicable).
 
-* 	OSX: Gratuitously stolen from @mathiasbynens
+* 	Mac OS X sensible defaults script: Gratuitously stolen from @mathiasbynens
 
 	I have commented out most stuff as I didn&rsquo;t like what it did.
+
+*	Install script
+
+	I include a simple install script that simply links any file/directory prepended by an underscore into your $HOME directory. Before actually linking it replaces the underscore with a dot, thereby making it a dotfile.
 
 ## Not So Important Stuff
 *	.ackrc: basic file to colourise the output of ack
 
-## What&rsquo;s to Come?
-What I want to do is create a simple installation script that symlinks all the dot files and folders into my ~ directory. Or if I like it I may use the dotfiles.py file that I came across.
-
 ## Copying
-Please feel free to copy whatever you want. It would be nice to get a little plug or reference in your file. 
+Please feel free to copy whatever you want&emdash;I did.
 
 &mdash;Jacob Degeling (jaapie)
