@@ -80,18 +80,20 @@ endif
 " Set directory for backup and swap files
 if filewritable("/tmp") && ! filewritable("/tmp/vim")
 	silent execute '!umask 002; mkdir /tmp/vim'
+
+	set dir=/tmp/vim
+	set backupdir=/tmp/vim
+
+	" ================ Persistent Undo ==================
+	" Keep undo history across sessions, by storing in file.
+	" Only works all the time.
+
+	silent !mkdir /tmp/vim/backups > /dev/null 2>&1
+	set undodir=/tmp/vim/backups
+	set undofile
+
 endif
 
-" ================ Persistent Undo ==================
-" Keep undo history across sessions, by storing in file.
-" Only works all the time.
-
-silent !mkdir /tmp/vim/backups > /dev/null 2>&1
-set undodir=/tmp/vim/backups
-set undofile
-
-set backupdir=/tmp/vim
-set dir=/tmp/vim
 
 " tabstop settings
 set shiftwidth=4
@@ -104,8 +106,8 @@ set number
 "======================
 
 " Session management
-nmap <silent><F6> :mksession! ~/.vim_session <CR> " Quick write session with F2
-nmap <silent><F7> :source ~/.vim_session <CR>     " And load session with F3
+nmap <silent><F6> :mksession! ~/.vim_session <CR> " Quick write session with F6
+nmap <silent><F7> :source ~/.vim_session <CR>     " And load session with F7--like Quake quick save
 
 let mapleader = ","
 
