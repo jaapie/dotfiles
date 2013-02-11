@@ -77,16 +77,29 @@ bd () {
 
 # variables
 
-PROMPT_COMMAND='echo -ne "\033]0;${PWD}\007"'
+os = $(uname -s) # uname -s returns the system name
+
+if [ $os = "Darwin" ]; then
+
+	if [ -f $(brew --prefix)/share/bash-completion/bash_completion ]; then
+		. $(brew --prefix)/share/bash-completion/bash_completion
+	fi
+
+	if [ -f $(brew --prefix) /etc/profile.d/z.sh ]; then
+		. $(brew --prefix)/etc/profile.d/z.sh
+	fi
+fi
+
+case "$TERM" in
+	xterm*|rxvt*)
+		PROMPT_COMMAND='echo -ne "\033]0;${PWD}\007"'
+		;;
+	*)
+		;;
+esac
 
 export PS1="$C_LIGHTBLUE\u$C_DEFAULT in $C_LIGHTBLUE\w"'$(prompt_git)'" $C_LIGHTGREEN\$$C_DEFAULT "
 export HISTIGNORE="clear:bg:fg:jobs:cd -:git status"
 
-if [ -f $(brew --prefix)/share/bash-completion/bash_completion ]; then
-	. $(brew --prefix)/share/bash-completion/bash_completion
-fi
-
 bind '"\e[A":history-search-backward'
 bind '"\e[B":history-search-forward'
-
-. $(brew --prefix)/etc/profile.d/z.sh
