@@ -21,6 +21,6 @@
 *	.ackrc: basic file to colourise the output of ack
 
 ## Copying
-Please feel free to copy whatever you want&emdash;I did.
+Please feel free to copy whatever you want&mdash;I did.
 
 &mdash;Jacob Degeling (jaapie)
