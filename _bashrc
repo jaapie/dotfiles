@@ -77,15 +77,14 @@ bd () {
 
 # variables
 
-os = $(uname -s) # uname -s returns the system name
+os=$(uname -s) # uname -s returns the system name
 
-if [ $os = "Darwin" ]; then
-
+if [ $os == "Darwin" ]; then
 	if [ -f $(brew --prefix)/share/bash-completion/bash_completion ]; then
 		. $(brew --prefix)/share/bash-completion/bash_completion
 	fi
 
-	if [ -f $(brew --prefix) /etc/profile.d/z.sh ]; then
+	if [ -f $(brew --prefix)/etc/profile.d/z.sh ]; then
 		. $(brew --prefix)/etc/profile.d/z.sh
 	fi
 fi
