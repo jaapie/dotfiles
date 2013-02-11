@@ -1,6 +1,6 @@
-export PATH=/usr/local/bin:/usr/local/sbin:~/bin:/usr/local/share/npm/bin/:$PATH
+export PATH=/usr/local/bin:/usr/local/sbin:/usr/local/share/npm/bin/:$PATH
 
-if [ -e '~/bin' ]; then
+if [ -f ~/bin ]; then
 	export PATH=~/bin:$PATH
 else
 
@@ -47,7 +47,11 @@ C_BG_MAGENTA="\[\033[45m\]"
 C_BG_CYAN="\[\033[46m\]"
 C_BG_WHITE="\[\033[47m\]"
 
+#############
+#
 # functions
+#
+#############
 
 # show the git branch and status in the prompt (if available)
 prompt_git() {
@@ -75,28 +79,44 @@ bd () {
 	cd ..
 }
 
-# variables
-
-# os=$(uname -s) # uname -s returns the system name
-
-# if [ $os == "Darwin" ]; then
-# fi
-
-# case "$TERM" in
-# 	xterm*|rxvt*)
-# 		;;
-# 	*)
-# 		;;
-# esac
+#############
+#
+# Prompt like: Jake in ~ on (master*) $
+#
+#############
 
 export PS1="$C_LIGHTBLUE\u$C_DEFAULT in $C_LIGHTBLUE\w"'$(prompt_git)'" $C_LIGHTGREEN\$$C_DEFAULT "
+
+#############
+#
+# Command History settings
+#
+#############
+
+# don't put duplicate lines or lines starting with space in the history.
+# See bash(1) for more options
+HISTCONTROL=ignoreboth
+
+# append to the history file, don't overwrite it
+shopt -s histappend
+
+# for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
+HISTSIZE=1000
+HISTFILESIZE=2000
+
 export HISTIGNORE="clear:bg:fg:jobs:cd -:git status"
 
 bind '"\e[A":history-search-backward'
 bind '"\e[B":history-search-forward'
 
+#############
+#
+# Source local bash settings
+#
+#############
+
 if [ -f ~/.bashrc_local ]; then
 	source ~/.bashrc_local
-endif
+fi
 
 	# vim: set ft=sh
