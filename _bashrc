@@ -71,6 +71,10 @@ cl () {
 	cd $1 && ls -lAh
 }
 
+bd () {
+	cd ..
+}
+
 # variables
 
 PROMPT_COMMAND='echo -ne "\033]0;${PWD}\007"'

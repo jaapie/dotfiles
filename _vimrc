@@ -4,6 +4,8 @@ set nocompatible
 execute pathogen#infect()
 execute pathogen#helptags()
 
+let g:UltiSnipsSnippetDirectories=["UltiSnips", "snippets"]
+
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
 set history=500		" keep 50 lines of command line history
@@ -19,7 +21,7 @@ set novisualbell
 set pastetoggle=<F4>
 set nowrap
 set nolist listchars=tab:▸\ ,trail:·,extends:#,nbsp:·
-" set foldmethod=marker
+set foldmethod=manual
 
 " CTRL-U in insert mode deletes a lot.  Use CTRL-G u to first break undo, so
 " that you can undo CTRL-U after inserting a line break.
@@ -80,10 +82,13 @@ set smartindent
 
 " Enable file type detection.
 filetype plugin indent on
+au BufRead,BufNewFile *.scss	set filetype=scss
 
 "Enable OmniComplete on different filetypes
 autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
 autocmd FileType css set omnifunc=csscomplete#CompleteCSS
+autocmd FileType scss set omnifunc=csscomplete#CompleteCSS
+
 
 " When editing a file, always jump to the last known cursor position.
 autocmd BufReadPost *
@@ -155,20 +160,33 @@ imap <silent> <leader>zc <C-y>,
 nmap <silent> <leader>zc <C-y>,
 map <leader>ws :w<cr>:so %<cr>
 map <leader>pc "*p
-inoremap jj <ESC>
 map <silent><leader>i :set list!<cr>
 map <leader>ev :tabnew ~/.vimrc<cr>
 map <leader>sv :so ~/.vimrc<cr>
 map <leader>r <C-W>r
+map <leader>vh <C-W>H
+map <leader>vl <C-W>L
+
+" Duplicate current line below
+inoremap <leader>ll <esc>mayyp`a i
+nnoremap <leader>ll mayyp`a
+
+" insert a line above and below
+imap <leader>f <esc>+- i
+nmap <leader>f +-
+
+" switch between php and html filetypes
+imap <leader>pp	<esc>:set ft=php<cr> i
+nmap <leader>pp	:set ft=php<cr>
+imap <leader>ph <esc>:set ft=html<cr> i
+nmap <leader>ph :set ft=html<cr>
+
+inoremap jj <ESC>
 
 " Opens a new tab with the current buffer's path Super useful when editing
 " files in the same directory
 map <Leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
 map <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
-
-" Jump to matching pairs easily, with Tab
-nnoremap <Tab> %
-vnoremap <Tab> %
 
 " fold HTML tag
 map <leader>ft Vatzf
@@ -178,5 +196,22 @@ let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
+" Jump to matching pairs easily, with Tab
+nnoremap <Tab> %
+vnoremap <Tab> %
+
 " Allow saving of files as sudo when I forgot to start vim using sudo.
 cmap w!! %!sudo tee > /dev/null %
+
+" fugitive plugin commands
+inoremap <leader>gs :Gstatus<CR>
+nnoremap <leader>gs :Gstatus<CR>
+inoremap <leader>gc :Gcommit<CR>
+nnoremap <leader>gc :Gcommit<CR>
+inoremap <leader>gl :Glog<CR>
+nnoremap <leader>gl :Glog<CR>
+" inoremap <leader>ga :Git add %
+" nnoremap <leader>ga :Git add %
+" inoremap <leader>gt :Git add .
+" nnoremap <leader>gt :Git add .
+
