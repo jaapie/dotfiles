@@ -73,7 +73,11 @@ md () {
 
 # change dir and then list contents
 cl () {
-	cd $1 && ls -lAh
+	cd $1 && ls
+}
+
+cll () {
+	cd $1 && ll
 }
 
 # go back a directory level.
@@ -89,7 +93,7 @@ bd () {
 #
 #############
 
-export PS1="$C_LIGHTBLUE\u$C_DEFAULT in $C_LIGHTBLUE\w"'$(prompt_git)'" $C_LIGHTGREEN\$$C_DEFAULT "
+export PS1="$C_LIGHTBLUE\u$C_DEFAULT on $C_LIGHTMAGENTA\h$C_DEFAULT in $C_LIGHTBLUE\w"'$(prompt_git)'" $C_LIGHTGREEN\$$C_DEFAULT "
 
 #############
 #
