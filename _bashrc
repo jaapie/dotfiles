@@ -1,5 +1,9 @@
 export PATH=/usr/local/bin:/usr/local/sbin:~/bin:/usr/local/share/npm/bin/:$PATH
 
+if [ -e '~/bin' ]; then
+	export PATH=~/bin:$PATH
+else
+
 export EDITOR=vim
 
 # command colouring
@@ -11,16 +15,6 @@ alias ls='ls -h'
 alias ll='ls -alFh'
 alias la='ls -Ah'
 alias l='ls -CF'
-alias ios='open -a "iPhone Simulator.app"'
-
-# Less Colors for Man Pages
-#export LESS_TERMCAP_mb=$'\E[01;31m'       # begin blinking
-#export LESS_TERMCAP_md=$'\E[01;38;5;74m'  # begin bold
-#export LESS_TERMCAP_me=$'\E[0m'           # end mode
-#export LESS_TERMCAP_se=$'\E[0m'           # end standout-mode
-#export LESS_TERMCAP_so=$'\E[38;5;246m'    # begin standout-mode - info box
-#export LESS_TERMCAP_ue=$'\E[0m'           # end underline
-#export LESS_TERMCAP_us=$'\E[04;38;5;146m' # begin underline
 
 # define colors
 C_DEFAULT="\[\033[m\]"
@@ -55,6 +49,7 @@ C_BG_WHITE="\[\033[47m\]"
 
 # functions
 
+# show the git branch and status in the prompt (if available)
 prompt_git() {
 	git branch &>/dev/null || return 1
 	HEAD="$(git symbolic-ref HEAD 2>/dev/null)"
@@ -63,42 +58,45 @@ prompt_git() {
 		printf "\033[m on \033[0;33m%s" "${BRANCH:-unknown}${STATUS}"
 }
 
+# wrapper for making a directory and changing to it in one go
 md () { 
 	mkdir -p $1 && cd $1
 }
 
+# change dir and then list contents
 cl () {
 	cd $1 && ls -lAh
 }
 
+# go back a directory level.
+# todo: add a parameter that determines the level to go back, i.e.: bd 3 will
+# be the same as cd ../../../
 bd () {
 	cd ..
 }
 
 # variables
 
-os=$(uname -s) # uname -s returns the system name
+# os=$(uname -s) # uname -s returns the system name
 
-if [ $os == "Darwin" ]; then
-	if [ -f $(brew --prefix)/share/bash-completion/bash_completion ]; then
-		. $(brew --prefix)/share/bash-completion/bash_completion
-	fi
+# if [ $os == "Darwin" ]; then
+# fi
 
-	if [ -f $(brew --prefix)/etc/profile.d/z.sh ]; then
-		. $(brew --prefix)/etc/profile.d/z.sh
-	fi
-fi
-
-case "$TERM" in
-	xterm*|rxvt*)
-		PROMPT_COMMAND='echo -ne "\033]0;${PWD}\007"'
-		;;
-	*)
-		;;
-esac
+# case "$TERM" in
+# 	xterm*|rxvt*)
+# 		;;
+# 	*)
+# 		;;
+# esac
 
 export PS1="$C_LIGHTBLUE\u$C_DEFAULT in $C_LIGHTBLUE\w"'$(prompt_git)'" $C_LIGHTGREEN\$$C_DEFAULT "
 export HISTIGNORE="clear:bg:fg:jobs:cd -:git status"
 
 bind '"\e[A":history-search-backward'
 bind '"\e[B":history-search-forward'
+
+if [ -f ~/.bashrc_local ]; then
+	source ~/.bashrc_local
+endif
+
+	# vim: set ft=sh
