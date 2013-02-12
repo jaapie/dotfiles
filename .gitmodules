@@ -16,24 +16,12 @@
 [submodule "_vim/bundle/html5.vim"]
 	path = _vim/bundle/html5.vim
 	url = git://github.com/othree/html5.vim.git
-[submodule "_vim/bundle/command-t"]
-	path = _vim/bundle/command-t
-	url = http://git.wincent.com/command-t.git 
 [submodule "_vim/bundle/vim-colors-solarized"]
 	path = _vim/bundle/vim-colors-solarized
 	url = git://github.com/altercation/vim-colors-solarized.git
 [submodule "_vim/bundle/zencoding-vim"]
 	path = _vim/bundle/zencoding-vim
 	url = git://github.com/mattn/zencoding-vim.git
-[submodule "_vim/bundle/vim-snpimate"]
-	path = _vim/bundle/vim-snpimate
-	url = https://github.com/garbas/vim-snipmate
-[submodule "_vim/bundle/vim-snipmate"]
-	path = _vim/bundle/vim-snipmate
-	url = https://github.com/garbas/vim-snipmate
-[submodule "_vim/bundle/snipmate-snippets"]
-	path = _vim/bundle/snipmate-snippets
-	url = git://github.com/honza/snipmate-snippets.git
 [submodule "_vim/bundle/jslint.vim"]
 	path = _vim/bundle/jslint.vim
 	url = git://github.com/hallettj/jslint.vim.git
