@@ -1,8 +1,12 @@
+# vim: set ft=sh:
+
+# Jacob Degeling's .bashrc file
+# me@jacobdegeling.com
 export PATH=/usr/local/bin:/usr/local/sbin:/usr/local/share/npm/bin/:$PATH
 
 if [ -f ~/bin ]; then
 	export PATH=~/bin:$PATH
-else
+fi
 
 export EDITOR=vim
 
@@ -119,4 +123,3 @@ if [ -f ~/.bashrc_local ]; then
 	source ~/.bashrc_local
 fi
 
-	# vim: set ft=sh
