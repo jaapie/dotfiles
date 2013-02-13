@@ -49,9 +49,6 @@
 [submodule "_vim/bundle/tlib_vim"]
 	path = _vim/bundle/tlib_vim
 	url = git://github.com/tomtom/tlib_vim.git
-[submodule "_vim/bundle/UltiSnips"]
-	path = _vim/bundle/UltiSnips
-	url = git://github.com/vim-scripts/UltiSnips.git
 [submodule "_vim/bundle/vim-fugitive"]
 	path = _vim/bundle/vim-fugitive
 	url = git://github.com/tpope/vim-fugitive.git
