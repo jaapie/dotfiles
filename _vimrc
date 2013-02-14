@@ -22,6 +22,7 @@ set pastetoggle=<F4>
 set nowrap
 set nolist listchars=tab:▸\ ,trail:·,extends:#,nbsp:·
 set foldmethod=manual
+set formatoptions=tcqr
 
 " CTRL-U in insert mode deletes a lot.  Use CTRL-G u to first break undo, so
 " that you can undo CTRL-U after inserting a line break.
@@ -30,11 +31,12 @@ inoremap <C-U> <C-G>u<C-U>
 if has('mouse')
 	set mouse=a
 	if !has('gui_running')
+
 		" for some reason, doing this directly with 'set ttymouse=xterm2'
-		" doesn't work -- 'set ttymouse?' returns xterm2 but the mouse
-		" makes tmux enter copy mode instead of selecting or scrolling
-		" inside Vim -- but luckily, setting it up from within autocmds
-		" works
+		" doesn't work -- 'set ttymouse?' returns xterm2 but the mouse makes
+		" tmux enter copy mode instead of selecting or scrolling inside Vim --
+		" but luckily, setting it up from within autocmds works
+
 		autocmd VimEnter * set ttymouse=xterm2
 		autocmd FocusGained * set ttymouse=xterm2
 		autocmd BufEnter * set ttymouse=xterm2
@@ -69,10 +71,10 @@ if has('statusline')
 	" Broken down into easily includeable segments
 	set statusline=%<%f\    " Filename
 	set statusline+=%w%h%m%r " Options
-	set statusline+=%{fugitive#statusline()} "  Git Hotness
+	set statusline+=%{fugitive#statusline()} " Git Hotness
 	set statusline+=\ [%{&ff}/%Y]            " filetype
 	set statusline+=\ [%{getcwd()}]          " current dir
-	"set statusline+=\ [A=\%03.3b/H=\%02.2B] " ASCII / Hexadecimal value of char
+	"set statusline+=\ [A=\%03.3b/H=\%02.2B] " ASCII/Hexadecimal value of char
 	set statusline+=%=%-14.(%l,%c%V%)\ %p%%  " Right aligned file nav info
 endif
 
@@ -199,6 +201,15 @@ let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 " Jump to matching pairs easily, with Tab
 nnoremap <Tab> %
 vnoremap <Tab> %
+
+let mapleader=','
+if exists(":Tabularize")
+	nmap <Leader>a= :Tabularize /=<CR>
+	vmap <Leader>a= :Tabularize /=<CR>
+	nmap <Leader>a: :Tabularize /:<CR>
+	vmap <Leader>a: :Tabularize /:<CR>
+endif
+
 
 " Allow saving of files as sudo when I forgot to start vim using sudo.
 cmap w!! %!sudo tee > /dev/null %
