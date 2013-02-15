@@ -61,3 +61,6 @@
 [submodule "_vim/bundle/UltiSnips"]
 	path = _vim/bundle/UltiSnips
 	url = git://github.com/SirVer/ultisnips.git
+[submodule "_vim/bundle/vim-yaml"]
+	path = _vim/bundle/vim-yaml
+	url = git://github.com/avakhov/vim-yaml.git
