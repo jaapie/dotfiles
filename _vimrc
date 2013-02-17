@@ -134,7 +134,7 @@ set number
 nmap <silent><F6> :mksession! ~/.vim_session <CR> " Quick write session with F6
 nmap <silent><F7> :source ~/.vim_session <CR>     " And load session with F7--like Quake quick save
 
-let mapleader = ","
+let mapleader=","
 
 " F2 to save
 nmap <F2> :w!<CR>
@@ -202,7 +202,6 @@ let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 nnoremap <Tab> %
 vnoremap <Tab> %
 
-let mapleader=','
 if exists(":Tabularize")
 	nmap <Leader>a= :Tabularize /=<CR>
 	vmap <Leader>a= :Tabularize /=<CR>
