@@ -64,3 +64,6 @@
 [submodule "_vim/bundle/vim-yaml"]
 	path = _vim/bundle/vim-yaml
 	url = git://github.com/avakhov/vim-yaml.git
+[submodule "_vim/bundle/nerdtree"]
+	path = _vim/bundle/nerdtree
+	url = git://github.com/scrooloose/nerdtree.git
