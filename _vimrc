@@ -23,6 +23,8 @@ set nowrap
 set nolist listchars=tab:▸\ ,trail:·,extends:#,nbsp:·
 set foldmethod=manual
 set formatoptions=tcqr
+set hlsearch
+set tw=78
 
 " CTRL-U in insert mode deletes a lot.  Use CTRL-G u to first break undo, so
 " that you can undo CTRL-U after inserting a line break.
@@ -47,13 +49,12 @@ endif
 " Also switch on highlighting the last used search pattern.
 if &t_Co > 2 
 	syntax on
-	set hlsearch
 	colorscheme default 
 	set background=light
 endif
 
 if has("gui_running")
-	colorscheme rdark 
+	colorscheme Dusk " rdark 
 	set background=dark
 	set guifont=Source\ Code\ Pro:h12
 endif
@@ -225,3 +226,11 @@ nnoremap <leader>gl :Glog<CR>
 " inoremap <leader>gt :Git add .
 " nnoremap <leader>gt :Git add .
 
+" Show syntax highlighting groups for word under cursor
+nmap <C-S-P> :call <SID>SynStack()<CR>
+function! <SID>SynStack()
+  if !exists("*synstack")
+    return
+  endif
+  echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
+endfunc
