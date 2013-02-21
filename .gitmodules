@@ -73,3 +73,6 @@
 [submodule "_vim/bundle/closetag.vim"]
 	path = _vim/bundle/closetag.vim
 	url = https://github.com/vim-scripts/closetag.vim
+[submodule "_vim/bundle/vim-colours-dusk"]
+	path = _vim/bundle/vim-colours-dusk
+	url = git@github.com:jaapie/vim-colours-dusk.git
