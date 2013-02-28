@@ -112,7 +112,7 @@ shopt -s histappend
 HISTSIZE=1000
 HISTFILESIZE=2000
 
-export HISTIGNORE="clear:bg:fg:jobs:cd -:git status"
+export HISTIGNORE="clear:bg:fg:jobs:cd -:cd ../:ll:ls:l"
 
 bind '"\e[A":history-search-backward'
 bind '"\e[B":history-search-forward'
