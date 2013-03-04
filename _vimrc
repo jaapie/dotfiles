@@ -54,8 +54,8 @@ if &t_Co > 2
 endif
 
 if has("gui_running")
-	colorscheme Dusk " rdark 
-	set background=dark
+	" set background=dark
+	color zenburn
 	set guifont=Source\ Code\ Pro:h12
 endif
 
