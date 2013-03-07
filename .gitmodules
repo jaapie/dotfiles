@@ -82,3 +82,6 @@
 [submodule "_vim/bundle/delimitMate"]
 	path = _vim/bundle/delimitMate
 	url = git://github.com/Raimondi/delimitMate.git
+[submodule "_vim/bundle/ctrlp.vim"]
+	path = _vim/bundle/ctrlp.vim
+	url = https://github.com/kien/ctrlp.vim.git
