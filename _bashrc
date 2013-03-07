@@ -4,7 +4,7 @@
 # me@jacobdegeling.com
 export PATH=/usr/local/bin:/usr/local/sbin:/usr/local/share/npm/bin/:$PATH
 
-if [ -f ~/bin ]; then
+if [ -d ~/bin ]; then
 	export PATH=~/bin:$PATH
 fi
 

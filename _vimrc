@@ -141,7 +141,10 @@ let mapleader=","
 nmap <F2> :w!<CR>
 imap <F2> <ESC>:w!<CR> i
 
-" clear last search result
+nmap <silent><F5> :set wrap!<CR>
+imap <silent><F5> <ESC>:set wrap!<CR>
+
+" <F3> clear last search result
 nnoremap <silent><F3> :nohlsearch<CR>
 
 " add lines above and below
@@ -209,7 +212,6 @@ if exists(":Tabularize")
 	nmap <Leader>a: :Tabularize /:<CR>
 	vmap <Leader>a: :Tabularize /:<CR>
 endif
-
 
 " Allow saving of files as sudo when I forgot to start vim using sudo.
 cmap w!! %!sudo tee > /dev/null %
