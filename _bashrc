@@ -5,7 +5,7 @@
 export PATH=/usr/local/bin:/usr/local/sbin:/usr/local/share/npm/bin/:$PATH
 
 if [ -d ~/bin ]; then
-	export PATH=~/bin:$PATH
+    export PATH=~/bin:$PATH
 fi
 
 export EDITOR=vim
@@ -58,33 +58,60 @@ C_BG_WHITE="\[\033[47m\]"
 #############
 
 # show the git branch and status in the prompt (if available)
-prompt_git() {
-	git branch &>/dev/null || return 1
-	HEAD="$(git symbolic-ref HEAD 2>/dev/null)"
-	BRANCH="${HEAD##*/}"
-	[[ -n "$(git status 2>/dev/null | grep -F 'working directory clean')" ]] || STATUS="*"
-		printf "\033[m on \033[0;33m%s" "${BRANCH:-unknown}${STATUS}"
+function prompt_git() {
+    git branch &>/dev/null || return 1
+    HEAD="$(git symbolic-ref HEAD 2>/dev/null)"
+    BRANCH="${HEAD##*/}"
+    [[ -n "$(git status 2>/dev/null | grep -F 'working directory clean')" ]] || STATUS="*"
+        printf "\033[m on \033[0;33m%s" "${BRANCH:-unknown}${STATUS}"
 }
 
 # wrapper for making a directory and changing to it in one go
-md () { 
-	mkdir -p $1 && cd $1
+function md () {
+    mkdir -p $1 && cd $1
 }
 
 # change dir and then list contents
-cl () {
-	cd $1 && ls
+function cl () {
+    cd $1 && ls
 }
 
-cll () {
-	cd $1 && ll
+function cll () {
+    cd $1 && ll
 }
 
-# go back a directory level.
-# todo: add a parameter that determines the level to go back, i.e.: bd 3 will
+function g {
+    git ${@:-'status'}
+}
+
+function pud () {
+    pushd ${@:-'.'}
+}
+
+alias pod='popd'
+
+function o {
+  open ${@:-'.'}
+}
+
+# go up a directory level.
+# Takes a parameter that determines the level to go up, i.e.: bd 3 will
 # be the same as cd ../../../
-bd () {
-	cd ..
+function up () {
+    levels=$1
+
+    if [ $1 -eq 0 ]; then
+        levels=1
+    fi
+
+    if [ "$levels" -eq "$levels" ] 2>/dev/null;then
+        for (( c=1; c<=levels; c++ ))
+        do
+            cd ../
+        done
+    else
+        echo up: expected a number, not $levels
+    fi
 }
 
 #############
@@ -124,6 +151,6 @@ bind '"\e[B":history-search-forward'
 #############
 
 if [ -f ~/.bashrc_local ]; then
-	source ~/.bashrc_local
+    source ~/.bashrc_local
 fi
 

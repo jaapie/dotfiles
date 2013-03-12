@@ -8,10 +8,10 @@ let g:UltiSnipsSnippetDirectories=["UltiSnips", "snippets"]
 
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
-set history=500		" keep 50 lines of command line history
-set ruler	" show the cursor position all the time
-set showcmd		" display incomplete commands
-set incsearch		" do incremental searching
+set history=500 " keep 50 lines of command line history
+set ruler       " show the cursor position all the time
+set showcmd     " display incomplete commands
+set incsearch   " do incremental searching
 set encoding=utf8
 set whichwrap+=<,>,h,l
 set magic
@@ -25,58 +25,66 @@ set foldmethod=manual
 set formatoptions=tcqr
 set hlsearch
 set tw=78
+set shiftwidth=4
+set tabstop=4
+set expandtab
+set number
 
 " CTRL-U in insert mode deletes a lot.  Use CTRL-G u to first break undo, so
 " that you can undo CTRL-U after inserting a line break.
 inoremap <C-U> <C-G>u<C-U>
 
 if has('mouse')
-	set mouse=a
-	if !has('gui_running')
+    set mouse=a
+    if !has('gui_running')
 
-		" for some reason, doing this directly with 'set ttymouse=xterm2'
-		" doesn't work -- 'set ttymouse?' returns xterm2 but the mouse makes
-		" tmux enter copy mode instead of selecting or scrolling inside Vim --
-		" but luckily, setting it up from within autocmds works
+        " for some reason, doing this directly with 'set ttymouse=xterm2'
+        " doesn't work -- 'set ttymouse?' returns xterm2 but the mouse makes
+        " tmux enter copy mode instead of selecting or scrolling inside Vim --
+        " but luckily, setting it up from within autocmds works
 
-		autocmd VimEnter * set ttymouse=xterm2
-		autocmd FocusGained * set ttymouse=xterm2
-		autocmd BufEnter * set ttymouse=xterm2
-	endif
+        autocmd VimEnter * set ttymouse=xterm2
+        autocmd FocusGained * set ttymouse=xterm2
+        autocmd BufEnter * set ttymouse=xterm2
+    endif
 endif
 
 " Switch syntax highlighting on, when the terminal has colors
 " Also switch on highlighting the last used search pattern.
-if &t_Co > 2 
-	syntax on
-	colorscheme default 
-	set background=light
+if &t_Co > 2
+    syntax on
+    colorscheme default
+    set background=light
+endif
+
+if &t_Co == 256
+    colorscheme zenburn
 endif
 
 if has("gui_running")
-	" set background=dark
-	color zenburn
-	set guifont=Source\ Code\ Pro:h12
+    " set background=dark
+    color zenburn
+    set guifont=Source\ Code\ Pro:h12
 endif
 
 if has('cmdline_info')
-	set ruler                  	" show the ruler
-	set rulerformat=%30(%=\:b%n%y%m%r%w\ %l,%c%V\ %P%) " a ruler on steroids
-	set showcmd                	" show partial commands in status line and
-								" selected characters/lines in visual mode
+    set ruler                   " show the ruler
+    set rulerformat=%30(%=\:b%n%y%m%r%w\ %l,%c%V\ %P%) " a ruler on steroids
+    set showcmd                 " show partial commands in status line and
+                                " selected characters/lines in visual mode
 endif
 
 if has('statusline')
-	set laststatus=2
+    set laststatus=2
 
-	" Broken down into easily includeable segments
-	set statusline=%<%f\    " Filename
-	set statusline+=%w%h%m%r " Options
-	set statusline+=%{fugitive#statusline()} " Git Hotness
-	set statusline+=\ [%{&ff}/%Y]            " filetype
-	set statusline+=\ [%{getcwd()}]          " current dir
-	"set statusline+=\ [A=\%03.3b/H=\%02.2B] " ASCII/Hexadecimal value of char
-	set statusline+=%=%-14.(%l,%c%V%)\ %p%%  " Right aligned file nav info
+    " Broken down into easily includeable segments
+    set statusline=%<%f\    " Filename
+    set statusline+=%w%h%m%r " Options
+    set statusline+=%{fugitive#statusline()} " Git Hotness
+    set statusline+=\ [%{&ff}/%Y]            " filetype
+    set statusline+=\ [%{getcwd()}]          " current dir
+    "set statusline+=\ [A=\%03.3b/H=\%02.2B] " ASCII/Hexadecimal value of char
+    set statusline+=%=%-14.(%l,%c%V%)\ %p%%  " Right aligned file nav info
 endif
 
 set smarttab " Enable smart tabs
@@ -85,7 +93,7 @@ set smartindent
 
 " Enable file type detection.
 filetype plugin indent on
-au BufRead,BufNewFile *.scss	set filetype=scss
+au BufRead,BufNewFile *.scss    set filetype=scss
 
 "Enable OmniComplete on different filetypes
 autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
@@ -95,16 +103,16 @@ autocmd FileType scss set omnifunc=csscomplete#CompleteCSS
 
 " When editing a file, always jump to the last known cursor position.
 autocmd BufReadPost *
-	\ if line("'\"") > 1 && line("'\"") <= line("$") |
-	\   exe "normal! g`\"" |
-	\ endif
+    \ if line("'\"") > 1 && line("'\"") <= line("$") |
+    \   exe "normal! g`\"" |
+    \ endif
 
 " Convenient command to see the difference between the current buffer and the
 " file it was loaded from, thus the changes you made.  Only define it when not
 " defined already.
 if !exists(":DiffOrig")
   command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis
-		  \ | wincmd p | diffthis
+          \ | wincmd p | diffthis
 endif
 
 " Set directory for backup and swap files
@@ -121,12 +129,6 @@ silent !mkdir /tmp/vim/backups > /dev/null 2>&1
 set undodir=/tmp/vim/backups
 set undofile
 
-" tabstop settings
-set shiftwidth=4
-set tabstop=4
-
-" show line numbers
-set number
 
 " Key mappings
 "======================
@@ -182,8 +184,8 @@ imap <leader>f <esc>+- i
 nmap <leader>f +-
 
 " switch between php and html filetypes
-imap <leader>pp	<esc>:set ft=php<cr> i
-nmap <leader>pp	:set ft=php<cr>
+imap <leader>pp <esc>:set ft=php<cr> i
+nmap <leader>pp :set ft=php<cr>
 imap <leader>ph <esc>:set ft=html<cr> i
 nmap <leader>ph :set ft=html<cr>
 
@@ -207,10 +209,10 @@ nnoremap <Tab> %
 vnoremap <Tab> %
 
 if exists(":Tabularize")
-	nmap <Leader>a= :Tabularize /=<CR>
-	vmap <Leader>a= :Tabularize /=<CR>
-	nmap <Leader>a: :Tabularize /:<CR>
-	vmap <Leader>a: :Tabularize /:<CR>
+    nmap <Leader>a= :Tabularize /=<CR>
+    vmap <Leader>a= :Tabularize /=<CR>
+    nmap <Leader>a: :Tabularize /:<CR>
+    vmap <Leader>a: :Tabularize /:<CR>
 endif
 
 " Allow saving of files as sudo when I forgot to start vim using sudo.
