@@ -95,16 +95,21 @@ function o {
 }
 
 # go up a directory level.
-# Takes a parameter that determines the level to go up, i.e.: bd 3 will
+# Takes a parameter that determines the level to go up, i.e.: up 3 will
 # be the same as cd ../../../
+
 function up () {
     levels=$1
 
-    if [ $1 -eq 0 ]; then
+    if [ -z "$levels" ]; then
         levels=1
     fi
 
     if [ "$levels" -eq "$levels" ] 2>/dev/null;then
+        if [ "$levels" -eq "0" ]; then
+            levels=1
+        fi
+
         for (( c=1; c<=levels; c++ ))
         do
             cd ../
