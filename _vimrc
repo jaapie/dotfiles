@@ -25,10 +25,14 @@ set foldmethod=manual
 set formatoptions=tcqr
 set hlsearch
 set tw=78
+set number
+
 set shiftwidth=4
 set tabstop=4
 set expandtab
-set number
+set smarttab " Enable smart tabs
+set autoread " automatically read buffer when changed outside vim
+set smartindent
 
 " CTRL-U in insert mode deletes a lot.  Use CTRL-G u to first break undo, so
 " that you can undo CTRL-U after inserting a line break.
@@ -62,7 +66,6 @@ if &t_Co == 256
 endif
 
 if has("gui_running")
-    " set background=dark
     color zenburn
     set guifont=Source\ Code\ Pro:h12
 endif
@@ -87,9 +90,9 @@ if has('statusline')
     set statusline+=%=%-14.(%l,%c%V%)\ %p%%  " Right aligned file nav info
 endif
 
-set smarttab " Enable smart tabs
-set autoread " automatically read buffer when changed outside vim
-set smartindent
+" +++++++++++++++++++++++
+" File type stuff
+" +++++++++++++++++++++++
 
 " Enable file type detection.
 filetype plugin indent on
@@ -100,6 +103,9 @@ autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
 autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 autocmd FileType scss set omnifunc=csscomplete#CompleteCSS
 
+" Automatically source ~/.vimrc when the file changes
+autocmd! BufWritePost ~/dev/dotfiles/_vimrc source ~/.vimrc
+autocmd! BufWritePost ~/.vimrc source ~/.vimrc
 
 " When editing a file, always jump to the last known cursor position.
 autocmd BufReadPost *
@@ -115,13 +121,17 @@ if !exists(":DiffOrig")
           \ | wincmd p | diffthis
 endif
 
+" ++++++++++++++++++++++++++
+" Backup, Swap, and Undo Files
+" ++++++++++++++++++++++++++
+
 " Set directory for backup and swap files
 silent !mkdir /tmp/vim > /dev/null 2>&1
 
 set dir=/tmp/vim
 set backupdir=/tmp/vim
 
-" ================ Persistent Undo ==================
+" Persistent Undo 
 " Keep undo history across sessions, by storing in file.
 " Only works all the time.
 
@@ -129,20 +139,21 @@ silent !mkdir /tmp/vim/backups > /dev/null 2>&1
 set undodir=/tmp/vim/backups
 set undofile
 
-
+" =====================
 " Key mappings
-"======================
+" =====================
+
+let mapleader=","
 
 " Session management
 nmap <silent><F6> :mksession! ~/.vim_session <CR> " Quick write session with F6
 nmap <silent><F7> :source ~/.vim_session <CR>     " And load session with F7--like Quake quick save
 
-let mapleader=","
-
 " F2 to save
 nmap <F2> :w!<CR>
 imap <F2> <ESC>:w!<CR> i
 
+" F5 toggles line wrapping 
 nmap <silent><F5> :set wrap!<CR>
 imap <silent><F5> <ESC>:set wrap!<CR>
 
@@ -154,23 +165,21 @@ nnoremap + maO<esc>`a
 nnoremap - mao<esc>`a
 
 " Yank to the OS clipboard with ,y
-nnoremap <leader>y "+y
+vnoremap <leader>y "+y
 nnoremap <leader>Y "+yy
+
+" Yank to end of line
+nnoremap Y y$
 
 " Make regex sane: search with perl regular expressions
 nnoremap / /\v
 vnoremap / /\v
 
-map <leader>oo o<cr>
-map <leader>d diw
-map <leader>= =iB
 imap <silent> <leader>zc <C-y>,
 nmap <silent> <leader>zc <C-y>,
-map <leader>ws :w<cr>:so %<cr>
 map <leader>pc "*p
 map <silent><leader>i :set list!<cr>
 map <leader>ev :tabnew ~/.vimrc<cr>
-map <leader>sv :so ~/.vimrc<cr>
 map <leader>r <C-W>r
 map <leader>vh <C-W>H
 map <leader>vl <C-W>L
