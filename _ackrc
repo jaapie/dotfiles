@@ -5,4 +5,8 @@
 --color
 
 # Use "less -r" as my pager
-# --pager=less -r
+ # --pager=less -R
+
+# add filetypes
+--type-set=scss=.scss,.sass
+--type-set=markdown=.md,markdown,.mdown
