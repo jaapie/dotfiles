@@ -62,11 +62,11 @@ if &t_Co > 2
 endif
 
 if &t_Co == 256
-    colorscheme zenburn
+    colorscheme rdark " Now with 256-colour terminal support!!
 endif
 
 if has("gui_running")
-    color zenburn
+    color rdark
     set guifont=Source\ Code\ Pro:h12
 endif
 
@@ -90,7 +90,6 @@ if has('statusline')
     set statusline+=%=%-14.(%l,%c%V%)\ %p%%  " Right aligned file nav info
 endif
 
-
 " +++++++++++++++++++++++
 " File type stuff
 " +++++++++++++++++++++++
@@ -105,7 +104,8 @@ autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 autocmd FileType scss set omnifunc=csscomplete#CompleteCSS
 
 " Automatically source ~/.vimrc when the file changes
-autocmd! BufWritePost dev/dotfiles/_vimrc source ~/.vimrc
+autocmd! BufWritePost ~/dev/dotfiles/_vimrc source ~/.vimrc
+autocmd! BufWritePost ~/.vimrc source ~/.vimrc
 
 " When editing a file, always jump to the last known cursor position.
 autocmd BufReadPost *
@@ -139,9 +139,9 @@ silent !mkdir /tmp/vim/backups > /dev/null 2>&1
 set undodir=/tmp/vim/backups
 set undofile
 
-
+" =====================
 " Key mappings
-"======================
+" =====================
 
 let mapleader=","
 

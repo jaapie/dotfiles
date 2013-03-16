@@ -125,7 +125,7 @@ function up () {
 #
 #############
 
-export PS1="\[\033[G\]$C_LIGHTBLUE\u$C_DEFAULT on $C_LIGHTMAGENTA\h$C_DEFAULT in $C_LIGHTBLUE\w"'$(prompt_git)'" $C_LIGHTGREEN\$$C_DEFAULT "
+export PS1="\[\033[G\]$C_LIGHTBLUE\u$C_DEFAULT on $C_MAGENTA\h$C_DEFAULT in $C_LIGHTBLUE\w"'$(prompt_git)'" $C_LIGHTGREEN\$$C_DEFAULT "
 
 #############
 #
