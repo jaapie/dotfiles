@@ -62,11 +62,11 @@ if &t_Co > 2
 endif
 
 if &t_Co == 256
-    colorscheme zenburn
+    colorscheme rdark " Now with 256-colour terminal support!!
 endif
 
 if has("gui_running")
-    color zenburn
+    color rdark
     set guifont=Source\ Code\ Pro:h12
 endif
 
