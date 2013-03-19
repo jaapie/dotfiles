@@ -2,7 +2,7 @@
 
 # Jacob Degeling's .bashrc file
 # me@jacobdegeling.com
-export PATH=/usr/local/bin:/usr/local/sbin:/usr/local/share/npm/bin/:$PATH
+export PATH=/usr/local/bin:/usr/local/sbin:/usr/local/share/npm/bin:$PATH
 
 if [ -d ~/bin ]; then
     export PATH=~/bin:$PATH
