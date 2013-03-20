@@ -85,3 +85,12 @@
 [submodule "_vim/bundle/ctrlp.vim"]
 	path = _vim/bundle/ctrlp.vim
 	url = https://github.com/kien/ctrlp.vim.git
+[submodule "_vim/bundle/editorconfig"]
+	path = _vim/bundle/editorconfig
+	url = git://github.com/editorconfig/editorconfig-vim.git
+[submodule "_vim/bundle/hexHighlight"]
+	path = _vim/bundle/hexHighlight
+	url = git://github.com/yurifury/hexHighlight.git
+[submodule "_vim/bundle/bubblegum"]
+	path = _vim/bundle/bubblegum
+	url = git://github.com/baskerville/bubblegum.git
