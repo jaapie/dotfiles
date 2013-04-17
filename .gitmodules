@@ -94,3 +94,6 @@
 [submodule "_vim/bundle/bubblegum"]
 	path = _vim/bundle/bubblegum
 	url = git://github.com/baskerville/bubblegum.git
+[submodule "_vim/bundle/vim-javascript-syntax"]
+	path = _vim/bundle/vim-javascript-syntax
+	url = git://github.com/jelera/vim-javascript-syntax.git

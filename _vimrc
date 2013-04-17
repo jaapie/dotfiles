@@ -22,10 +22,11 @@ set pastetoggle=<F4>
 set nowrap
 set nolist listchars=tab:▸\ ,trail:·,extends:#,nbsp:·
 set foldmethod=manual
-set formatoptions=tcqr
+set formatoptions=tcqrj
 set hlsearch
 set tw=78
 set number
+set modeline
 
 set shiftwidth=4
 set tabstop=4
@@ -102,6 +103,10 @@ au BufRead,BufNewFile *.scss    set filetype=scss
 autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
 autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 autocmd FileType scss set omnifunc=csscomplete#CompleteCSS
+autocmd FileType html set formatoptions-=t
+
+" set correct commentstring for APACHE files
+autocmd FileType apache set comments=:# commentstring=#\ %s
 
 " Automatically source ~/.vimrc when the file changes
 autocmd! BufWritePost ~/dev/dotfiles/_vimrc source ~/.vimrc
@@ -175,6 +180,10 @@ nnoremap Y y$
 nnoremap / /\v
 vnoremap / /\v
 
+" better moving through long lines that are wrapped
+nnoremap j gj
+nnoremap k gk
+
 imap <silent> <leader>zc <C-y>,
 nmap <silent> <leader>zc <C-y>,
 map <leader>pc "*p
@@ -199,6 +208,10 @@ imap <leader>ph <esc>:set ft=html<cr> i
 nmap <leader>ph :set ft=html<cr>
 
 inoremap jj <ESC>
+
+inoremap <leader>o <ESC>o
+inoremap <leader>O <ESC>O
+inoremap <leader>A <ESC>A
 
 " Opens a new tab with the current buffer's path Super useful when editing
 " files in the same directory
