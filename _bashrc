@@ -82,7 +82,7 @@ function cll () {
 }
 
 function g {
-    git ${@:-'status'}
+    git ${@:-status -s}
 }
 
 function pud () {
@@ -139,6 +139,21 @@ function up () {
     #    echo Exit status: $?
     else
         echo up: expected a number, not $levels
+    fi
+}
+
+# Create a data URL from a file
+function dataurl() {
+    if [ -z "$@" ]; then
+        echo "usage: dataurl FILE" >&2
+    else
+        local mimeType=$(file -b --mime-type "$1")
+
+        if [[ $mimeType == text/* ]]; then
+            mimeType="${mimeType};charset=utf-8"
+        fi
+
+        echo "data:${mimeType};base64,$(openssl base64 -in "$1" | tr -d '\n')"
     fi
 }
 
