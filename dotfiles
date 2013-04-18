@@ -29,20 +29,25 @@ function e_error()    { echo -e " ${colour_red}✖${colour_reset}  $@" >&2; }
 function e_ok()    { echo -e " ${colour_blue}●${colour_reset}  $@"; }
 
 function usage {
+
+    usage_text="Symbolically links files prepended with an underscore into
+    your \$HOME directory ($HOME), replaces the underscore with a full-stop
+    thereby creating a dotfile."
+
     echo -e "${colour_bright_def}usage: ./${script_name} [-hvf]${colour_reset}" >&2
-    echo -e "\nInstalls (symbolically links) files prepended with an " >&2
-    echo 'underscore into your $HOME directory, renaming them by' >&2
-    echo 'replacing the underscore with a full-stop thereby' >&2 
-    echo "creating a dotfile"
+    echo -e "\n${usage_text}" | sed -r 's/^ +//g' | fmt -w 72
+
     e_header 'Options' >&2
     echo ' -h    displays this help' >&2
     echo ' -v    displays the version number' >&2
     echo " -f    forces the installation to occur even if the target file already exists." >&2
+
     e_header "Output legend" >&2
     e_error "an error occurred"
     e_warn "the link was made forcefully" >&2
     e_success "success" >&2
     e_ok "nothing was done\n" >&2
+
     echo 'Written by Jacob Degeling' >&2
     echo 'Bugs to <me@jacobdegeling.com>' >&2
     echo 'Released under the GPL v3' >&2
