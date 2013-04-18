@@ -1,41 +1,85 @@
 #!/bin/bash
 
-# installs dotfiles by symlinking them to $HOME
+# Author: Jacob Degeling
+# Email: me@jacobdegeling.com
+# Website: jacobdegeling.com
+# Licence: GPLv3
+# Description: Installs dotfiles by symlinking them to $HOME
+
 
 script_name=${0##*/}
-script_version='0.0.1'
+script_version='0.1.1'
 
-colour_green="\033[1;32m"
+colour_bright_def="\033[1m"
 colour_red="\033[1;31m"
+colour_green="\033[1;32m"
 colour_blue="\033[1;34m"
 colour_yellow="\033[1;33m"
+colour_reset="\033[0m"
+
 force_install=0
 
+# Logging stuff from "Cowboy" Ben Alman
+# https://github.com/cowboy/dotfiles/blob/master/bin/dotfiles
+#
+function e_header()   { echo -e "\n${colour_bright_def}$@${colour_reset}"; }
+function e_success()  { echo -e " ${colour_green}✔${colour_reset}  $@"; }
+function e_warn()  { echo -e " ${colour_yellow}➜${colour_reset}  $@"; }
+function e_error()    { echo -e " ${colour_red}✖${colour_reset}  $@" >&2; }
+function e_ok()    { echo -e " ${colour_blue}●${colour_reset}  $@"; }
+
 function usage {
-    echo "usage: ./${script_name} [-hvf]" >&2
-    echo '' >&2
-    echo 'Installs (symbolically links) files prepended with an ' >&2
+    echo -e "${colour_bright_def}usage: ./${script_name} [-hvf]${colour_reset}" >&2
+    echo -e "\nInstalls (symbolically links) files prepended with an " >&2
     echo 'underscore into your $HOME directory, renaming them by' >&2
     echo 'replacing the underscore with a full-stop thereby' >&2 
-    echo 'creating a dotfile'
-    echo '' >&2
-    echo 'Options' >&2
+    echo "creating a dotfile"
+    e_header 'Options' >&2
     echo ' -h    displays this help' >&2
     echo ' -v    displays the version number' >&2
-    echo '' >&2
-    echo ' -f    forces the installation to occur even if the target file already exists.' >&2
-    echo '' >&2
-    echo 'Output legend' >&2
-    echo '' >&2
-    echo -e " ${colour_red}✘\033[0m : an error occurred" >&2
-    echo -e " ${colour_yellow}✔\033[0m : the link was made forcefully" >&2
-    echo -e " ${colour_green}✔\033[0m : success" >&2
-    echo -e " ${colour_blue}●\033[0m : nothing was done" >&2
-    echo ''
+    echo " -f    forces the installation to occur even if the target file already exists." >&2
+    e_header "Output legend" >&2
+    e_error "an error occurred"
+    e_warn "the link was made forcefully" >&2
+    e_success "success" >&2
+    e_ok "nothing was done\n" >&2
     echo 'Written by Jacob Degeling' >&2
     echo 'Bugs to <me@jacobdegeling.com>' >&2
+    echo 'Released under the GPL v3' >&2
 
     exit 1
+}
+
+function main () {
+    FILES=$(pwd)/_*
+
+    for file in $FILES
+    do
+        if [ ! -e "$file" ]; then
+            e_error "Can't find $file"
+            continue
+        fi
+
+        basename=${file##*/} # remove characters up to last backslash
+        dot_file=$HOME/${basename/_/.} # replace underscore with dot
+
+        info="link: $file => $dot_file"
+
+        if [ -e "$dot_file" ]; then 
+            e_ok $info
+            continue
+        fi
+
+        ln -s $file $dot_file
+
+        success=$? # $? contains the return status or exit code of the previously run command
+
+        if [ $success -eq 0 ]; then
+            e_success $info
+        else
+            e_error $info
+        fi
+    done
 }
 
 # Parse command line options
@@ -52,44 +96,15 @@ while getopts ":hvf" opt; do
             exit 0
             ;;
         \?)
-            echo "Invalid option: -$OPTARG" >&2
+            e_error "Invalid option: -$OPTARG"
             usage
             ;;
         :)
-            echo "-$OPTARG requires an argument" >&2
+            e_error "-$OPTARG requires an argument"
             usage
             ;;
     esac
 done
 
-
-FILES=$(pwd)/_*
-
-for file in $FILES
-do
-    if [ ! -e "$file" ]; then
-        echo -ne "${colour_red}Can't find $file" >&2
-        echo -e '\033[0m'
-        continue
-    fi
-
-    basename=${file##*/} # remove characters up to last backslash
-    dot_file=$HOME/${basename/_/.} # replace underscore with dot
-
-    echo -n Linking $file to $dot_file 
-
-    if [ -e "$dot_file" ]; then 
-        echo -e " ${colour_blue}●\033[0m" # file exists
-        continue
-    fi
-
-    ln -s $file $dot_file
-
-    success=$? # $? contains the return status or exit code of the previously run command
-
-    if [ $success -eq 0 ]; then
-        echo -e " ${colour_green}✔\033[0m"
-    else
-        echo -e " ${colour_red}✘\033[0m"
-    fi
-done
+# run main function
+main 
