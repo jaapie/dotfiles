@@ -2,6 +2,7 @@
 
 # Jacob Degeling's .bashrc file
 # me@jacobdegeling.com
+
 export PATH=/usr/local/bin:/usr/local/sbin:/usr/local/share/npm/bin:$PATH
 
 if [ -d ~/bin ]; then
@@ -68,16 +69,16 @@ function prompt_git() {
 
 # wrapper for making a directory and changing to it in one go
 function md () {
-    mkdir -p $1 && cd $1
+    mkdir -p "$@" && cd "$@"
 }
 
 # change dir and then list contents
 function cl () {
-    cd $1 && ls
+    cd "$@" && ls
 }
 
 function cll () {
-    cd $1 && ll
+    cd "$@" && ll
 }
 
 function g {
@@ -94,26 +95,48 @@ function o {
   open ${@:-'.'}
 }
 
+# thanks for these functions to @paulirish
+# find shorthand
+function f() {
+    find . -name "$1"
+}
+
+# cd into whatever is the forefront Finder window.
+function cdf() {  # short for cdfinder
+  cd "`osascript -e 'tell app "Finder" to POSIX path of (insertion location as alias)' 2> /dev/null`" 
+}
+
 # go up a directory level.
 # Takes a parameter that determines the level to go up, i.e.: up 3 will
 # be the same as cd ../../../
 
 function up () {
-    levels=$1
+    levels="$@"
 
     if [ -z "$levels" ]; then
         levels=1
     fi
 
-    if [ "$levels" -eq "$levels" ] 2>/dev/null;then
+    # Test if $levels is a number; the -eq operator expects a number, and will
+    # output an error if one is not found. Any output to STDERR is redirected
+    # to the bit bucket (/dev/null) so as not to cause unnessecary output to the
+    # screen; all we
+    if [ "$levels" -eq "$levels" ] 2> /dev/null; then
         if [ "$levels" -eq "0" ]; then
             levels=1
         fi
 
+        directories=""
+
         for (( c=1; c<=levels; c++ ))
         do
-            cd ../
+            parent=../
+            directories=${directories}${parent}
         done
+
+        cd $directories
+
+    #    echo Exit status: $?
     else
         echo up: expected a number, not $levels
     fi
@@ -121,7 +144,7 @@ function up () {
 
 #############
 #
-# Prompt like: Jake in ~ on (master*) $
+# Prompt: uname in cwd on (git branch) $
 #
 #############
 
