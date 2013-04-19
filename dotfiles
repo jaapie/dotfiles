@@ -8,7 +8,7 @@
 
 
 script_name=${0##*/}
-script_version='0.1.1'
+script_version='0.2.0'
 
 colour_bright_def="\033[1m"
 colour_red="\033[1;31m"
@@ -29,7 +29,6 @@ function e_error()    { echo -e " ${colour_red}✖${colour_reset}  $@" >&2; }
 function e_ok()    { echo -e " ${colour_blue}●${colour_reset}  $@"; }
 
 function usage {
-
     usage_text="Symbolically links files prepended with an underscore into
     your \$HOME directory ($HOME), replaces the underscore with a full-stop
     thereby creating a dotfile."
@@ -97,7 +96,7 @@ while getopts ":hvf" opt; do
             usage
             ;;
         v) 
-            echo $script_version
+            echo "v"$script_version
             exit 0
             ;;
         \?)
