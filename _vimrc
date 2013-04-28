@@ -68,7 +68,7 @@ endif
 
 if has("gui_running")
     color rdark
-    set guifont=Source\ Code\ Pro:h12
+    set guifont=Source\ Code\ Pro\ for\ Powerline:h12
 endif
 
 if has('cmdline_info')
@@ -78,18 +78,18 @@ if has('cmdline_info')
                                 " selected characters/lines in visual mode
 endif
 
-if has('statusline')
     set laststatus=2
+" if has('statusline')
 
-    " Broken down into easily includeable segments
-    set statusline=%<%f\    " Filename
-    set statusline+=%w%h%m%r " Options
-    set statusline+=%{fugitive#statusline()} " Git Hotness
-    set statusline+=\ [%{&ff}/%Y]            " filetype
-    set statusline+=\ [%{getcwd()}]          " current dir
-    "set statusline+=\ [A=\%03.3b/H=\%02.2B] " ASCII/Hexadecimal value of char
-    set statusline+=%=%-14.(%l,%c%V%)\ %p%%  " Right aligned file nav info
-endif
+"     " Broken down into easily includeable segments
+"     set statusline=%<%f\    " Filename
+"     set statusline+=%w%h%m%r " Options
+"     set statusline+=%{fugitive#statusline()} " Git Hotness
+"     set statusline+=\ [%{&ff}/%Y]            " filetype
+"     set statusline+=\ [%{getcwd()}]          " current dir
+"     set statusline+=\ [A=\%03.3b/H=\%02.2B] " ASCII/Hexadecimal value of char
+"     set statusline+=%=%-14.(%l,%c%V%)\ %p%%  " Right aligned file nav info
+" endif
 
 " +++++++++++++++++++++++
 " File type stuff
@@ -251,3 +251,6 @@ nnoremap <leader>gl :Glog<CR>
 " nnoremap <leader>ga :Git add %
 " inoremap <leader>gt :Git add .
 " nnoremap <leader>gt :Git add .
+
+" powerline
+set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim
