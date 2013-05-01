@@ -8,7 +8,7 @@
 
 
 script_name=${0##*/}
-script_version='0.2.0'
+script_version='0.2.3'
 
 colour_bright_def="\033[1m"
 colour_red="\033[1;31m"
@@ -18,10 +18,11 @@ colour_yellow="\033[1;33m"
 colour_reset="\033[0m"
 
 force_install=0
+dry_run=0
 
 # Logging stuff from "Cowboy" Ben Alman
 # https://github.com/cowboy/dotfiles/blob/master/bin/dotfiles
-#
+
 function e_header()   { echo -e "\n${colour_bright_def}$@${colour_reset}"; }
 function e_success()  { echo -e " ${colour_green}✔${colour_reset}  $@"; }
 function e_warn()  { echo -e " ${colour_yellow}➜${colour_reset}  $@"; }
@@ -33,13 +34,14 @@ function usage {
     your \$HOME directory ($HOME), replaces the underscore with a full-stop
     thereby creating a dotfile."
 
-    echo -e "${colour_bright_def}usage: ./${script_name} [-hvf]${colour_reset}" >&2
+    echo -e "${colour_bright_def}usage: ./${script_name} [-hVfn]${colour_reset}" >&2
     echo -e "\n${usage_text}" | sed -r 's/^ +//g' | fmt -w 72
 
     e_header 'Options' >&2
     echo ' -h    displays this help' >&2
-    echo ' -v    displays the version number' >&2
-    echo " -f    forces the installation to occur even if the target file already exists." >&2
+    echo ' -V    displays the version number' >&2
+    echo ' -f    forces the installation to occur even if the target file already exists.' >&2
+    echo ' -n    perform a dry run only showing what commands would be exeucted not actually executing them' >&2
 
     e_header "Output legend" >&2
     e_error "an error occurred"
@@ -69,33 +71,53 @@ function main () {
 
         info="link: $file => $dot_file"
 
-        if [ -e "$dot_file" ]; then 
-            e_ok $info
-            continue
+
+        if [ $force_install -eq 1 ]; then
+            opts="-sf"
+        else
+            opts="-s"
         fi
 
-        ln -s $file $dot_file
-
-        success=$? # $? contains the return status or exit code of the previously run command
-
-        if [ $success -eq 0 ]; then
-            e_success $info
+        if [ $dry_run -eq 1 ]; then
+            echo ln $opts $file $dot_file
         else
-            e_error $info
+            if [ -e "$dot_file" ] && [ $force_install -ne 1 ]; then
+                e_ok $dot_file already exists
+                continue
+            fi
+
+            ln $opts $file $dot_file
+
+            return_status=$? # $? contains the return status or exit code of the previously run command
+
+            if [ $return_status -eq 0 ]; then
+                if [ $force_install -eq 1 ]; then
+                    e_warn $info
+                else
+                    e_success $info
+                fi
+            else
+                e_error $info
+            fi
         fi
     done
 }
 
 # Parse command line options
-while getopts ":hvf" opt; do
+while getopts ":hVfn" opt; do
     case $opt in
-        f) 
-            force_install=1    
+        n)
+            dry_run=1
+            echo dotfiles: performing dry run
             ;;
-        h) 
+        f)
+            force_install=1
+            echo dotfiles: performing forced linking
+            ;;
+        h)
             usage
             ;;
-        v) 
+        V)
             echo "v"$script_version
             exit 0
             ;;
@@ -111,4 +133,4 @@ while getopts ":hvf" opt; do
 done
 
 # run main function
-main 
+main
