@@ -104,11 +104,6 @@ function f() {
     find . -name "$1"
 }
 
-# cd into whatever is the forefront Finder window.
-function cdf() {  # short for cdfinder
-  cd "`osascript -e 'tell app "Finder" to POSIX path of (insertion location as alias)' 2> /dev/null`" 
-}
-
 # go up a directory level.
 # Takes a parameter that determines the level to go up, i.e.: up 3 will
 # be the same as cd ../../../
@@ -166,7 +161,7 @@ function dataurl() {
 #
 #############
 
-export PS1="\[\033[G\]$C_LIGHTBLUE\u$C_DEFAULT on $C_MAGENTA\h$C_DEFAULT in $C_LIGHTBLUE\w\$([[ -n \$(git branch 2> /dev/null) ]] && echo \"$C_DEFAULT on \")$C_YELLOW"'$(parse_git_branch)'" $C_LIGHTGREEN\$$C_DEFAULT "
+export PS1="\[\033[G\]$C_LIGHTBLUE\u$C_DEFAULT at $C_CYAN\h$C_DEFAULT in $C_LIGHTBLUE\w\$([[ -n \$(git branch 2> /dev/null) ]] && echo \"$C_DEFAULT on \")$C_YELLOW"'$(parse_git_branch)'" $C_LIGHTGREEN\$$C_DEFAULT "
 
 #############
 #
@@ -182,7 +177,7 @@ HISTCONTROL=ignoreboth
 shopt -s histappend
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTSIZE=1000
+HISTSIZE=100000
 HISTFILESIZE=2000
 
 export HISTIGNORE="clear:bg:fg:jobs:cd -:cd ../:ll:ls:l"
