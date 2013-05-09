@@ -18,11 +18,6 @@ export EDITOR=vim
 export CLICOLOR=1
 export GREP_OPTIONS='--color=auto'
 
-# alias commands
-alias ls='ls -h'
-alias ll='ls -alFh'
-alias la='ls -Ah'
-alias l='ls -CF'
 
 # define colors
 C_DEFAULT="\[\033[m\]"
@@ -55,11 +50,9 @@ C_BG_MAGENTA="\[\033[45m\]"
 C_BG_CYAN="\[\033[46m\]"
 C_BG_WHITE="\[\033[47m\]"
 
-#############
-#
+##############
 # functions
-#
-#############
+##############
 
 # Fastest possible way to check if repo is dirty. a savior for the WebKit repo.
 function parse_git_dirty() {
@@ -103,6 +96,7 @@ function o {
 function f() {
     find . -name "$1"
 }
+# end thanks to @paulirish
 
 # go up a directory level.
 # Takes a parameter that determines the level to go up, i.e.: up 3 will
@@ -155,19 +149,15 @@ function dataurl() {
     fi
 }
 
-#############
-#
+##############
 # Prompt: uname in cwd on (git-branch) $
-#
-#############
+##############
 
 export PS1="\[\033[G\]$C_LIGHTBLUE\u$C_DEFAULT at $C_CYAN\h$C_DEFAULT in $C_LIGHTBLUE\w\$([[ -n \$(git branch 2> /dev/null) ]] && echo \"$C_DEFAULT on \")$C_YELLOW"'$(parse_git_branch)'" $C_LIGHTGREEN\$$C_DEFAULT "
 
-#############
-#
+##############
 # Command History settings
-#
-#############
+##############
 
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
@@ -185,10 +175,7 @@ export HISTIGNORE="clear:bg:fg:jobs:cd -:cd ../:ll:ls:l"
 bind '"\e[A":history-search-backward'
 bind '"\e[B":history-search-forward'
 
-#############
-#
-# Source local bash settings
-#
+############## Source local bash settings
 #############
 
 if [ -f ~/.bashrc_local ]; then
