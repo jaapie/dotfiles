@@ -167,15 +167,15 @@ function prompt () {
 
     case "$arg" in
         --minimal|-m)
-            echo prompt: minimal prompt
+            # echo prompt: minimal prompt
             _ps1="$(_c $C_GREEN '\$') "
             ;;
         --basic|-b)
-            echo prompt: basic prompt
+            # echo prompt: basic prompt
             _ps1="$(_c $C_LIGHTBLUE '\u') at $(_c $C_CYAN '\h') $(_c $C_GREEN '\$') "
             ;;
         --full|-f)
-            echo prompt: full prompt
+            # echo prompt: full prompt
             ;;
         *)
             ;;
