@@ -154,6 +154,8 @@ set undofile
 
 let mapleader=","
 
+imap {<CR> {<CR>}<C-o>O<Tab>
+
 " Session management
 nmap <silent><F6> :mksession! ~/.vim_session <CR> " Quick write session with F6
 nmap <silent><F7> :source ~/.vim_session <CR>     " And load session with F7--like Quake quick save
