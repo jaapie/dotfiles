@@ -54,14 +54,6 @@ C_BG_WHITE="\[\033[47m\]"
 # functions
 ##############
 
-# Fastest possible way to check if repo is dirty. a savior for the WebKit repo.
-function parse_git_dirty() {
-   git diff --quiet --ignore-submodules HEAD 2>/dev/null; [ $? -eq 1 ] && echo '*'
-}
-
-function parse_git_branch() {
-    git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/\1$(parse_git_dirty)/"
-}
 
 # wrapper for making a directory and changing to it in one go
 function md () {
@@ -153,7 +145,48 @@ function dataurl() {
 # Prompt: uname in cwd on (git-branch) $
 ##############
 
-export PS1="\[\033[G\]$C_LIGHTBLUE\u$C_DEFAULT at $C_CYAN\h$C_DEFAULT in $C_LIGHTBLUE\w\$([[ -n \$(git branch 2> /dev/null) ]] && echo \"$C_DEFAULT on \")$C_YELLOW"'$(parse_git_branch)'" $C_LIGHTGREEN\$$C_DEFAULT "
+function _c() {
+    colour=$1
+    text=$2
+
+    echo -ne ${colour}${text}${C_DEFAULT}
+}
+
+# Fastest possible way to check if repo is dirty. a savior for the WebKit repo.
+function parse_git_dirty() {
+    git diff --quiet --ignore-submodules HEAD 2>/dev/null; [ $? -eq 1 ] && echo '*'
+}
+
+function parse_git_branch() {
+    git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/\1$(parse_git_dirty)/"
+}
+
+function prompt () {
+    local arg=$1
+    local _ps1="$(_c $C_LIGHTBLUE '\u') at $(_c $C_CYAN '\h') in $(_c $C_LIGHTBLUE '\w')\$([[ -n \$(git branch 2> /dev/null) ]] && echo \" on \")$(_c $(tput setaf 215) $(parse_git_branch)) $(_c $C_GREEN '\$') "
+
+    case "$arg" in
+        --minimal|-m)
+            echo prompt: minimal prompt
+            _ps1="$(_c $C_GREEN '\$') "
+            ;;
+        --basic|-b)
+            echo prompt: basic prompt
+            _ps1="$(_c $C_LIGHTBLUE '\u') at $(_c $C_CYAN '\h') $(_c $C_GREEN '\$') "
+            ;;
+        --full|-f)
+            echo prompt: full prompt
+            ;;
+        *)
+            ;;
+    esac
+
+    export PS1=$_ps1
+
+}
+
+# export PS1="\[\033[G\]$C_LIGHTBLUE\u$C_DEFAULT at $C_CYAN\h$C_DEFAULT in $C_LIGHTBLUE\w\$([[ -n \$(git branch 2> /dev/null) ]] && echo \"$C_DEFAULT on \")$C_YELLOW"'$(parse_git_branch)'" $C_LIGHTGREEN\$$C_DEFAULT "
+prompt
 
 ##############
 # Command History settings
