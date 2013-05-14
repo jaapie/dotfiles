@@ -30,9 +30,10 @@ function e_error()    { echo -e " ${colour_red}✖${colour_reset}  $@" >&2; }
 function e_ok()    { echo -e " ${colour_blue}●${colour_reset}  $@"; }
 
 function usage {
-    usage_text="Symbolically links files prepended with an underscore into
-    your \$HOME directory ($HOME), replaces the underscore with a full-stop
-    thereby creating a dotfile."
+
+    usage_text="Symbolically links all files in the current directory
+    prepended with an underscore into your \$HOME directory ($HOME), replacing
+    the underscore with a full-stop thereby creating a dotfile."
 
     echo -e "${colour_bright_def}usage: ./${script_name} [-hVfn]${colour_reset}" >&2
     echo -e "\n${usage_text}" | sed -r 's/^ +//g' | fmt -w 72
