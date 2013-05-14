@@ -71,25 +71,29 @@ if has("gui_running")
     set guifont=Source\ Code\ Pro\ for\ Powerline:h12
 endif
 
-if has('cmdline_info')
-    set ruler                   " show the ruler
-    set rulerformat=%30(%=\:b%n%y%m%r%w\ %l,%c%V\ %P%) " a ruler on steroids
-    set showcmd                 " show partial commands in status line and
-                                " selected characters/lines in visual mode
-endif
-
-    set laststatus=2
-" if has('statusline')
-
-"     " Broken down into easily includeable segments
-"     set statusline=%<%f\    " Filename
-"     set statusline+=%w%h%m%r " Options
-"     set statusline+=%{fugitive#statusline()} " Git Hotness
-"     set statusline+=\ [%{&ff}/%Y]            " filetype
-"     set statusline+=\ [%{getcwd()}]          " current dir
-"     set statusline+=\ [A=\%03.3b/H=\%02.2B] " ASCII/Hexadecimal value of char
-"     set statusline+=%=%-14.(%l,%c%V%)\ %p%%  " Right aligned file nav info
+" if has('cmdline_info')
+"     set ruler                   " show the ruler
+"     set rulerformat=%30(%=\:b%n%y%m%r%w\ %l,%c%V\ %P%) " a ruler on steroids
+"     set showcmd                 " show partial commands in status line and
+"                                 " selected characters/lines in visual mode
 " endif
+
+set laststatus=2
+
+if &term !~ 'linux'
+    " powerline
+    set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim
+else
+    if has('statusline')
+        " Broken down into easily includeable segments
+        set statusline=%<%f\    " Filename
+        set statusline+=%w%h%m%r " Options
+        set statusline+=%{fugitive#statusline()} " Git Hotness
+        set statusline+=\ [%{&ff}/%Y]            " filetype
+        set statusline+=\ [%{getcwd()}]          " current dir
+        set statusline+=%=%-14.(%l,%c%V%)\ %p%%  " Right aligned file nav info
+    endif
+endif
 
 " +++++++++++++++++++++++
 " File type stuff
@@ -252,5 +256,3 @@ nnoremap <leader>gl :Glog<CR>
 " inoremap <leader>gt :Git add .
 " nnoremap <leader>gt :Git add .
 
-" powerline
-set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim
