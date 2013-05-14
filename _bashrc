@@ -3,6 +3,9 @@
 # Jacob Degeling's .bashrc file
 # me@jacobdegeling.com
 
+#if not interactive, get out of here
+[[ -z "$PS1" ]] && return
+
 export PATH=/usr/local/bin:/usr/local/sbin:/usr/local/share/npm/bin:$PATH
 
 if [ -d ~/bin ]; then
