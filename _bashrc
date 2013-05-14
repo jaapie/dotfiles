@@ -163,7 +163,7 @@ function parse_git_branch() {
 
 function prompt () {
     local arg=$1
-    local _ps1="$(_c $C_LIGHTBLUE '\u') at $(_c $C_CYAN '\h') in $(_c $C_LIGHTBLUE '\w')\$([[ -n \$(git branch 2> /dev/null) ]] && echo \" on \")$(_c $(tput setaf 215) $(parse_git_branch)) $(_c $C_GREEN '\$') "
+    local _ps1
 
     case "$arg" in
         --minimal|-m)
@@ -172,21 +172,29 @@ function prompt () {
             ;;
         --basic|-b)
             # echo prompt: basic prompt
-            _ps1="$(_c $C_LIGHTBLUE '\u') at $(_c $C_CYAN '\h') $(_c $C_GREEN '\$') "
+            _ps1="$(_c $C_LIGHTBLUE '\w') $(_c $C_GREEN '\$') "
             ;;
         --full|-f)
             # echo prompt: full prompt
-            ;;
-        *)
+            _ps1="$(_c $C_LIGHTBLUE '\u') at $(_c $C_CYAN '\h') in $(_c $C_LIGHTBLUE '\w')\$([[ -n \$(git branch 2> /dev/null) ]] && echo \" on \")$(_c $(tput setaf 215) $(parse_git_branch)) $(_c $C_GREEN '\$') "
             ;;
     esac
 
-    export PS1=$_ps1
+    if [ "$_ps1" = "" ]; then
+        echo "usage: prompt <-mbf>|<--minimal --basic --full>"
+        return 1
+    fi
+    
+    # save the last used prompt to a file to preserve the prompt choice across
+    # sessions
+    echo $arg > ~/.prompt
 
+    export PS1=$_ps1
 }
 
-# export PS1="\[\033[G\]$C_LIGHTBLUE\u$C_DEFAULT at $C_CYAN\h$C_DEFAULT in $C_LIGHTBLUE\w\$([[ -n \$(git branch 2> /dev/null) ]] && echo \"$C_DEFAULT on \")$C_YELLOW"'$(parse_git_branch)'" $C_LIGHTGREEN\$$C_DEFAULT "
-prompt
+# set up a bash prompt, defaulting to full prompt if the ~/.prompt file
+# containing the last used prompt is not found
+prompt $(cat ~/.prompt 2> /dev/null || echo --full)
 
 ##############
 # Command History settings
