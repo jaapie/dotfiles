@@ -6,9 +6,17 @@
 # Licence: GPLv3
 # Description: Installs dotfiles by symlinking them to $HOME
 
+# Changelog:
+#
+# 0.2.4
+# =====
+# * add success, error, warning, and Ok message character differentiation
+#   depending on which type of terminal the script is run on. If it's a TTY
+#   terminal ($TERM = linux) then the characters used for a terminal emulator
+#   (x-term etc) are not present, so they need to be customised.
 
 script_name=${0##*/}
-script_version='0.2.3'
+script_version='0.2.4'
 
 colour_bright_def="\033[1m"
 colour_red="\033[1;31m"
@@ -23,11 +31,23 @@ dry_run=0
 # Logging stuff from "Cowboy" Ben Alman
 # https://github.com/cowboy/dotfiles/blob/master/bin/dotfiles
 
+success_char=✔
+warn_char=✔
+error_char=✖
+ok_char=●
+
+if [ "$TERM" = "linux" ]; then
+    success_char=s
+    warn_char=w
+    error_char=e
+    ok_char=o
+fi
+
 function e_header()   { echo -e "\n${colour_bright_def}$@${colour_reset}"; }
-function e_success()  { echo -e " ${colour_green}✔${colour_reset}  $@"; }
-function e_warn()  { echo -e " ${colour_yellow}➜${colour_reset}  $@"; }
-function e_error()    { echo -e " ${colour_red}✖${colour_reset}  $@" >&2; }
-function e_ok()    { echo -e " ${colour_blue}●${colour_reset}  $@"; }
+function e_success()  { echo -e " ${colour_green}${success_char}${colour_reset}  $@"; }
+function e_warn()  { echo -e " ${colour_yellow}${warn_char}${colour_reset}  $@"; }
+function e_error()    { echo -e " ${colour_red}${error_char}${colour_reset}  $@" >&2; }
+function e_ok()    { echo -e " ${colour_blue}${ok_char}${colour_reset}  $@"; }
 
 function usage {
 
