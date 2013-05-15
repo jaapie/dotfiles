@@ -176,7 +176,7 @@ function prompt () {
             ;;
         --full|-f)
             # echo prompt: full prompt
-            _ps1="$(_c $C_LIGHTBLUE '\u') at $(_c $C_CYAN '\h') in $(_c $C_LIGHTBLUE '\w')\$([[ -n \$(git branch 2> /dev/null) ]] && echo \" on \")$(_c $(tput setaf 215) $(parse_git_branch)) $(_c $C_GREEN '\$') "
+            _ps1="$(_c $C_LIGHTBLUE '\u') at $(_c $C_CYAN '\h') in $(_c $C_LIGHTBLUE '\w')\$([[ -n \$(git branch 2> /dev/null) ]] && echo \" on \")$(_c $C_YELLOW '$(parse_git_branch)') $(_c $C_GREEN '\$') "
             ;;
     esac
 
