@@ -11,7 +11,9 @@ set backspace=indent,eol,start
 set history=500 " keep 50 lines of command line history
 set ruler       " show the cursor position all the time
 set showcmd     " display incomplete commands
+set hlsearch
 set incsearch   " do incremental searching
+set ignorecase
 set encoding=utf8
 set whichwrap+=<,>,h,l
 set magic
@@ -23,7 +25,6 @@ set nowrap
 set nolist listchars=tab:▸\ ,trail:·,extends:#,nbsp:·
 set foldmethod=manual
 set formatoptions=tcqrj
-set hlsearch
 set tw=78
 set number
 set modeline
@@ -223,6 +224,7 @@ inoremap <leader>A <ESC>A
 " files in the same directory
 map <Leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
 map <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
+map <leader>tn :tabnew<cr>
 
 " fold HTML tag
 map <leader>ft Vatzf
