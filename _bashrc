@@ -83,6 +83,16 @@ function o {
   open ${@:-'.'}
 }
 
+function port {
+    port = "$@"
+
+    if [ -z "$port" ]; then
+        lsof -i
+    else
+        lsof -i :$port
+    fi
+}
+
 # thanks for these functions to @paulirish
 # find shorthand
 function f() {
