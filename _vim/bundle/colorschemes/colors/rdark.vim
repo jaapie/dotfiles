@@ -116,7 +116,7 @@ hi javaScriptOperator guifg=#888a85 ctermfg=102
 " HTML
 hi htmlTag guifg=#888a85 ctermfg=102
 hi htmlEndTag guifg=#888a85 ctermfg=102
-hi htmlTagName guifg=#babdb6 ctermfg=250
+hi htmlTagName guifg=#888a85 ctermfg=102
 hi htmlSpecialTagName guifg=#babdb6 ctermfg=250
 hi htmlArg guifg=#d3d7cf ctermfg=252
 hi htmlTitle guifg=#8ae234 ctermfg=113 gui=none
