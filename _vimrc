@@ -136,18 +136,20 @@ endif
 " ++++++++++++++++++++++++++
 
 " Set directory for backup and swap files
-silent !mkdir /tmp/vim > /dev/null 2>&1
+" silent !mkdir /tmp/vim > /dev/null 2>&1
 
-set dir=/tmp/vim
-set backupdir=/tmp/vim
+" set dir=/tmp/vim
+" set backupdir=/tmp/vim
 
-" Persistent Undo 
-" Keep undo history across sessions, by storing in file.
-" Only works all the time.
+" " Persistent Undo 
+" " Keep undo history across sessions, by storing in file.
+" " Only works all the time.
 
-silent !mkdir /tmp/vim/backups > /dev/null 2>&1
-set undodir=/tmp/vim/backups
-set undofile
+" silent !mkdir /tmp/vim/backups > /dev/null 2>&1
+" set undodir=/tmp/vim/backups
+" set undofile
+set nobackup
+set noswapfile
 
 " =====================
 " Key mappings
