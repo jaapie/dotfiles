@@ -105,13 +105,15 @@ filetype plugin indent on
 au BufRead,BufNewFile *.scss    set filetype=scss
 
 "Enable OmniComplete on different filetypes
-autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
-autocmd FileType css set omnifunc=csscomplete#CompleteCSS
-autocmd FileType scss set omnifunc=csscomplete#CompleteCSS
-autocmd FileType html set formatoptions-=t
+autocmd FileType html setlocal omnifunc=htmlcomplete#CompleteTags
+autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+autocmd FileType scss setlocal omnifunc=csscomplete#CompleteCSS
+autocmd FileType html setlocal formatoptions-=t
+autocmd FileType yaml setlocal sw=2 ts=2 sts=2 expandtab
 
 " set correct commentstring for APACHE files
 autocmd FileType apache set comments=:# commentstring=#\ %s
+" autocmd FileType php set comments=:\/\/ commentstring=\/\/ %s
 
 " Automatically source ~/.vimrc when the file changes
 autocmd! BufWritePost ~/dev/dotfiles/_vimrc source ~/.vimrc
@@ -157,7 +159,7 @@ set noswapfile
 
 let mapleader=","
 
-imap {<CR> {<CR>}<C-o>O<Tab>
+imap {<CR> {<CR>}<C-o>O
 
 " Session management
 nmap <silent><F6> :mksession! ~/.vim_session <CR> " Quick write session with F6
@@ -179,8 +181,8 @@ nnoremap + maO<esc>`a
 nnoremap - mao<esc>`a
 
 " Yank to the OS clipboard with ,y
-vnoremap <leader>y "+y
-nnoremap <leader>Y "+yy
+vnoremap <leader>y "*y
+nnoremap <leader>Y "*yy
 
 " Yank to end of line
 nnoremap Y y$

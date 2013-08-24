@@ -103,3 +103,9 @@
 [submodule "_vim/bundle/powerline"]
 	path = _vim/bundle/powerline
 	url = git://github.com/Lokaltog/powerline.git
+[submodule "_vim/bundle/emmet.vim"]
+	path = _vim/bundle/emmet.vim
+	url = git@github.com:mattn/emmet-vim.git
+[submodule "_vim/bundle/HTML-AutoCloseTag"]
+	path = _vim/bundle/HTML-AutoCloseTag
+	url = git@github.com:vim-scripts/HTML-AutoCloseTag.git
