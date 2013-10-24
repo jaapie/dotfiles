@@ -72,7 +72,7 @@
 	url = git://github.com/gerw/vim-HiLinkTrace.git
 [submodule "_vim/bundle/closetag.vim"]
 	path = _vim/bundle/closetag.vim
-	url = https://github.com/vim-scripts/closetag.vim
+	url = git@github.com:vim-scripts/closetag.vim.git
 [submodule "_vim/bundle/vim-colours-dusk"]
 	path = _vim/bundle/vim-colours-dusk
 	url = git@github.com:jaapie/vim-colours-dusk.git

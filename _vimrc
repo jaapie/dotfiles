@@ -69,7 +69,7 @@ endif
 
 if has("gui_running")
     color rdark
-    set guifont=Source\ Code\ Pro\ for\ Powerline:h12
+    set guifont=Source\ Code\ Pro\ for\ Powerline:h14
 endif
 
 " if has('cmdline_info')
