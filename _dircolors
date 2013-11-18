@@ -136,6 +136,7 @@ EXEC 01;32
 .rz 01;31
 # image formats
 .jpg 01;35
+.JPG 01;35
 .jpeg 01;35
 .gif 01;35
 .bmp 01;35
