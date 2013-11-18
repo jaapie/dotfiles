@@ -72,29 +72,14 @@ if has("gui_running")
     set guifont=Source\ Code\ Pro\ for\ Powerline:h14
 endif
 
-" if has('cmdline_info')
-"     set ruler                   " show the ruler
-"     set rulerformat=%30(%=\:b%n%y%m%r%w\ %l,%c%V\ %P%) " a ruler on steroids
-"     set showcmd                 " show partial commands in status line and
-"                                 " selected characters/lines in visual mode
-" endif
-
 set laststatus=2
 
-if &term !~ 'linux'
-    " powerline
-    set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim
-else
-    if has('statusline')
-        " Broken down into easily includeable segments
-        set statusline=%<%f\    " Filename
-        set statusline+=%w%h%m%r " Options
-        set statusline+=%{fugitive#statusline()} " Git Hotness
-        set statusline+=\ [%{&ff}/%Y]            " filetype
-        set statusline+=\ [%{getcwd()}]          " current dir
-        set statusline+=%=%-14.(%l,%c%V%)\ %p%%  " Right aligned file nav info
-    endif
-endif
+" if &term !~ 'linux'
+" else
+"     if has('statusline')
+
+"     endif
+" endif
 
 " +++++++++++++++++++++++
 " File type stuff
@@ -143,21 +128,44 @@ endif
 " set dir=/tmp/vim
 " set backupdir=/tmp/vim
 
-" " Persistent Undo 
-" " Keep undo history across sessions, by storing in file.
-" " Only works all the time.
+" Persistent Undo
+" Keep undo history across sessions, by storing in file.
+" Only works all the time.
 
-" silent !mkdir /tmp/vim/backups > /dev/null 2>&1
-" set undodir=/tmp/vim/backups
-" set undofile
+silent !mkdir /tmp/vim/backups > /dev/null 2>&1
+set undodir=/tmp/vim/backups
+set undofile
+
 set nobackup
 set noswapfile
+
+" +++++++++++++++++++++++++++
+" Change cursor to vertical bar when running in iTerm2.app
+" +++++++++++++++++++++++++++
+" change cursor to vertical bar in insert mode when using iTerm2
+if $TERM_PROGRAM == 'iTerm.app'
+    if exists('$TMUX')
+        let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
+        let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
+    else
+        let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+        let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+    endif
+endif
+
+" =====================
+" Window functionality
+" =====================
+
+set splitright
+set splitbelow
 
 " =====================
 " Key mappings
 " =====================
 
 let mapleader=","
+runtime macros/matchit.vim
 
 imap {<CR> {<CR>}<C-o>O
 
@@ -227,6 +235,8 @@ inoremap <leader>A <ESC>A
 " Opens a new tab with the current buffer's path Super useful when editing
 " files in the same directory
 map <Leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
+map <Leader>ve :vsp <C-R>=expand("%:p:h") . "/" <CR>
+map <Leader>he :sp <C-R>=expand("%:p:h") . "/" <CR>
 map <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
 map <leader>tn :tabnew<cr>
 
