@@ -5,6 +5,7 @@ execute pathogen#infect()
 execute pathogen#helptags()
 
 let g:UltiSnipsSnippetDirectories=["UltiSnips", "snippets"]
+let g:neocomplcache_enable_at_startup = 1
 
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
