@@ -112,9 +112,9 @@
 [submodule "_vim/bundle/vim-airline"]
 	path = _vim/bundle/vim-airline
 	url = https://github.com/bling/vim-airline.git
-[submodule "_vim/bundle/vim-mustache"]
-	path = _vim/bundle/vim-mustache
-	url = git://github.com/mustache/vim-mode.git
 [submodule "_vim/bundle/neocomplcache.vim"]
 	path = _vim/bundle/neocomplcache.vim
 	url = https://github.com/Shougo/neocomplcache.vim.git
+[submodule "_vim/bundle/vim-ragtag"]
+	path = _vim/bundle/vim-ragtag
+	url = https://github.com/tpope/vim-ragtag.git
