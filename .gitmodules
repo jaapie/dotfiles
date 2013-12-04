@@ -118,3 +118,6 @@
 [submodule "_vim/bundle/vim-ragtag"]
 	path = _vim/bundle/vim-ragtag
 	url = https://github.com/tpope/vim-ragtag.git
+[submodule "_vim/bundle/vim-mustache-handlebars"]
+	path = _vim/bundle/vim-mustache-handlebars
+	url = git@github.com:mustache/vim-mustache-handlebars.git
