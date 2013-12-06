@@ -214,8 +214,14 @@ prompt $(cat ~/.prompt 2> /dev/null || echo --full)
 # See bash(1) for more options
 HISTCONTROL=ignoreboth
 
+# shell options
+# ##########################
+
 # append to the history file, don't overwrite it
 shopt -s histappend
+
+# globstar
+shopt -s globstar
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
 HISTSIZE=100000
