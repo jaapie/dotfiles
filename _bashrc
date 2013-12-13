@@ -100,6 +100,14 @@ function f() {
 }
 # end thanks to @paulirish
 
+function mu() {
+    if [ -z "$@" ]; then
+        echo "usage: mu NAME" >&2
+    else
+        ps aux | awk '/$1/ {sum += $6} END { printf "%dMB\n", sum/1024 }' 
+    fi
+}
+
 # go up a directory level.
 # Takes a parameter that determines the level to go up, i.e.: up 3 will
 # be the same as cd ../../../
