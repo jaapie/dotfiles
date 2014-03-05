@@ -1,0 +1,13 @@
+[user]
+	name = Jacob Degeling
+	email = me@jacobdegeling.com
+[color]
+	ui = true
+[push]
+	default = simple
+[format]
+	pretty = oneline
+[core]
+	excludesfile = /Users/Jake/.gitignore_global
+[alias]
+  hist = log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short
