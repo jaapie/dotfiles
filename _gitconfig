@@ -11,3 +11,5 @@
 	excludesfile = /Users/Jake/.gitignore_global
 [alias]
   hist = log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short
+[log]
+	abbrevCommit = true
