@@ -124,3 +124,6 @@
 [submodule "_vim/bundle/vim-exchange"]
 	path = _vim/bundle/vim-exchange
 	url = git@github.com:tommcdo/vim-exchange.git
+[submodule "_vim/bundle/tabular"]
+	path = _vim/bundle/tabular
+	url = git://github.com/godlygeek/tabular.git
