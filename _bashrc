@@ -104,7 +104,9 @@ function mu() {
     if [ -z "$@" ]; then
         echo "usage: mu NAME" >&2
     else
-        ps aux | awk '/$1/ {sum += $6} END { printf "%dMB\n", sum/1024 }' 
+        awk_arg='/arg_one/ {sum += $6} END { printf "%dMB\n", sum/1024 }'
+        # echo ${awk_arg/arg_one/$1}
+        ps aux | awk "${awk_arg/arg_one/$1}" 
     fi
 }
 
