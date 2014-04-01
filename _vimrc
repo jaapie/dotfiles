@@ -97,9 +97,9 @@ autocmd FileType scss setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html setlocal formatoptions-=t
 autocmd FileType yaml setlocal sw=2 ts=2 sts=2 expandtab
 
-" set correct commentstring for APACHE files
+" set correct commentstring for files
 autocmd FileType apache set comments=:# commentstring=#\ %s
-" autocmd FileType php set comments=:\/\/ commentstring=\/\/ %s
+autocmd FileType php set commentstring=//\ %s
 
 " Automatically source ~/.vimrc when the file changes
 autocmd! BufWritePost ~/dev/dotfiles/_vimrc source ~/.vimrc
