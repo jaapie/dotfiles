@@ -65,12 +65,12 @@ if &t_Co > 2
 endif
 
 if &t_Co == 256
-    colorscheme rdark " Now with 256-colour terminal support!!
+    colorscheme friendly
 endif
 
 if has("gui_running")
-    color rdark
-    set guifont=Source\ Code\ Pro\ for\ Powerline:h14
+    color friendly
+    set guifont=Source\ Code\ Pro:h14
 endif
 
 set laststatus=2
