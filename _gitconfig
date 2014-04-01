@@ -13,3 +13,6 @@
   hist = log --pretty=format:'%C(auto)%h %ad | %s%d [%an]' --graph --date=short
 [log]
 	abbrevCommit = true
+[filter "media"]
+	clean = git-media-clean %f
+	smudge = git-media-smudge %f
