@@ -101,6 +101,9 @@ autocmd FileType yaml setlocal sw=2 ts=2 sts=2 expandtab
 autocmd FileType apache set comments=:# commentstring=#\ %s
 autocmd FileType php set commentstring=//\ %s
 
+" change keywordprg for php files to pman
+autocmd FileType php set keywordprg=pman
+
 " Automatically source ~/.vimrc when the file changes
 autocmd! BufWritePost ~/dev/dotfiles/_vimrc source ~/.vimrc
 autocmd! BufWritePost ~/.vimrc source ~/.vimrc
