@@ -239,6 +239,7 @@ EXEC 01;32
 .git 00;38;5;202
 .gitignore 00;38;5;202
 .gitconfig 00;38;5;202
+.gitmodules 00;38;5;202
 .htaccess 00;38;5;202
 .htpasswd 00;38;5;202
 .vimrc 00;38;5;202
