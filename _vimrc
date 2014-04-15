@@ -108,6 +108,8 @@ autocmd FileType php set keywordprg=pman
 autocmd! BufWritePost ~/dev/dotfiles/_vimrc source ~/.vimrc
 autocmd! BufWritePost ~/.vimrc source ~/.vimrc
 
+au BufRead,BufNewFile /usr/local/etc/nginx/conf.d/*,/usr/local/etc/nginx/sites-*/* if &ft == '' | setfiletype nginx | endif 
+
 " When editing a file, always jump to the last known cursor position.
 autocmd BufReadPost *
     \ if line("'\"") > 1 && line("'\"") <= line("$") |
