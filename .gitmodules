@@ -58,9 +58,6 @@
 [submodule "_vim/bundle/command-t"]
 	path = _vim/bundle/command-t
 	url = git://git.wincent.com/command-t.git
-[submodule "_vim/bundle/UltiSnips"]
-	path = _vim/bundle/UltiSnips
-	url = git://github.com/SirVer/ultisnips.git
 [submodule "_vim/bundle/vim-yaml"]
 	path = _vim/bundle/vim-yaml
 	url = git://github.com/avakhov/vim-yaml.git
@@ -94,15 +91,9 @@
 [submodule "_vim/bundle/bubblegum"]
 	path = _vim/bundle/bubblegum
 	url = git://github.com/baskerville/bubblegum.git
-[submodule "_vim/bundle/vim-javascript-syntax"]
-	path = _vim/bundle/vim-javascript-syntax
-	url = git://github.com/jelera/vim-javascript-syntax.git
 [submodule "_vim/bundle/vim-json"]
 	path = _vim/bundle/vim-json
 	url = git://github.com/jakar/vim-json.git
-[submodule "_vim/bundle/powerline"]
-	path = _vim/bundle/powerline
-	url = git://github.com/Lokaltog/powerline.git
 [submodule "_vim/bundle/emmet.vim"]
 	path = _vim/bundle/emmet.vim
 	url = git@github.com:mattn/emmet-vim.git
@@ -112,9 +103,6 @@
 [submodule "_vim/bundle/vim-airline"]
 	path = _vim/bundle/vim-airline
 	url = https://github.com/bling/vim-airline.git
-[submodule "_vim/bundle/neocomplcache.vim"]
-	path = _vim/bundle/neocomplcache.vim
-	url = https://github.com/Shougo/neocomplcache.vim.git
 [submodule "_vim/bundle/vim-ragtag"]
 	path = _vim/bundle/vim-ragtag
 	url = https://github.com/tpope/vim-ragtag.git
@@ -127,3 +115,6 @@
 [submodule "_vim/bundle/tabular"]
 	path = _vim/bundle/tabular
 	url = git://github.com/godlygeek/tabular.git
+[submodule "_vim/bundle/dbext.vim"]
+	path = _vim/bundle/dbext.vim
+	url = https://github.com/vim-scripts/dbext.vim
