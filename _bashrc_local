@@ -28,6 +28,16 @@ fi
 
 unset brew_prefix
 
+if [ -d /usr/local/php ]; then
+    export PATH=/usr/local/php/bin:$PATH
+    export MANPATH=/usr/local/php/man:$MANPATH
+fi
+
+if [ -d /usr/local/apache ]; then
+    export PATH=/usr/local/apache/bin:$PATH
+    export MANPATH=/usr/local/apache/man:$MANPATH
+fi
+
 if [ -x $(which dircolors) ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
 
@@ -44,6 +54,6 @@ else
     alias l='ls -CF'
 fi
 
-export ANDROID_HOME=/usr/local/opt/android-sdk
-export PATH="$(brew --prefix josegonzalez/php/php54)/bin:$PATH"
+# export ANDROID_HOME=/usr/local/opt/android-sdk
+# export PATH="$(brew --prefix php55)/bin:$PATH"
 

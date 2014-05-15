@@ -28,6 +28,7 @@ set foldmethod=manual
 set formatoptions=tcqrj
 set tw=78
 set number
+set cursorline
 set modeline
 :set timeout timeoutlen=1000 ttimeoutlen=100
 
@@ -218,8 +219,8 @@ map <leader>pc "*p
 map <silent><leader>i :set list!<cr>
 map <leader>ev :tabnew ~/.vimrc<cr>
 map <leader>r <C-W>r
-map <leader>vh <C-W>H
-map <leader>vl <C-W>L
+map <leader>wh <C-W>H
+map <leader>wv <C-W>L
 
 " Duplicate current line below
 inoremap <leader>ll <esc>mayyp`a i
@@ -279,7 +280,10 @@ nnoremap <leader>gl :Glog<CR>
 " inoremap <leader>gt :Git add .
 " nnoremap <leader>gt :Git add .
 
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> some basic changes
 " Tab completion
 " will insert tab at beginning of line,
 " will use completion if not at beginning
