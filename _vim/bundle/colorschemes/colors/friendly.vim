@@ -19,6 +19,7 @@ hi Normal                                guifg=#5b5b5b ctermfg=240         guibg
 hi NonText                               guifg=#b3b3b3 ctermfg=249         guibg=#dedede ctermbg=253 gui=none
 hi Cursor                                                      guibg=#343434 ctermbg=236
 hi ICursor                                                     guibg=#343434 ctermbg=236
+hi CursorLine                            guibg=#eaeaea ctermbg=7 gui=none cterm=none term=none
 "
 " Syntax
 hi Comment                               guifg=#408090 ctermfg=66 gui=italic
