@@ -67,11 +67,13 @@ if &t_Co > 2
 endif
 
 if &t_Co == 256
-    colorscheme friendly
+    set background=dark
+    colorscheme solarized
 endif
 
 if has("gui_running")
-    color friendly
+    set background=dark
+    color solarized
     set guifont=Source\ Code\ Pro:h14
 endif
 
