@@ -29,6 +29,7 @@ set formatoptions=tcqrj
 set tw=78
 set number
 set modeline
+:set timeout timeoutlen=1000 ttimeoutlen=100
 
 set shiftwidth=4
 set tabstop=4
@@ -176,8 +177,10 @@ runtime macros/matchit.vim
 imap {<CR> {<CR>}<C-o>O
 
 " Session management
-nmap <silent><F6> :mksession! ~/.vim_session <CR> " Quick write session with F6
-nmap <silent><F7> :source ~/.vim_session <CR>     " And load session with F7--like Quake quick save
+" Quick write session with F6
+nmap <silent><F6> :mksession! ~/.vim_session <CR> 
+" And load session with F7--like Quake quick save
+nmap <silent><F7> :source ~/.vim_session <CR>     
 
 " F2 to save
 nmap <F2> :w!<CR>
@@ -254,10 +257,6 @@ let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
-" Jump to matching pairs easily, with Tab
-nnoremap <Tab> %
-vnoremap <Tab> %
-
 if exists(":Tabularize")
     nmap <Leader>a= :Tabularize /=<CR>
     vmap <Leader>a= :Tabularize /=<CR>
@@ -280,3 +279,19 @@ nnoremap <leader>gl :Glog<CR>
 " inoremap <leader>gt :Git add .
 " nnoremap <leader>gt :Git add .
 
+=======
+" Tab completion
+" will insert tab at beginning of line,
+" will use completion if not at beginning
+set wildmode=list:longest,list:full
+function! InsertTabWrapper()
+    let col = col('.') - 1
+    if !col || getline('.')[col - 1] !~ '\k'
+        return "\<tab>"
+    else
+        return "\<c-p>"
+    endif
+endfunction
+inoremap <Tab> <c-r>=InsertTabWrapper()<cr>
+inoremap <M-Tab> <c-x><c-o>
+inoremap <C-Tab> <c-x><c-f>
