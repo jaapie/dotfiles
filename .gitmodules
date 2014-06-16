@@ -121,3 +121,6 @@
 [submodule "_vim/bundle/vim-projectionist"]
 	path = _vim/bundle/vim-projectionist
 	url = git@github.com:tpope/vim-projectionist.git
+[submodule "_vim/bundle/vim-bufferline"]
+	path = _vim/bundle/vim-bufferline
+	url = git@github.com:bling/vim-bufferline.git
