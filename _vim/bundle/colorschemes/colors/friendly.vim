@@ -16,39 +16,39 @@ let colors_name = "friendly"
 
 " Default Colors
 hi Normal                                guifg=#5b5b5b ctermfg=240         guibg=#eeeeee ctermbg=255
-hi NonText                               guifg=#b3b3b3 ctermfg=249         guibg=#dedede ctermbg=253 gui=none
+hi NonText                               guifg=#b3b3b3 ctermfg=249         guibg=#dedede ctermbg=253 gui=none cterm=none
 hi Cursor                                                      guibg=#343434 ctermbg=236
 hi ICursor                                                     guibg=#343434 ctermbg=236
 hi CursorLine                            guibg=#eaeaea ctermbg=7 gui=none cterm=none term=none
 "
 " Syntax
-hi Comment                               guifg=#408090 ctermfg=66 gui=italic
-hi Constant                              guifg=#007020 ctermfg=22 gui=bold
+hi Comment                               guifg=#408090 ctermfg=66 gui=italic 
+hi Constant                              guifg=#007020 ctermfg=22 gui=bold cterm=bold
 hi String                                guifg=#4070A0 ctermfg=67
 hi Character                             guifg=#4070A0 ctermfg=67
 hi Number                                guifg=#208050 ctermfg=29
-hi Statement                             guifg=#007020 ctermfg=22 gui=bold
+hi Statement                             guifg=#007020 ctermfg=22 gui=bold cterm=bold
 hi Operator                              guifg=#666666 ctermfg=241
-hi Identifier                            guifg=#007020 ctermfg=22 gui=bold
+hi Identifier                            guifg=#007020 ctermfg=22 gui=bold cterm=bold
 hi PreProc                               guifg=#007020 ctermfg=22
 hi Function                              guifg=#06287e ctermfg=18
-hi Type                                  guifg=#902000 ctermfg=88 gui=none
-hi Keyword                               guifg=#007020 ctermfg=22 gui=bold
+hi Type                                  guifg=#902000 ctermfg=88 gui=none cterm=none
+hi Keyword                               guifg=#007020 ctermfg=22 gui=bold cterm=bold
 hi Special                               guifg=#5b5b5b ctermfg=240
-hi SpecialChar                           guifg=#4070A0 ctermfg=67 gui=bold
+hi SpecialChar                           guifg=#4070A0 ctermfg=67 gui=bold cterm=bold
 hi Error                                 guifg=#eeeeec ctermfg=255         guibg=#cc0000 ctermbg=1
 hi link Typedef Keyword
 hi link StorageClass Keyword
 
 " Search
-hi Search                                guifg=#eeeeee ctermfg=255         guibg=#007020 ctermbg=22
-hi IncSearch                             guifg=#eeeeee ctermfg=255         guibg=#007020 ctermbg=22
+hi Search                                guifg=#eeeeee ctermfg=255         guibg=#0e84b5 ctermbg=31 cterm=none gui=none
+hi IncSearch                             guifg=#eeeeee ctermfg=255         guibg=#0e84b5 ctermbg=31 cterm=none gui=none
 "
 " Window Elements
-hi StatusLine                            guifg=#b3b3b3 ctermfg=249         guibg=#dedede ctermbg=253 gui=none
-hi StatusLineNC                          guifg=#b3b3b3 ctermfg=249         guibg=#dedede ctermbg=253 gui=none
-hi VertSplit                             guifg=#b3b3b3 ctermfg=249         guibg=#888a85 ctermbg=102 gui=none
-hi Visual                                guifg=#eeeeee ctermfg=255         guibg=#408090 ctermbg=66
+hi StatusLine                            guifg=#b3b3b3 ctermfg=249         guibg=#dedede ctermbg=253 gui=none cterm=none
+hi StatusLineNC                          guifg=#b3b3b3 ctermfg=249         guibg=#dedede ctermbg=253 gui=none cterm=none
+hi VertSplit                             guifg=#b3b3b3 ctermfg=249         guibg=#888a85 ctermbg=102 gui=none cterm=none
+hi Visual                                guifg=#eeeeee ctermfg=255         guibg=#0e84b5 ctermbg=31
 hi MoreMsg                               guifg=#729fcf ctermfg=74
 hi Question                              guifg=#fcaf3e ctermfg=215
 hi WildMenu                              guifg=#eeeeec ctermfg=255         guibg=#0e1416 ctermbg=233
@@ -69,21 +69,21 @@ hi PmenuThumb                            guifg=#eeeeee ctermfg=255
 hi DiffDelete                            guifg=#2e3436 ctermfg=236         guibg=#0e1416 ctermbg=233
 hi DiffAdd                                                     guibg=#1f2b2d ctermbg=235
 hi DiffChange                                                  guibg=#2e3436 ctermbg=236
-hi DiffText                                                    guibg=#000000 ctermbg=0 gui=none
+hi DiffText                                                    guibg=#000000 ctermbg=0 gui=none cterm=none
 "
 " Folds
 hi Folded                                guifg=#d3d7cf ctermfg=252         guibg=#204a87 ctermbg=24
 hi FoldColumn                            guifg=#3465a4 ctermfg=67         guibg=#000000 ctermbg=0
 "
 " Specials
-hi Title                                 guifg=#5b5b5b ctermfg=240 gui=none
-hi Todo                                  guifg=#408090 ctermfg=66         guibg=#eeeeee ctermbg=255         gui=bold,italic
-hi SpecialKey                            guifg=#ef2929 ctermfg=9 gui=bold
+hi Title                                 guifg=#5b5b5b ctermfg=240 gui=none cterm=none
+hi Todo                                  guifg=#408090 ctermfg=66         guibg=#eeeeee ctermbg=255         gui=bold,italic cterm=bold,italic
+hi SpecialKey                            guifg=#ef2929 ctermfg=9 gui=bold cterm=bold
 "
 " Tabs
 hi TabLine                               guifg=#888a85 ctermfg=102         guibg=#0a1012 ctermbg=233
 hi TabLineFill                           guifg=#0a1012 ctermfg=233
-hi TabLineSel                            guifg=#eeeeec ctermfg=255         guibg=#555753 ctermbg=240 gui=none
+hi TabLineSel                            guifg=#eeeeec ctermfg=255         guibg=#555753 ctermbg=240 gui=none cterm=none
 "
 " Matches
 hi MatchParen                            guifg=#eeeeee ctermfg=255         guibg=#a9a9a9 ctermbg=248
@@ -101,7 +101,7 @@ hi phpAssignByRef                        guifg=#5b5b5b ctermfg=240
 hi phpRelation                           guifg=#5b5b5b ctermfg=240
 hi phpMemberSelector                     guifg=#5b5b5b ctermfg=240
 hi phpUnknownSelector                    guifg=#5b5b5b ctermfg=240
-hi phpSemicolon                          guifg=#5b5b5b ctermfg=240 gui=none
+hi phpSemicolon                          guifg=#5b5b5b ctermfg=240 gui=none cterm=none
 hi phpFunctions                          guifg=#007020 ctermfg=22
 hi phpParent                             guifg=#5b5b5b ctermfg=240
 hi phpIdentifier                         guifg=#bb60D5 ctermfg=134
@@ -125,10 +125,10 @@ hi link jId String
 hi link jBasicFilters String
 "
 " HTML
-hi htmlTag                               guifg=#062873 ctermfg=17 gui=bold
-hi htmlEndTag                            guifg=#062873 ctermfg=17 gui=bold
-hi htmlTagName                           guifg=#062873 ctermfg=17 gui=bold
-hi htmlSpecialTagName                    guifg=#062873 ctermfg=17 gui=bold
+hi htmlTag                               guifg=#062873 ctermfg=17 gui=bold cterm=bold
+hi htmlEndTag                            guifg=#062873 ctermfg=17 gui=bold cterm=bold
+hi htmlTagName                           guifg=#062873 ctermfg=17 gui=bold cterm=bold
+hi htmlSpecialTagName                    guifg=#062873 ctermfg=17 gui=bold cterm=bold
 hi htmlArg                               guifg=#4070A0 ctermfg=67
 hi link htmlLink Normal
 hi link htmlH1 htmlTitle
@@ -150,8 +150,8 @@ hi link cssUIProp cssProp
 hi link cssAttr Keyword
 hi cssBraces                             guifg=#5b5b5b ctermfg=240
 hi cssIdentifier                         guifg=#fcaf3e ctermfg=215
-hi cssTagName                            guifg=#0e84b5 ctermfg=31 gui=bold
-hi cssClassName                          guifg=#0e84b5 ctermfg=31 gui=bold
+hi cssTagName                            guifg=#0e84b5 ctermfg=31 gui=bold cterm=bold
+hi cssClassName                          guifg=#0e84b5 ctermfg=31 gui=bold cterm=bold
 hi link cssIdentifier cssClassName
 hi link cssPseudoClassId cssClassName
 hi link cssClassNameDot cssClassName

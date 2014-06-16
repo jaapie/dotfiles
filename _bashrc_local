@@ -1,0 +1,59 @@
+# Local bash initialisation
+
+# cd into whatever is the forefront Finder window.
+function cdf() {  # short for cdfinder
+  cd "`osascript -e 'tell app "Finder" to POSIX path of (insertion location as alias)' 2> /dev/null`" 
+}
+
+alias ios='open -a iPhone\ Simulator.app'
+
+PROMPT_COMMAND='echo -ne "\033]0;${PWD}\007"'
+
+brew_prefix=$(brew --prefix)
+
+if [ -f $brew_prefix/share/bash-completion/bash_completion ]; then
+    . $brew_prefix/share/bash-completion/bash_completion
+fi
+
+if [ -f $brew_prefix/etc/profile.d/z.sh ]; then
+    . $brew_prefix/etc/profile.d/z.sh
+fi
+
+if [ -d $brew_prefix/opt/coreutils ]; then
+    gbin=$brew_prefix/opt/coreutils/libexec/gnubin
+    gman=$brew_prefix/opt/coreutils/libexec/gnuman
+    export PATH=$gbin:$PATH
+    export MANPATH=$gman:$MANPATH
+fi
+
+unset brew_prefix
+
+if [ -d /usr/local/php ]; then
+    export PATH=/usr/local/php/bin:$PATH
+    export MANPATH=/usr/local/php/man:$MANPATH
+fi
+
+if [ -d /usr/local/apache ]; then
+    export PATH=/usr/local/apache/bin:$PATH
+    export MANPATH=/usr/local/apache/man:$MANPATH
+fi
+
+if [ -x $(which dircolors) ]; then
+    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+
+    # alias commands
+    alias ls='ls -h --color=auto'
+    alias ll='ls -alF'
+    alias la='ls -A'
+    alias l='ls -CF'
+else
+    # alias commands
+    alias ls='ls -h'
+    alias ll='ls -alFh'
+    alias la='ls -Ah'
+    alias l='ls -CF'
+fi
+
+# export ANDROID_HOME=/usr/local/opt/android-sdk
+# export PATH="$(brew --prefix php55)/bin:$PATH"
+
