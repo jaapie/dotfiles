@@ -118,3 +118,6 @@
 [submodule "_vim/bundle/dbext.vim"]
 	path = _vim/bundle/dbext.vim
 	url = https://github.com/vim-scripts/dbext.vim
+[submodule "_vim/bundle/vim-projectionist"]
+	path = _vim/bundle/vim-projectionist
+	url = git@github.com:tpope/vim-projectionist.git
