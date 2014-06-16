@@ -282,10 +282,6 @@ nnoremap <leader>gl :Glog<CR>
 " inoremap <leader>gt :Git add .
 " nnoremap <leader>gt :Git add .
 
-<<<<<<< HEAD
-=======
-=======
->>>>>>> some basic changes
 " Tab completion
 " will insert tab at beginning of line,
 " will use completion if not at beginning
