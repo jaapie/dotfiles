@@ -124,3 +124,9 @@
 [submodule "_vim/bundle/vim-bufferline"]
 	path = _vim/bundle/vim-bufferline
 	url = git@github.com:bling/vim-bufferline.git
+[submodule "_vim/bundle/molokai"]
+	path = _vim/bundle/molokai
+	url = git@github.com:tomasr/molokai.git
+[submodule "_vim/bundle/vim-railscasts-theme"]
+	path = _vim/bundle/vim-railscasts-theme
+	url = git@github.com:jpo/vim-railscasts-theme.git

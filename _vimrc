@@ -69,12 +69,12 @@ endif
 
 if &t_Co == 256
     set background=dark
-    colorscheme solarized
+    colorscheme railscasts
 endif
 
 if has("gui_running")
     set background=dark
-    color solarized
+    color railscasts
     set guifont=Source\ Code\ Pro:h14
 endif
 
