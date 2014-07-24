@@ -130,3 +130,6 @@
 [submodule "_vim/bundle/vim-railscasts-theme"]
 	path = _vim/bundle/vim-railscasts-theme
 	url = git@github.com:jpo/vim-railscasts-theme.git
+[submodule "_vim/bundle/easytree.vim"]
+	path = _vim/bundle/easytree.vim
+	url = https://github.com/troydm/easytree.vim
