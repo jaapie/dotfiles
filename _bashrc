@@ -279,7 +279,7 @@ bind '"\e[B":history-search-forward'
 ############## Source local bash settings
 #############
 
-if [ -f ~/.bashrc_local ]; then
-    source ~/.bashrc_local
+if [ -f ~/.bashrc_local_$(uname) ]; then
+    source ~/.bashrc_local_$(uname)
 fi
 

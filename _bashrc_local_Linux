@@ -1,0 +1,136 @@
+# ~/.bashrc: executed by bash(1) for non-login shells.
+# see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
+# for examples
+
+# check the window size after each command and, if necessary,
+# update the values of LINES and COLUMNS.
+shopt -s checkwinsize
+
+# If set, the pattern "**" used in a pathname expansion context will
+# match all files and zero or more directories and subdirectories.
+#shopt -s globstar
+
+# make less more friendly for non-text input files, see lesspipe(1)
+[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
+
+# set variable identifying the chroot you work in (used in the prompt below)
+if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
+    debian_chroot=$(cat /etc/debian_chroot)
+fi
+
+# If this is an xterm set the title to user@host:dir
+case "$TERM" in
+xterm*|rxvt*)
+    PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
+    ;;
+*)
+    ;;
+esac
+
+# enable color support of ls and also add handy aliases
+if [ -x /usr/bin/dircolors ]; then
+    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+    alias ls='ls --color=auto'
+    #alias dir='dir --color=auto'
+    #alias vdir='vdir --color=auto'
+
+    alias grep='grep --color=auto'
+    alias fgrep='fgrep --color=auto'
+    alias egrep='egrep --color=auto'
+fi
+
+# some more ls aliases
+alias ll='ls -alF'
+alias la='ls -A'
+alias l='ls -CF'
+
+# Add an "alert" alias for long running commands.  Use like so:
+#   sleep 10; alert
+alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+
+# Alias definitions.
+# You may want to put all your additions into a separate file like
+# ~/.bash_aliases, instead of adding them here directly.
+# See /usr/share/doc/bash-doc/examples in the bash-doc package.
+
+if [ -f ~/.bash_aliases ]; then
+    . ~/.bash_aliases
+fi
+
+# enable programmable completion features (you don't need to enable
+# this, if it's already enabled in /etc/bash.bashrc and /etc/profile
+# sources /etc/bash.bashrc).
+if ! shopt -oq posix; then
+  if [ -f /usr/share/bash-completion/bash_completion ]; then
+    . /usr/share/bash-completion/bash_completion
+  elif [ -f /etc/bash_completion ]; then
+    . /etc/bash_completion
+  fi
+fi
+
+if [ -e /etc/profile.d/z.sh ]; then
+	. /etc/profile.d/z.sh
+fi
+
+#shell colours
+
+# if [ "$TERM" = "linux" ]; then
+# 	echo -ne "\e]P0000000"
+# 	echo -ne "\e]P1AA0000"
+# 	echo -ne "\e]P200AA00"
+# 	echo -ne "\e]P3AA5500"
+# 	echo -ne "\e]P40000AA"
+# 	echo -ne "\e]P5AA00AA"
+# 	echo -ne "\e]P600AAAA"
+# 	echo -ne "\e]P7AAAAAA"
+# 	echo -ne "\e]P8555555"
+# 	echo -ne "\e]P9FF5555"
+# 	echo -ne "\e]PA55FF55"
+# 	echo -ne "\e]PBFFFF55"
+# 	echo -ne "\e]PC5555FF"
+# 	echo -ne "\e]PDFF55FF"
+# 	echo -ne "\e]PE55FFFF"
+# 	echo -ne "\e]PFFFFFFF"
+# fi
+
+# if [ "$TERM" = "linux" ]; then
+#     echo -en "\e]P0222222" #black
+#     echo -en "\e]P8222222" #darkgrey
+#     echo -en "\e]P1803232" #darkred
+#     echo -en "\e]P9982b2b" #red
+#     echo -en "\e]P25b762f" #darkgreen
+#     echo -en "\e]PA89b83f" #green
+#     echo -en "\e]P3aa9943" #brown
+#     echo -en "\e]PBefef60" #yellow
+#     echo -en "\e]P4324c80" #darkblue
+#     echo -en "\e]PC2b4f98" #blue
+#     echo -en "\e]P5706c9a" #darkmagenta
+#     echo -en "\e]PD826ab1" #magenta
+#     echo -en "\e]P692b19e" #darkcyan
+#     echo -en "\e]PEa1cdcd" #cyan
+#     echo -en "\e]P7ffffff" #lightgrey
+#     echo -en "\e]PFdedede" #white
+#     clear #for background artifacting
+# fi
+
+if [ "$TERM" = "linux" ]; then
+	# set colours
+	echo -ne "\e]P0000000" #1B2121"  #2c3e50
+	echo -ne "\e]P834495E"
+	echo -ne "\e]P1C0392B"
+	echo -ne "\e]P9E74C3C"
+	echo -ne "\e]P227AE60"
+	echo -ne "\e]PA2ECC71"
+	echo -ne "\e]P3F39C12"
+	echo -ne "\e]PBF1C40F"
+	echo -ne "\e]P42980B9"
+	echo -ne "\e]PC3498D8"
+	echo -ne "\e]P5AD446C"
+	echo -ne "\e]PDB659A5"
+	echo -ne "\e]P616A085"
+	echo -ne "\e]PE1ABC9C"
+	echo -ne "\e]P7BDC3C7"
+	echo -ne "\e]PFECF0F1"
+	# clear
+fi
+
