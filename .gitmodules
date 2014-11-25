@@ -13,9 +13,6 @@
 [submodule "_vim/bundle/vim-commentary"]
 	path = _vim/bundle/vim-commentary
 	url = git://github.com/tpope/vim-commentary.git
-[submodule "_vim/bundle/html5.vim"]
-	path = _vim/bundle/html5.vim
-	url = git://github.com/othree/html5.vim.git
 [submodule "_vim/bundle/vim-colors-solarized"]
 	path = _vim/bundle/vim-colors-solarized
 	url = https://github.com/altercation/vim-colors-solarized
