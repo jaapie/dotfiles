@@ -130,3 +130,6 @@
 [submodule "_vim/bundle/easytree.vim"]
 	path = _vim/bundle/easytree.vim
 	url = https://github.com/troydm/easytree.vim
+[submodule "_vim/bundle/vim-lastplace"]
+	path = _vim/bundle/vim-lastplace
+	url = https://github.com/dietsche/vim-lastplace
