@@ -133,3 +133,6 @@
 [submodule "_vim/bundle/vim-lastplace"]
 	path = _vim/bundle/vim-lastplace
 	url = https://github.com/dietsche/vim-lastplace
+[submodule "_vim/bundle/vim-dispatch"]
+	path = _vim/bundle/vim-dispatch
+	url = https://github.com/tpope/vim-dispatch
