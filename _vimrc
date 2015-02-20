@@ -1,5 +1,9 @@
 set nocompatible
 
+let g:syntastic_c_auto_refresh_includes = 1
+let g:syntastic_c_check_header = 1
+let g:syntastic_c_include_dirs = [ '/usr/local/include' ]
+
 " let pathogen do its thing
 execute pathogen#infect()
 execute pathogen#helptags()
