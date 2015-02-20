@@ -183,6 +183,10 @@ function prompt () {
             # echo prompt: minimal prompt
             _ps1="$(_c $C_GREEN '\$') "
             ;;
+        --basic-git|-g)
+            # echo prompt: basic prompt
+            _ps1="$(_c $C_LIGHTBLUE '\w')\$([[ -n \$(git branch 2> /dev/null) ]] && echo \" $C_YELLOW(\")$(_c $C_YELLOW '$(parse_git_branch)')$(echo $C_YELLOW')') $(_c $C_GREEN '\$') "
+            ;;
         --basic|-b)
             # echo prompt: basic prompt
             _ps1="$(_c $C_LIGHTBLUE '\w') $(_c $C_GREEN '\$') "
@@ -194,7 +198,7 @@ function prompt () {
     esac
 
     if [ "$_ps1" = "" ]; then
-        echo "usage: prompt <-mbf>|<--minimal --basic --full>"
+        echo "usage: prompt <-mbgf>|<--minimal --basic --basic-git --full>"
         return 1
     fi
     
