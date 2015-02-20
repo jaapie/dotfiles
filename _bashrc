@@ -93,13 +93,6 @@ function port {
     fi
 }
 
-# thanks for these functions to @paulirish
-# find shorthand
-function f() {
-    find . -name "$1"
-}
-# end thanks to @paulirish
-
 function mu() {
     if [ -z "$@" ]; then
         echo "usage: mu NAME" >&2
