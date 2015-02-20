@@ -302,3 +302,6 @@ endfunction
 inoremap <Tab> <c-r>=InsertTabWrapper()<cr>
 inoremap <M-Tab> <c-x><c-o>
 inoremap <C-Tab> <c-x><c-f>
+
+" source various files
+source $VIMRUNTIME/ftplugin/man.vim
