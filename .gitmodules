@@ -39,7 +39,7 @@
 	url = git://github.com/scrooloose/syntastic.git
 [submodule "_vim/bundle/php.vim"]
 	path = _vim/bundle/php.vim
-	url = git://github.com/StanAngeloff/php.vim.git
+	url = https://github.com/StanAngeloff/php.vim
 [submodule "_vim/bundle/vim-addon-mw-utils"]
 	path = _vim/bundle/vim-addon-mw-utils
 	url = git://github.com/MarcWeber/vim-addon-mw-utils.git
