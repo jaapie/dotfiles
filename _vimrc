@@ -35,7 +35,7 @@ set tw=78
 set number
 set cursorline
 set modeline
-:set timeout timeoutlen=1000 ttimeoutlen=100
+set timeout timeoutlen=500 ttimeoutlen=100
 
 set shiftwidth=4
 set tabstop=4
@@ -117,7 +117,7 @@ autocmd FileType php set keywordprg=pman
 autocmd! BufWritePost ~/dev/dotfiles/_vimrc source ~/.vimrc
 autocmd! BufWritePost ~/.vimrc source ~/.vimrc
 
-au BufRead,BufNewFile /usr/local/etc/nginx/conf.d/*,/usr/local/etc/nginx/sites-*/* if &ft == '' | setfiletype nginx | endif 
+au BufRead,BufNewFile /usr/local/etc/nginx/conf.d/*,/usr/local/etc/nginx/sites-*/* if &ft == '' | setfiletype nginx | endif
 
 " When editing a file, always jump to the last known cursor position.
 autocmd BufReadPost *
@@ -176,13 +176,23 @@ set splitright
 set splitbelow
 
 " =====================
+" Highlight whitespace at end of line
+" =====================
+" Highlight trailing whitespace in vim on non empty lines, but not while
+" typing in insert mode!
+" http://www.vimbits.com/bits/336
+highlight ExtraWhitespace ctermbg=red guibg=red
+au ColorScheme * highlight ExtraWhitespace guibg=red
+au BufEnter * match ExtraWhitespace /\S\zs\s\+$/
+au InsertEnter * match ExtraWhitespace /\S\zs\s\+\%#\@<!$/
+au InsertLeave * match ExtraWhiteSpace /\S\zs\s\+$/
+
+" =====================
 " Key mappings
 " =====================
 
 let mapleader=","
 runtime macros/matchit.vim
-
-imap {<CR> {<CR>}<C-o>O
 
 " Session management
 " Quick write session with F6
@@ -243,7 +253,7 @@ nmap <leader>pp :set ft=php<cr>
 imap <leader>ph <esc>:set ft=html<cr> i
 nmap <leader>ph :set ft=html<cr>
 
-inoremap jj <ESC>
+inoremap jk <esc>
 
 inoremap <leader>o <ESC>o
 inoremap <leader>O <ESC>O
@@ -305,3 +315,39 @@ inoremap <C-Tab> <c-x><c-f>
 
 " source various files
 source $VIMRUNTIME/ftplugin/man.vim
+
+" map Q to repeat last macro
+map Q @@
+
+" from https://github.com/eiro/rcfiles/
+ 
+imap "" ""<left>
+imap '' ''<left>
+ 
+imap (( ()<left>
+imap (<cr> (<cr>)<c-o>O
+
+imap (; ();<esc>hi
+imap (<cr>; (<cr>);<c-o>O
+imap ('; ('');<esc>hhi
+imap ("; ("");<esc>hhi
+imap (' ('')<esc>hi
+imap (" ("")<esc>hi
+ 
+imap {{ {}<left>
+imap {<cr> {<cr>}<c-o>O
+imap {; {};<esc>hi
+" imap {<cr>; {<cr>};<c-o>O
+imap {'; {''};<esc>hhi
+imap {"; {""};<esc>hhi
+imap {' {''}<esc>hi
+imap {" {""}<esc>hi
+ 
+imap [[ []<left>
+imap [<cr> [<cr>]<c-o>O
+imap [; [];<esc>hi
+imap [<cr>; [<cr>];<c-o>O
+imap ['; [''];<esc>hhi
+imap ["; [""];<esc>hhi
+imap [' ['']<esc>hi
+imap [" [""]<esc>hi
