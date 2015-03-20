@@ -171,7 +171,7 @@ function parse_git_dirty() {
 }
 
 function parse_git_branch() {
-    git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/\1$(parse_git_dirty)/"
+    git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/\1$(parse_git_dirty) /"
 }
 
 function prompt () {
@@ -185,7 +185,7 @@ function prompt () {
             ;;
         --basic-git|-g)
             # echo prompt: basic prompt + git branch
-            _ps1="$(_c $C_LIGHTBLUE '\w')\$([[ -n \$(git branch 2> /dev/null) ]] && echo \" $C_YELLOW(\"$(parse_git_branch)\")\") $(_c $C_GREEN '\$') "
+            _ps1="$(_c $C_LIGHTBLUE '\w') $(_c $C_YELLOW '$(parse_git_branch)')$(_c $C_GREEN '\$') "
             ;;
         --basic|-b)
             # echo prompt: basic prompt
