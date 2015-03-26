@@ -154,6 +154,28 @@ set undofile
 set nobackup
 set noswapfile
 
+" ===========================
+" set relative numbers in current window, absolute in others
+" http://jeetworks.org/from-acolyte-to-adept-the-next-step-after-nop-ing-arrow-keys
+" ===========================
+if has('autocmd')
+augroup vimrc_linenumbering
+    autocmd!
+    autocmd WinLeave *
+                \ if &number |
+                \   set norelativenumber |
+                \ endif
+    autocmd BufWinEnter *
+                \ if &number |
+                \   set relativenumber |
+                \ endif
+    autocmd VimEnter *
+                \ if &number |
+                \   set relativenumber |
+                \ endif
+augroup END
+endif
+
 " +++++++++++++++++++++++++++
 " Change cursor to vertical bar when running in iTerm2.app
 " +++++++++++++++++++++++++++
@@ -321,33 +343,42 @@ map Q @@
 
 " from https://github.com/eiro/rcfiles/
  
-imap "" ""<left>
-imap '' ''<left>
+inoremap "" ""<left>
+inoremap '' ''<left>
  
-imap (( ()<left>
-imap (<cr> (<cr>)<c-o>O
+inoremap (( ()<left>
+inoremap (<cr> (<cr>)<c-o>O
 
-imap (; ();<esc>hi
-imap (<cr>; (<cr>);<c-o>O
-imap ('; ('');<esc>hhi
-imap ("; ("");<esc>hhi
-imap (' ('')<esc>hi
-imap (" ("")<esc>hi
+inoremap (; ();<esc>hi
+inoremap (<cr>; (<cr>);<c-o>O
+inoremap ('; ('');<esc>hhi
+inoremap ("; ("");<esc>hhi
+inoremap (' ('')<esc>hi
+inoremap (" ("")<esc>hi
  
-imap {{ {}<left>
-imap {<cr> {<cr>}<c-o>O
-imap {; {};<esc>hi
-" imap {<cr>; {<cr>};<c-o>O
-imap {'; {''};<esc>hhi
-imap {"; {""};<esc>hhi
-imap {' {''}<esc>hi
-imap {" {""}<esc>hi
+inoremap {{ {}<left>
+inoremap {<cr> {<cr>}<c-o>O
+inoremap {; {};<esc>hi
+" inoremap {<cr>; {<cr>};<c-o>O
+inoremap {'; {''};<esc>hhi
+inoremap {"; {""};<esc>hhi
+inoremap {' {''}<esc>hi
+inoremap {" {""}<esc>hi
  
-imap [[ []<left>
-imap [<cr> [<cr>]<c-o>O
-imap [; [];<esc>hi
-imap [<cr>; [<cr>];<c-o>O
-imap ['; [''];<esc>hhi
-imap ["; [""];<esc>hhi
-imap [' ['']<esc>hi
-imap [" [""]<esc>hi
+inoremap [[ []<left>
+inoremap [<cr> [<cr>]<c-o>O
+inoremap [; [];<esc>hi
+inoremap [<cr>; [<cr>];<c-o>O
+inoremap ['; [''];<esc>hhi
+inoremap ["; [""];<esc>hhi
+inoremap [' ['']<esc>hi
+inoremap [" [""]<esc>hi
+
+inoremap  <Up>     <NOP>
+inoremap  <Down>   <NOP>
+inoremap  <Left>   <NOP>
+inoremap  <Right>  <NOP>
+noremap   <Up>     <NOP>
+noremap   <Down>   <NOP>
+noremap   <Left>   <NOP>
+noremap   <Right>  <NOP>
