@@ -26,6 +26,13 @@ if [ -d $brew_prefix/opt/coreutils ]; then
     export MANPATH=$gman:$MANPATH
 fi
 
+if [ -d $brew_prefix/opt/gnu-sed ]; then
+    gbin=$brew_prefix/opt/gnu-sed/libexec/gnubin
+    gman=$brew_prefix/opt/gnu-sed/libexec/gnuman
+    export PATH=$gbin:$PATH
+    export MANPATH=$gman:$MANPATH
+fi
+
 unset brew_prefix
 
 if [ -d /usr/local/php ]; then
