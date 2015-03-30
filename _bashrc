@@ -319,3 +319,6 @@ if [ -f ~/.bashrc_local_$(uname) ]; then
     source ~/.bashrc_local_$(uname)
 fi
 
+if [ -f ~/.bashrc_local ]; then
+    source ~/.bashrc_local
+fi
