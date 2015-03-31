@@ -72,13 +72,13 @@ if &t_Co > 2
 endif
 
 if &t_Co == 256
-    set background=light
-    colorscheme solarized
+    set background=dark
+    colorscheme Monokai-Refined
 endif
 
 if has("gui_running")
     set background=dark
-    color solarized
+    color Monokai-Refined
     set guifont=Source\ Code\ Pro:h14
 endif
 

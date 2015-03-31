@@ -136,3 +136,6 @@
 [submodule "_vim/bundle/vim-angry"]
 	path = _vim/bundle/vim-angry
 	url = https://github.com/b4winckler/vim-angry.git
+[submodule "_vim/bundle/vim-monokai-refined"]
+	path = _vim/bundle/vim-monokai-refined
+	url = https://github.com/dodie/vim-monokai-refined.git
