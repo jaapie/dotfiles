@@ -3,6 +3,7 @@ set nocompatible
 let g:syntastic_c_auto_refresh_includes = 1
 let g:syntastic_c_check_header = 1
 let g:syntastic_c_include_dirs = [ '/usr/local/include' ]
+let g:syntastic_html_tidy_exec = "tidy5"
 
 " let pathogen do its thing
 execute pathogen#infect()
