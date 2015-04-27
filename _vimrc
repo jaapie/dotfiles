@@ -360,7 +360,9 @@ inoremap (" ("")<esc>hi
 inoremap {{ {}<left>
 inoremap {<cr> {<cr>}<c-o>O
 inoremap {; {};<esc>hi
-" inoremap {<cr>; {<cr>};<c-o>O
+inoremap {, {},<esc>hi
+inoremap {<cr>; {<cr>};<c-o>O
+inoremap {<cr>, {<cr>},<c-o>O
 inoremap {'; {''};<esc>hhi
 inoremap {"; {""};<esc>hhi
 inoremap {' {''}<esc>hi
