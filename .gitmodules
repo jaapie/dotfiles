@@ -142,3 +142,6 @@
 [submodule "_vim/bundle/vim-monokai"]
 	path = _vim/bundle/vim-monokai
 	url = https://github.com/sickill/vim-monokai.git
+[submodule "_vim/bundle/papercolor-theme"]
+	path = _vim/bundle/papercolor-theme
+	url = https://github.com/NLKNguyen/papercolor-theme.git
