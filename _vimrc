@@ -20,7 +20,7 @@ set ruler       " show the cursor position all the time
 set showcmd     " display incomplete commands
 set hlsearch
 set incsearch   " do incremental searching
-set ignorecase
+set smartcase
 set encoding=utf8
 set whichwrap+=<,>,h,l
 set magic
@@ -37,6 +37,7 @@ set number
 set cursorline
 set modeline
 set timeout timeoutlen=500 ttimeoutlen=100
+set scrolloff=2
 
 set shiftwidth=4
 set tabstop=4
@@ -45,6 +46,9 @@ set smarttab " Enable smart tabs
 set autoread " automatically read buffer when changed outside vim
 set smartindent
 
+if exists('+colorcolumn')
+    set colorcolumn=80
+endif
 " CTRL-U in insert mode deletes a lot.  Use CTRL-G u to first break undo, so
 " that you can undo CTRL-U after inserting a line break.
 inoremap <C-U> <C-G>u<C-U>
@@ -209,6 +213,7 @@ au ColorScheme * highlight ExtraWhitespace guibg=red
 au BufEnter * match ExtraWhitespace /\S\zs\s\+$/
 au InsertEnter * match ExtraWhitespace /\S\zs\s\+\%#\@<!$/
 au InsertLeave * match ExtraWhiteSpace /\S\zs\s\+$/
+au BufWinLeave * call clearmatches()
 
 " =====================
 " Key mappings
@@ -385,3 +390,6 @@ noremap   <Up>     <NOP>
 noremap   <Down>   <NOP>
 noremap   <Left>   <NOP>
 noremap   <Right>  <NOP>
+
+nmap <F1> <ESC>
+imap <F1> <ESC>
