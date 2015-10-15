@@ -110,6 +110,7 @@ autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType scss setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html setlocal formatoptions-=t
 autocmd FileType yaml setlocal sw=2 ts=2 sts=2 expandtab
+autocmd FileType python setlocal sw=2 ts=2 sts=2 expandtab
 
 " set correct commentstring for files
 autocmd FileType apache set comments=:# commentstring=#\ %s
