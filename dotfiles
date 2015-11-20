@@ -27,6 +27,7 @@ colour_reset="\033[0m"
 
 force_install=0
 dry_run=0
+uninstall=0
 
 # Logging stuff from "Cowboy" Ben Alman
 # https://github.com/cowboy/dotfiles/blob/master/bin/dotfiles
@@ -55,7 +56,7 @@ function usage {
     prepended with an underscore into your \$HOME directory ($HOME), replacing
     the underscore with a full-stop thereby creating a dotfile."
 
-    echo -e "${colour_bright_def}usage: ./${script_name} [-hVfn]${colour_reset}" >&2
+    echo -e "${colour_bright_def}usage: ./${script_name} [-hVfnu]${colour_reset}" >&2
     echo -e "\n${usage_text}" | sed -r 's/^ +//g' | fmt -w 72
 
     e_header 'Options' >&2
@@ -63,6 +64,7 @@ function usage {
     echo ' -V    displays the version number' >&2
     echo ' -f    forces the installation to occur even if the target file already exists.' >&2
     echo ' -n    perform a dry run only showing what commands would be exeucted not actually executing them' >&2
+    echo ' -u    uninstall dotfile links' >&2
 
     e_header "Output legend" >&2
     e_error "an error occurred"
@@ -90,7 +92,11 @@ function main () {
         basename=${file##*/} # remove characters up to last backslash
         dot_file=$HOME/${basename/_/.} # replace underscore with dot
 
-        info="link: $file => $dot_file"
+        if [ $uninstall -eq 1 ]; then
+            info="uninstall: $dot_file"
+        else
+            info="link: $file => $dot_file"
+        fi
 
 
         if [ $force_install -eq 1 ]; then
@@ -102,12 +108,16 @@ function main () {
         if [ $dry_run -eq 1 ]; then
             echo ln $opts $file $dot_file
         else
-            if [ -e "$dot_file" ] && [ $force_install -ne 1 ]; then
-                e_ok $dot_file already exists
-                continue
-            fi
+            if [ $uninstall -eq 1 ]; then
+                rm $dot_file 2> /dev/null
+            else
+                if [ -e "$dot_file" ] && [ $force_install -ne 1 ]; then
+                    e_ok $dot_file already exists
+                    continue
+                fi
 
-            ln $opts $file $dot_file
+                ln $opts $file $dot_file
+            fi
 
             return_status=$? # $? contains the return status or exit code of the previously run command
 
@@ -125,8 +135,12 @@ function main () {
 }
 
 # Parse command line options
-while getopts ":hVfn" opt; do
+while getopts ":hVfnu" opt; do
     case $opt in
+        u)
+            uninstall=1
+            echo dotfiles: uninstalling
+            ;;
         n)
             dry_run=1
             echo dotfiles: performing dry run
