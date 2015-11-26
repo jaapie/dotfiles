@@ -151,3 +151,6 @@
 [submodule "_vim/bundle/targets.vim"]
 	path = _vim/bundle/targets.vim
 	url = https://github.com/wellle/targets.vim
+[submodule "_vim/bundle/incsearch.vim"]
+	path = _vim/bundle/incsearch.vim
+	url = https://github.com/haya14busa/incsearch.vim
