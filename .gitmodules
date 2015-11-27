@@ -154,3 +154,6 @@
 [submodule "_vim/bundle/incsearch.vim"]
 	path = _vim/bundle/incsearch.vim
 	url = https://github.com/haya14busa/incsearch.vim
+[submodule "_vim/bundle/onedark.vim"]
+	path = _vim/bundle/onedark.vim
+	url = https://github.com/joshdick/onedark.vim
