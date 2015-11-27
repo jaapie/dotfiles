@@ -13,9 +13,6 @@
 [submodule "_vim/bundle/vim-commentary"]
 	path = _vim/bundle/vim-commentary
 	url = git://github.com/tpope/vim-commentary.git
-[submodule "_vim/bundle/vim-colors-solarized"]
-	path = _vim/bundle/vim-colors-solarized
-	url = https://github.com/altercation/vim-colors-solarized
 [submodule "_vim/bundle/zencoding-vim"]
 	path = _vim/bundle/zencoding-vim
 	url = git://github.com/mattn/zencoding-vim.git
@@ -118,12 +115,6 @@
 [submodule "_vim/bundle/molokai"]
 	path = _vim/bundle/molokai
 	url = git@github.com:tomasr/molokai.git
-[submodule "_vim/bundle/vim-railscasts-theme"]
-	path = _vim/bundle/vim-railscasts-theme
-	url = git@github.com:jpo/vim-railscasts-theme.git
-[submodule "_vim/bundle/easytree.vim"]
-	path = _vim/bundle/easytree.vim
-	url = https://github.com/troydm/easytree.vim
 [submodule "_vim/bundle/vim-lastplace"]
 	path = _vim/bundle/vim-lastplace
 	url = https://github.com/dietsche/vim-lastplace
@@ -133,15 +124,9 @@
 [submodule "_vim/bundle/vim-angry"]
 	path = _vim/bundle/vim-angry
 	url = https://github.com/b4winckler/vim-angry.git
-[submodule "_vim/bundle/vim-monokai-refined"]
-	path = _vim/bundle/vim-monokai-refined
-	url = https://github.com/dodie/vim-monokai-refined.git
 [submodule "_vim/bundle/vim-monokai"]
 	path = _vim/bundle/vim-monokai
 	url = https://github.com/sickill/vim-monokai.git
-[submodule "_vim/bundle/papercolor-theme"]
-	path = _vim/bundle/papercolor-theme
-	url = https://github.com/NLKNguyen/papercolor-theme.git
 [submodule "_vim/bundle/vim-textobj-rubyblock"]
 	path = _vim/bundle/vim-textobj-rubyblock
 	url = https://github.com/nelstrom/vim-textobj-rubyblock
