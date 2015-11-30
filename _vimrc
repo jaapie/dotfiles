@@ -68,6 +68,15 @@ if has('mouse')
     endif
 endif
 
+" The Silver Searcher
+if executable('ag')
+	" Use ag over grep
+	set grepprg=ag\ --nogroup\ --nocolor
+
+	let g:ctrlp_user_command = 'ag %s -l --hidden --nocolor -g ""'
+	let g:ctrlp_use_caching = 0
+endif
+
 " Switch syntax highlighting on, when the terminal has colors
 " Also switch on highlighting the last used search pattern.
 if &t_Co > 2
