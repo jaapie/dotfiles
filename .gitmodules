@@ -142,3 +142,6 @@
 [submodule "_vim/bundle/onedark.vim"]
 	path = _vim/bundle/onedark.vim
 	url = https://github.com/joshdick/onedark.vim
+[submodule "_vim/bundle/supertab"]
+	path = _vim/bundle/supertab
+	url = https://github.com/ervandew/supertab
