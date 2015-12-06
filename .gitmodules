@@ -145,3 +145,6 @@
 [submodule "_vim/bundle/supertab"]
 	path = _vim/bundle/supertab
 	url = https://github.com/ervandew/supertab
+[submodule "_vim/bundle/vim-colors-pencil"]
+	path = _vim/bundle/vim-colors-pencil
+	url = https://github.com/reedes/vim-colors-pencil
