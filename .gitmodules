@@ -85,9 +85,6 @@
 [submodule "_vim/bundle/vim-json"]
 	path = _vim/bundle/vim-json
 	url = git://github.com/jakar/vim-json.git
-[submodule "_vim/bundle/emmet.vim"]
-	path = _vim/bundle/emmet.vim
-	url = git@github.com:mattn/emmet-vim.git
 [submodule "_vim/bundle/HTML-AutoCloseTag"]
 	path = _vim/bundle/HTML-AutoCloseTag
 	url = git@github.com:vim-scripts/HTML-AutoCloseTag.git
@@ -112,9 +109,6 @@
 [submodule "_vim/bundle/vim-bufferline"]
 	path = _vim/bundle/vim-bufferline
 	url = git@github.com:bling/vim-bufferline.git
-[submodule "_vim/bundle/molokai"]
-	path = _vim/bundle/molokai
-	url = git@github.com:tomasr/molokai.git
 [submodule "_vim/bundle/vim-lastplace"]
 	path = _vim/bundle/vim-lastplace
 	url = https://github.com/dietsche/vim-lastplace
@@ -124,9 +118,6 @@
 [submodule "_vim/bundle/vim-angry"]
 	path = _vim/bundle/vim-angry
 	url = https://github.com/b4winckler/vim-angry.git
-[submodule "_vim/bundle/vim-monokai"]
-	path = _vim/bundle/vim-monokai
-	url = https://github.com/sickill/vim-monokai.git
 [submodule "_vim/bundle/vim-textobj-rubyblock"]
 	path = _vim/bundle/vim-textobj-rubyblock
 	url = https://github.com/nelstrom/vim-textobj-rubyblock
@@ -139,9 +130,6 @@
 [submodule "_vim/bundle/incsearch.vim"]
 	path = _vim/bundle/incsearch.vim
 	url = https://github.com/haya14busa/incsearch.vim
-[submodule "_vim/bundle/onedark.vim"]
-	path = _vim/bundle/onedark.vim
-	url = https://github.com/joshdick/onedark.vim
 [submodule "_vim/bundle/supertab"]
 	path = _vim/bundle/supertab
 	url = https://github.com/ervandew/supertab
