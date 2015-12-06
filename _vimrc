@@ -12,6 +12,9 @@ execute pathogen#helptags()
 let g:UltiSnipsSnippetDirectories=["UltiSnips", "snippets"]
 let g:neocomplcache_enable_at_startup = 1
 let g:airline#extensions#bufferline#enabled = 1
+let g:airline_theme = 'pencil'
+let g:airline_left_sep=''
+let g:airline_right_sep=''
 
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
@@ -86,13 +89,13 @@ if &t_Co > 2
 endif
 
 if &t_Co == 256
-    set background=dark
-    colorscheme monokai
+    set background=light
+    colorscheme pencil
 endif
 
 if has("gui_running")
-    set background=dark
-    color monokai
+    set background=light
+    color pencil
     set guifont=Source\ Code\ Pro:h14
 endif
 
