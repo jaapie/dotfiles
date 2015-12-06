@@ -145,6 +145,13 @@ autocmd BufReadPost *
     \   exe "normal! g`\"" |
     \ endif
 
+au InsertEnter *.html setlocal iskeyword+=-
+au InsertEnter *.html setlocal iskeyword+=-
+au InsertLeave *.scss setlocal iskeyword-=-
+au InsertLeave *.scss setlocal iskeyword-=-
+au InsertEnter *.css setlocal iskeyword+=-
+au InsertLeave *.css setlocal iskeyword-=-
+
 " Convenient command to see the difference between the current buffer and the
 " file it was loaded from, thus the changes you made.  Only define it when not
 " defined already.
