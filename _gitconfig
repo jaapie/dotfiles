@@ -23,3 +23,5 @@
 	required = true
 [diff]
 	tool = meld
+[merge]
+	conflictstyle = diff3
