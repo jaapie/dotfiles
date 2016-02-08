@@ -5,8 +5,6 @@ function cdf() {  # short for cdfinder
   cd "`osascript -e 'tell app "Finder" to POSIX path of (insertion location as alias)' 2> /dev/null`" 
 }
 
-alias ios='open -a iPhone\ Simulator.app'
-
 PROMPT_COMMAND='echo -ne "\033]0;${PWD}\007"'
 
 brew_prefix=$(brew --prefix)
