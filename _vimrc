@@ -274,8 +274,11 @@ nnoremap <leader>Y "*yy
 nnoremap Y y$
 
 " Make regex sane: search with perl regular expressions
-nnoremap / /\v
-vnoremap / /\v
+" nnoremap / /\v
+" vnoremap / /
+map /  <Plug>(incsearch-forward)
+map ?  <Plug>(incsearch-backward)
+map g/ <Plug>(incsearch-stay)\v
 
 " better moving through long lines that are wrapped
 nnoremap j gj
