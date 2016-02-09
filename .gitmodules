@@ -139,3 +139,6 @@
 [submodule "_vim/bundle/vim-textobj-user"]
 	path = _vim/bundle/vim-textobj-user
 	url = https://github.com/vais/vim-textobj-user.git
+[submodule "_vim/bundle/vim-javascript"]
+	path = _vim/bundle/vim-javascript
+	url = https://github.com/pangloss/vim-javascript.git
