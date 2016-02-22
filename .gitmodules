@@ -142,3 +142,6 @@
 [submodule "_vim/bundle/vim-javascript"]
 	path = _vim/bundle/vim-javascript
 	url = https://github.com/pangloss/vim-javascript.git
+[submodule "_vim/bundle/vim-todo"]
+	path = _vim/bundle/vim-todo
+	url = https://github.com/simonasker/vim-todo.git
