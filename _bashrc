@@ -78,6 +78,7 @@ function pud () {
 }
 
 alias pod='popd'
+alias weather='curl http://wttr\.in'
 
 function o {
   open ${@:-'.'}
