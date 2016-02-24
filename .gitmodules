@@ -145,3 +145,6 @@
 [submodule "_vim/bundle/vim-textobj-css"]
 	path = _vim/bundle/vim-textobj-css
 	url = https://github.com/jasonlong/vim-textobj-css.git
+[submodule "_vim/bundle/vim-textobj-user"]
+	path = _vim/bundle/vim-textobj-user
+	url = https://github.com/vais/vim-textobj-user.git
