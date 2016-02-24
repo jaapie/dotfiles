@@ -87,7 +87,7 @@
 	url = git://github.com/jakar/vim-json.git
 [submodule "_vim/bundle/HTML-AutoCloseTag"]
 	path = _vim/bundle/HTML-AutoCloseTag
-	url = git@github.com:vim-scripts/HTML-AutoCloseTag.git
+	url = https://github.com/amirh/HTML-AutoCloseTag.git
 [submodule "_vim/bundle/vim-airline"]
 	path = _vim/bundle/vim-airline
 	url = https://github.com/bling/vim-airline.git
@@ -145,3 +145,6 @@
 [submodule "_vim/bundle/vim-todo"]
 	path = _vim/bundle/vim-todo
 	url = https://github.com/simonasker/vim-todo.git
+[submodule "_vim/bundle/vim-textobj-css"]
+	path = _vim/bundle/vim-textobj-css
+	url = https://github.com/jasonlong/vim-textobj-css.git
