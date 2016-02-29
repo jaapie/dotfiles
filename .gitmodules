@@ -58,9 +58,6 @@
 [submodule "_vim/bundle/nerdtree"]
 	path = _vim/bundle/nerdtree
 	url = git://github.com/scrooloose/nerdtree.git
-[submodule "_vim/bundle/vim-HiLinkTrace"]
-	path = _vim/bundle/vim-HiLinkTrace
-	url = git://github.com/gerw/vim-HiLinkTrace.git
 [submodule "_vim/bundle/closetag.vim"]
 	path = _vim/bundle/closetag.vim
 	url = git@github.com:vim-scripts/closetag.vim.git
