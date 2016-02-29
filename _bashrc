@@ -259,7 +259,7 @@ function extract {
 
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
-HISTCONTROL=ignoreboth
+HISTCONTROL=ignoredups:erasedups
 
 # shell options
 # ##########################
@@ -272,9 +272,13 @@ shopt -s globstar
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
 HISTSIZE=100000
-HISTFILESIZE=2000
+HISTFILESIZE=100000
+
+export HISTTIMEFORMAT='%F %T '
 
 export HISTIGNORE="clear:bg:fg:jobs:cd -:cd ../:ll:ls:l"
+# Save and reload the history after each command finishes
+export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 
 bind '"\e[A":history-search-backward'
 bind '"\e[B":history-search-forward'
