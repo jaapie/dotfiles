@@ -1,14 +1,48 @@
 set nocompatible
 
+call plug#begin('~/.vim/plugged')
+
+"let g:plug_url_format = 'git@github.com:%s.git'
+
+Plug 'tpope/vim-abolish'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-unimpaired'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-markdown'
+Plug 'itspriddle/vim-jquery'
+Plug 'StanAngeloff/php.vim'
+Plug 'tpope/vim-fugitive'
+Plug 'godlygeek/tabular'
+Plug 'jakar/vim-json'
+Plug 'amirh/HTML-AutoCloseTag'
+Plug 'bling/vim-airline'
+Plug 'tpope/vim-ragtag'
+Plug 'mustache/vim-mustache-handlebars'
+Plug 'tommcdo/vim-exchange'
+Plug 'godlygeek/tabular'
+Plug 'tpope/vim-projectionist'
+Plug 'bling/vim-bufferline'
+Plug 'dietsche/vim-lastplace'
+Plug 'vais/vim-textobj-user'
+Plug 'tpope/vim-dispatch'
+Plug 'nelstrom/vim-textobj-rubyblock'
+Plug 'wellle/targets.vim'
+Plug 'haya14busa/incsearch.vim'
+Plug 'ervandew/supertab'
+Plug 'reedes/vim-colors-pencil'
+Plug 'tristen/vim-sparkup'
+Plug 'pangloss/vim-javascript'
+Plug 'simonasker/vim-todo'
+Plug 'jasonlong/vim-textobj-css'
+
+call plug#end()
+
 let g:syntastic_c_auto_refresh_includes = 1
 let g:syntastic_c_check_header = 1
 let g:syntastic_c_include_dirs = [ '/usr/local/include' ]
 let g:syntastic_html_tidy_exec = "tidy5"
 let g:sparkupDoubleQuote = 1
-
-" let pathogen do its thing
-execute pathogen#infect()
-execute pathogen#helptags()
 
 let g:UltiSnipsSnippetDirectories=["UltiSnips", "snippets"]
 let g:neocomplcache_enable_at_startup = 1
