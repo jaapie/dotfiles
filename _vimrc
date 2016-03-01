@@ -35,6 +35,7 @@ Plug 'tristen/vim-sparkup'
 Plug 'pangloss/vim-javascript'
 Plug 'simonasker/vim-todo'
 Plug 'jasonlong/vim-textobj-css'
+Plug '~/.vim/plugins/colorschemes'
 
 call plug#end()
 
