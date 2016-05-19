@@ -147,13 +147,14 @@ if &t_Co > 2
 endif
 
 if &t_Co == 256
-    set background=light
-    colorscheme pencil
+    let base16colorspace=256
+    set background=dark
+    colorscheme base16-ocean
 endif
 
 if has("gui_running")
-    set background=light
-    color pencil
+    set background=dark
+    color base16-ocean
 
     if has("gui_gnome")
         set guifont=Source\ Code\ Pro\ 10
