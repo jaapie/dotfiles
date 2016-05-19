@@ -171,13 +171,45 @@ function _c() {
     echo -ne ${colour}${text}${C_DEFAULT}
 }
 
-# Fastest possible way to check if repo is dirty. a savior for the WebKit repo.
+# Fastest possible way to check if repo is dirty.
 function parse_git_dirty() {
     git diff --quiet --ignore-submodules HEAD 2>/dev/null; [ $? -eq 1 ] && echo '*'
 }
 
 function parse_git_branch() {
     git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/\1$(parse_git_dirty) /"
+}
+
+function sc () {
+    local colours=$1
+    local brightness=$2
+
+    if [ -z "$1" ]; then
+        echo "usage: sc command | colourscheme <brightness>"
+        echo "       commands: "
+        echo "                 list: show all the available colourschemes"
+        return 1
+    fi
+
+    if [ "$1" = "list" ]; then
+        # list colours
+        find ~/.shellcolour/ -name '*.sh' | sed -r 's/.*base16-(.*)\.(light|dark)\.sh/\1/' | uniq | column
+        return 0
+    fi
+
+    if [ -z "$brightness" ]; then
+        brightness=light
+    fi
+
+    colours_file=~/.shellcolour/base16-$colours.$brightness.sh
+
+    if [ -f "$colours_file" ]; then
+        source $colours_file
+        echo $colours_file > ~/.shellcolourrc
+    else
+        echo "sc: hmmm... that colourscheme doesn't exist!"
+        return 1
+    fi
 }
 
 function prompt () {
