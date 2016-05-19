@@ -250,18 +250,10 @@ set noswapfile
 if has('autocmd')
 augroup vimrc_linenumbering
     autocmd!
-    autocmd WinLeave *
-                \ if &number |
-                \   set norelativenumber |
-                \ endif
-    autocmd BufWinEnter *
-                \ if &number |
-                \   set relativenumber |
-                \ endif
-    autocmd VimEnter *
-                \ if &number |
-                \   set relativenumber |
-                \ endif
+    autocmd BufEnter * :setlocal number relativenumber
+    autocmd WinEnter * :setlocal number relativenumber
+    autocmd BufLeave * :setlocal norelativenumber
+    autocmd WinLeave * :setlocal norelativenumber
 augroup END
 endif
 
