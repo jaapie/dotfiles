@@ -36,7 +36,19 @@ Plug 'pangloss/vim-javascript'
 Plug 'simonasker/vim-todo'
 Plug 'jasonlong/vim-textobj-css'
 Plug '~/.vim/plugins/colorschemes'
+Plug 'https://github.com/reedes/vim-wordy.git'
+Plug 'rhysd/clever-f.vim'
+Plug 'vim-jp/vim-cpp'
+Plug 'joshdick/onedark.vim'
+Plug 'tpope/vim-speeddating'
+Plug 'tpope/vim-endwise'
+Plug 'tmux-plugins/vim-tmux'
+Plug 'chriskempson/base16-vim'
 
+" hi EvenLbg ctermbg=235 guibg=#090909
+" let g:stripe_config = {
+" \   "group_odd" : "EvenLbg"
+" \}
 call plug#end()
 
 let g:syntastic_c_auto_refresh_includes = 1
