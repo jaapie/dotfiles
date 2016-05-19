@@ -242,10 +242,11 @@ set undofile
 set nobackup
 set noswapfile
 
-" ===========================
+"
 " set relative numbers in current window, absolute in others
+" originally from:
 " http://jeetworks.org/from-acolyte-to-adept-the-next-step-after-nop-ing-arrow-keys
-" ===========================
+"
 if has('autocmd')
 augroup vimrc_linenumbering
     autocmd!
@@ -264,10 +265,10 @@ augroup vimrc_linenumbering
 augroup END
 endif
 
-" +++++++++++++++++++++++++++
-" Change cursor to vertical bar when running in iTerm2.app
-" +++++++++++++++++++++++++++
+"
 " change cursor to vertical bar in insert mode when using iTerm2
+"
+
 if $TERM_PROGRAM == 'iTerm.app'
     if exists('$TMUX')
         let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
@@ -278,16 +279,16 @@ if $TERM_PROGRAM == 'iTerm.app'
     endif
 endif
 
-" =====================
+"
 " Window functionality
-" =====================
+"
 
 set splitright
 set splitbelow
 
-" =====================
+"
 " Highlight whitespace at end of line
-" =====================
+"
 " Highlight trailing whitespace in vim on non empty lines, but not while
 " typing in insert mode!
 " http://www.vimbits.com/bits/336
@@ -298,9 +299,9 @@ au InsertEnter * match ExtraWhitespace /\S\zs\s\+\%#\@<!$/
 au InsertLeave * match ExtraWhiteSpace /\S\zs\s\+$/
 au BufWinLeave * call clearmatches()
 
-" =====================
+"
 " Key mappings
-" =====================
+"
 
 let mapleader=","
 runtime macros/matchit.vim
