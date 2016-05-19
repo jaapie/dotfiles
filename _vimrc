@@ -288,7 +288,7 @@ highlight ExtraWhitespace ctermbg=red guibg=red
 au ColorScheme * highlight ExtraWhitespace guibg=red
 au BufEnter * match ExtraWhitespace /\S\zs\s\+$/
 au InsertEnter * match ExtraWhitespace /\S\zs\s\+\%#\@<!$/
-au InsertLeave * match ExtraWhiteSpace /\S\zs\s\+$/
+au InsertLeave * match ExtraWhitespace /\S\zs\s\+$/
 au BufWinLeave * call clearmatches()
 
 "
