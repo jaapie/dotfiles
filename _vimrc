@@ -196,7 +196,6 @@ autocmd FileType php set commentstring=//\ %s
 autocmd FileType php set keywordprg=pman
 
 " Automatically source ~/.vimrc when the file changes
-autocmd! BufWritePost ~/dev/dotfiles/_vimrc source ~/.vimrc
 autocmd! BufWritePost ~/.vimrc source ~/.vimrc
 
 au BufRead,BufNewFile /usr/local/etc/nginx/conf.d/*,/usr/local/etc/nginx/sites-*/* if &ft == '' | setfiletype nginx | endif
