@@ -215,8 +215,8 @@ endif
 " Keep undo history across sessions, by storing in file.
 " Only works all the time.
 
-silent !mkdir /tmp/vim/backups > /dev/null 2>&1
-set undodir=/tmp/vim/backups
+silent !mkdir ~/.vim/.undo > /dev/null 2>&1
+set undodir=~/.vim/.undo
 set undofile
 
 set nobackup
