@@ -89,6 +89,14 @@ set cursorline
 set modeline
 set timeout timeoutlen=500 ttimeoutlen=100
 set scrolloff=2
+set hidden
+
+set wildignore+=.DS_Store
+set wildignore+=*.jpg,*.jpeg,*.gif,*.png,*.gif,*.psd,*.o,*.obj,*.min.js
+set wildignore+=*/bower_components/*,*/node_modules/*
+set wildignore+=*/smarty/*,*/vendor/*,*/.git/*,*/.hg/*,*/.svn/*,*/.sass-cache/*,*/log/*,*/tmp/*,*/build/*,*/ckeditor/*,*/doc/*,*/source_maps/*,*/dist/*
+set wildmenu " Hitting TAB in command mode will show possible completions above command line
+set wildmode=list:longest " Complete only until point of ambiguity
 
 set shiftwidth=4
 set tabstop=4
