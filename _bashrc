@@ -205,12 +205,14 @@ function sc () {
 
     if [ -f "$colours_file" ]; then
         source $colours_file
-        echo $colours_file > ~/.shellcolourrc
+        echo $colours > ~/.shellcolourrc
     else
         echo "sc: hmmm... that colourscheme doesn't exist!"
         return 1
     fi
 }
+
+sc $(cat ~/.shellcolourrc 2> /dev/null || echo ocean)
 
 function prompt () {
     local arg=$1
