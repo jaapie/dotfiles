@@ -1,3 +1,4 @@
+scriptencoding utf-8
 set nocompatible
 
 call plug#begin('~/.vim/plugged')
