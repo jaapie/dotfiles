@@ -204,6 +204,19 @@ if has('statusline')
   endif
 endif
 
+if has("termguicolors")
+    set termguicolors
+
+    " Don't need this in xterm-256color, but do need it inside tmux.
+    " (See `:h xterm-true-color`.)
+    if &term =~# 'screen-256color'
+        let &t_8f="\e[38;2;%lu;%lu;%lum"
+        let &t_8b="\e[48;2;%lu;%lu;%lum"
+    endif
+endif
+
+syntax on
+
 if &t_Co == 256
     let base16colorspace=256
     set background=dark
