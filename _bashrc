@@ -205,7 +205,7 @@ function sc () {
 
     if [ -f "$colours_file" ]; then
         source $colours_file
-        echo $colours > ~/.shellcolourrc
+        echo "$colours $brightness" > ~/.shellcolourrc
     else
         echo "sc: hmmm... that colourscheme doesn't exist!"
         return 1
