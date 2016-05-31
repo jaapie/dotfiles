@@ -230,7 +230,7 @@ if has("gui_running")
     if has("gui_gnome")
         set guifont=Source\ Code\ Pro\ 10
     else
-        set guifont=Source\ Code\ Pro:h14
+        set guifont=Source\ Code\ Pro\ Light:h12
     endif
 endif
 
