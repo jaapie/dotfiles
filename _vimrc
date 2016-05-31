@@ -220,12 +220,12 @@ syntax on
 if &t_Co == 256
     let base16colorspace=256
     set background=dark
-    colorscheme base16-ocean
+    colorscheme base16-tomorrow
 endif
 
 if has("gui_running")
     set background=dark
-    color base16-ocean
+    color base16-tomorrow
 
     if has("gui_gnome")
         set guifont=Source\ Code\ Pro\ 10
