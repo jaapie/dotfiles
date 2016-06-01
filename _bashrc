@@ -212,6 +212,26 @@ function sc () {
     fi
 }
 
+_complete_screencolours() {
+    local cur=${COMP_WORDS[COMP_CWORD]}
+    local prev=${COMP_WORDS[COMP_CWORD-1]}
+
+    local wordlist=$(find ~/.shellcolour/ -name '*.sh' | sed -r 's/.*base16-(.*)\.(light|dark)\.sh/\1/' | uniq)
+    # local pipelist=$(echo $wordlist | sed ':a;N;$!ba;s/\n/|/g')
+
+    for word in $wordlist; do
+        if [ $word = $prev ]; then
+            COMPREPLY=($(compgen -W "dark light" -- ${cur}))
+            return 0
+        fi
+    done
+
+    COMPREPLY=($(compgen -W '${wordlist[@]}' -- "$cur"))
+    return 0
+}
+
+complete -F _complete_screencolours sc
+
 sc $(cat ~/.shellcolourrc 2> /dev/null || echo ocean)
 
 function prompt () {
