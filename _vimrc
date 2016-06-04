@@ -3,8 +3,6 @@ set nocompatible
 
 call plug#begin('~/.vim/plugged')
 
-"let g:plug_url_format = 'git@github.com:%s.git'
-
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
@@ -17,7 +15,6 @@ Plug 'tpope/vim-fugitive'
 Plug 'godlygeek/tabular'
 Plug 'jakar/vim-json'
 Plug 'amirh/HTML-AutoCloseTag'
-" Plug 'bling/vim-airline'
 Plug 'tpope/vim-ragtag'
 Plug 'mustache/vim-mustache-handlebars'
 Plug 'tommcdo/vim-exchange'
@@ -45,11 +42,8 @@ Plug 'tpope/vim-endwise'
 Plug 'tmux-plugins/vim-tmux'
 Plug 'chriskempson/base16-vim'
 Plug 'wincent/pinnacle'
+Plug 'jacoborus/tender'
 
-" hi EvenLbg ctermbg=235 guibg=#090909
-" let g:stripe_config = {
-" \   "group_odd" : "EvenLbg"
-" \}
 call plug#end()
 
 let g:syntastic_c_auto_refresh_includes = 1
@@ -57,13 +51,6 @@ let g:syntastic_c_check_header = 1
 let g:syntastic_c_include_dirs = [ '/usr/local/include' ]
 let g:syntastic_html_tidy_exec = "tidy5"
 let g:sparkupDoubleQuote = 1
-
-let g:UltiSnipsSnippetDirectories=["UltiSnips", "snippets"]
-let g:neocomplcache_enable_at_startup = 1
-let g:airline#extensions#bufferline#enabled = 1
-let g:airline_theme = 'pencil'
-let g:airline_left_sep=''
-let g:airline_right_sep=''
 
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
@@ -235,9 +222,7 @@ endif
 
 set laststatus=2
 
-" +++++++++++++++++++++++
 " File type stuff
-" +++++++++++++++++++++++
 
 " Enable file type detection.
 filetype plugin indent on
@@ -284,9 +269,7 @@ if !exists(":DiffOrig")
           \ | wincmd p | diffthis
 endif
 
-" ++++++++++++++++++++++++++
 " Backup, Swap, and Undo Files
-" ++++++++++++++++++++++++++
 
 " Set directory for backup and swap files
 " silent !mkdir /tmp/vim > /dev/null 2>&1
