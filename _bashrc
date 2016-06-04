@@ -188,14 +188,22 @@ function sc () {
         echo "usage: sc command | colourscheme <brightness>"
         echo "       commands: "
         echo "                 list: show all the available colourschemes"
+        echo "                 off: turn shell colours off (use terminal"
+        echo "                      emulator's default colours)"
         return 1
     fi
 
-    if [ "$1" = "list" ]; then
-        # list colours
-        find ~/.shellcolour/ -name '*.sh' | sed -r 's/.*base16-(.*)\.(light|dark)\.sh/\1/' | uniq | column
-        return 0
-    fi
+    case "$1" in
+        "list")
+            # list colours
+            find ~/.shellcolour/ -name '*.sh' | sed -r 's/.*base16-(.*)\.(light|dark)\.sh/\1/' | uniq | column
+            return 0
+            ;;
+        "off")
+            echo "off" > ~/.shellcolourrc
+            return 0
+            ;;
+    esac
 
     if [ -z "$brightness" ]; then
         brightness=light
