@@ -206,12 +206,12 @@ syntax on
 if &t_Co == 256
     let base16colorspace=256
     set background=dark
-    colorscheme base16-tomorrow
+    colorscheme onedark
 endif
 
 if has("gui_running")
     set background=dark
-    color base16-tomorrow
+    color onedark
 
     if has("gui_gnome")
         set guifont=Source\ Code\ Pro\ 10
