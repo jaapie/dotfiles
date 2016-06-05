@@ -52,68 +52,9 @@ let g:syntastic_c_include_dirs = [ '/usr/local/include' ]
 let g:syntastic_html_tidy_exec = "tidy5"
 let g:sparkupDoubleQuote = 1
 
-" allow backspacing over everything in insert mode
-set backspace=indent,eol,start
-set history=500 " keep 50 lines of command line history
-set ruler       " show the cursor position all the time
-set showcmd     " display incomplete commands
-set hlsearch
-set incsearch   " do incremental searching
-set smartcase
-set encoding=utf8
-set whichwrap+=<,>,h,l
-set magic
-set mat=2
-set noerrorbells
-set novisualbell
-set pastetoggle=<F4>
-set nowrap
-set nolist listchars=tab:▸\ ,trail:·,extends:#,nbsp:·
-set foldmethod=manual
-set formatoptions=tcqrj
-set tw=78
-set number
-set cursorline
-set modeline
-set timeout timeoutlen=500 ttimeoutlen=100
-set scrolloff=2
-set hidden
-
-set wildignore+=.DS_Store
-set wildignore+=*.jpg,*.jpeg,*.gif,*.png,*.gif,*.psd,*.o,*.obj,*.min.js
-set wildignore+=*/bower_components/*,*/node_modules/*
-set wildignore+=*/smarty/*,*/vendor/*,*/.git/*,*/.hg/*,*/.svn/*,*/.sass-cache/*,*/log/*,*/tmp/*,*/build/*,*/ckeditor/*,*/doc/*,*/source_maps/*,*/dist/*
-set wildmenu " Hitting TAB in command mode will show possible completions above command line
-set wildmode=list:longest " Complete only until point of ambiguity
-
-set shiftwidth=4
-set tabstop=4
-set expandtab
-set smarttab " Enable smart tabs
-set autoread " automatically read buffer when changed outside vim
-set smartindent
-
-if exists('+colorcolumn')
-    set colorcolumn=80
-endif
 " CTRL-U in insert mode deletes a lot.  Use CTRL-G u to first break undo, so
 " that you can undo CTRL-U after inserting a line break.
 inoremap <C-U> <C-G>u<C-U>
-
-if has('mouse')
-    set mouse=a
-    if !has('gui_running')
-
-        " for some reason, doing this directly with 'set ttymouse=xterm2'
-        " doesn't work -- 'set ttymouse?' returns xterm2 but the mouse makes
-        " tmux enter copy mode instead of selecting or scrolling inside Vim --
-        " but luckily, setting it up from within autocmds works
-
-        autocmd VimEnter * set ttymouse=xterm2
-        autocmd FocusGained * set ttymouse=xterm2
-        autocmd BufEnter * set ttymouse=xterm2
-    endif
-endif
 
 if has("termguicolors")
     set termguicolors
@@ -126,7 +67,6 @@ if has("termguicolors")
     endif
 endif
 
-syntax on
 
 if &t_Co == 256
     let base16colorspace=256
@@ -145,12 +85,8 @@ if has("gui_running")
     endif
 endif
 
-set laststatus=2
-
 " File type stuff
 
-" Enable file type detection.
-filetype plugin indent on
 au BufRead,BufNewFile *.scss    set filetype=scss
 
 "Enable OmniComplete on different filetypes
@@ -226,13 +162,6 @@ if $TERM_PROGRAM == 'iTerm.app'
         let &t_EI = "\<Esc>]50;CursorShape=0\x7"
     endif
 endif
-
-"
-" Window functionality
-"
-
-set splitright
-set splitbelow
 
 "
 " Key mappings
