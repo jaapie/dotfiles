@@ -1,0 +1,1 @@
+doautocmd ColorScheme
