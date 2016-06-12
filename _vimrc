@@ -67,16 +67,15 @@ if has("termguicolors")
     endif
 endif
 
-
 if &t_Co == 256
     let base16colorspace=256
     set background=dark
-    colorscheme onedark
+    colorscheme base16-monokai
 endif
 
 if has("gui_running")
     set background=dark
-    color onedark
+    color base16-monokai
 
     if has("gui_gnome")
         set guifont=Source\ Code\ Pro\ 10
