@@ -43,6 +43,9 @@ Plug 'tmux-plugins/vim-tmux'
 Plug 'chriskempson/base16-vim'
 Plug 'wincent/pinnacle'
 Plug 'jacoborus/tender'
+Plug 'itmammoth/doorboy.vim'
+Plug 'sotte/presenting.vim'
+Plug 'wincent/ferret'
 
 call plug#end()
 
