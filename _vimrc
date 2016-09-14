@@ -46,6 +46,7 @@ Plug 'jacoborus/tender'
 Plug 'itmammoth/doorboy.vim'
 Plug 'sotte/presenting.vim'
 Plug 'wincent/ferret'
+Plug 'dohsimpson/vim-macroeditor'
 
 call plug#end()
 
