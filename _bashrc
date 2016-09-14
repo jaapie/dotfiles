@@ -17,7 +17,6 @@ export MANPAGER="col -b | vim -MR - "
 
 # command colouring
 export CLICOLOR=1
-export GREP_OPTIONS='--color=auto'
 
 
 # define colors
@@ -85,6 +84,8 @@ function pud () {
 
 alias pod='popd'
 alias weather='curl http://wttr\.in'
+
+alias grep='grep --color=auto'
 
 function o {
   open ${@:-'.'}
