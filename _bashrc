@@ -13,6 +13,7 @@ if [ -d ~/bin ]; then
 fi
 
 export EDITOR=vim
+export MANPAGER="col -b | vim -MR - "
 
 # command colouring
 export CLICOLOR=1
