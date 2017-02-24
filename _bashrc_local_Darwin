@@ -6,6 +6,7 @@ function cdf() {  # short for cdfinder
 }
 
 PROMPT_COMMAND='echo -ne "\033]0;${PWD}\007"'
+export MANPAGER="col -b | vim -MR - "
 
 brew_prefix=$(brew --prefix)
 

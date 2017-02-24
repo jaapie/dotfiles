@@ -13,7 +13,6 @@ if [ -d ~/bin ]; then
 fi
 
 export EDITOR=vim
-export MANPAGER="/bin/sh -c \"col -b | vim -c 'set ft=man ts=8 nomod nolist nonu noma' -\""
 
 # command colouring
 export CLICOLOR=1
