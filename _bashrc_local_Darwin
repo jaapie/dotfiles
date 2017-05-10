@@ -5,6 +5,10 @@ function cdf() {  # short for cdfinder
   cd "`osascript -e 'tell app "Finder" to POSIX path of (insertion location as alias)' 2> /dev/null`" 
 }
 
+function notify() {
+    echo -e $'\e]9;'"$1"'\007'
+}
+
 PROMPT_COMMAND='echo -ne "\033]0;${PWD}\007"'
 export MANPAGER="col -b | vim -MR - "
 
