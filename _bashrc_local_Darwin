@@ -74,3 +74,5 @@ if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
 # export ANDROID_HOME=/usr/local/opt/android-sdk
 # export PATH="$(brew --prefix php55)/bin:$PATH"
+
+export PATH=/usr/local/pcre/bin:/usr/local/apr-util/bin:$PATH
