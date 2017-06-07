@@ -134,25 +134,6 @@ if !exists(":DiffOrig")
           \ | wincmd p | diffthis
 endif
 
-" Backup, Swap, and Undo Files
-
-" Set directory for backup and swap files
-" silent !mkdir /tmp/vim > /dev/null 2>&1
-
-" set dir=/tmp/vim
-" set backupdir=/tmp/vim
-
-" Persistent Undo
-" Keep undo history across sessions, by storing in file.
-" Only works all the time.
-
-silent !mkdir ~/.vim/.undo > /dev/null 2>&1
-set undodir=~/.vim/.undo
-set undofile
-
-set nobackup
-set noswapfile
-
 "
 " Key mappings
 "
