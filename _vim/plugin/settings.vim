@@ -26,6 +26,13 @@ set modeline
 set timeout timeoutlen=500 ttimeoutlen=100
 set scrolloff=2
 set hidden
+set incsearch
+
+augroup vimrc-incsearch-highlight
+    autocmd!
+    autocmd CmdlineEnter /,\? :set hlsearch
+    autocmd CmdlineLeave /,\? :set nohlsearch
+augroup END
 
 set wildignore+=.DS_Store
 set wildignore+=*.jpg,*.jpeg,*.gif,*.png,*.gif,*.psd,*.o,*.obj,*.min.js
