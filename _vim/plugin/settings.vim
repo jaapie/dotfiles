@@ -18,7 +18,7 @@ set pastetoggle=<F4>
 set nowrap
 set nolist listchars=tab:▸\ ,trail:·,extends:#,nbsp:·
 set foldmethod=manual
-set formatoptions=tcqrj
+set formatoptions=cqrj
 set tw=78
 set number
 set cursorline
