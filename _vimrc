@@ -9,16 +9,16 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-markdown'
-Plug 'itspriddle/vim-jquery'
+" Plug 'itspriddle/vim-jquery'
 Plug 'StanAngeloff/php.vim'
 Plug 'tpope/vim-fugitive'
-Plug 'godlygeek/tabular'
+" Plug 'godlygeek/tabular'
 Plug 'jakar/vim-json'
-Plug 'vim-scripts/HTML-AutoCloseTag'
+" Plug 'vim-scripts/HTML-AutoCloseTag'
 Plug 'tpope/vim-ragtag'
-Plug 'mustache/vim-mustache-handlebars'
+" Plug 'mustache/vim-mustache-handlebars'
 Plug 'tommcdo/vim-exchange'
-Plug 'godlygeek/tabular'
+" Plug 'godlygeek/tabular'
 Plug 'tpope/vim-projectionist'
 Plug 'bling/vim-bufferline'
 Plug 'dietsche/vim-lastplace'
@@ -26,15 +26,15 @@ Plug 'kana/vim-textobj-user'
 Plug 'tpope/vim-dispatch'
 Plug 'nelstrom/vim-textobj-rubyblock'
 Plug 'wellle/targets.vim'
-Plug 'haya14busa/incsearch.vim'
+" Plug 'haya14busa/incsearch.vim'
 Plug 'ervandew/supertab'
-Plug 'reedes/vim-colors-pencil'
-Plug 'tristen/vim-sparkup'
+" Plug 'reedes/vim-colors-pencil'
+" Plug 'tristen/vim-sparkup'
 Plug 'pangloss/vim-javascript'
-Plug 'simonasker/vim-todo'
+" Plug 'simonasker/vim-todo'
 Plug 'jasonlong/vim-textobj-css'
 Plug '~/.vim/plugins/colorschemes'
-Plug 'https://github.com/reedes/vim-wordy.git'
+" Plug 'https://github.com/reedes/vim-wordy.git'
 Plug 'vim-jp/vim-cpp'
 Plug 'joshdick/onedark.vim'
 Plug 'tpope/vim-speeddating'
@@ -42,20 +42,15 @@ Plug 'tpope/vim-endwise'
 Plug 'tmux-plugins/vim-tmux'
 Plug 'chriskempson/base16-vim'
 Plug 'wincent/pinnacle'
-Plug 'jacoborus/tender'
+" Plug 'jacoborus/tender'
 Plug 'itmammoth/doorboy.vim'
 Plug 'sotte/presenting.vim'
 Plug 'wincent/ferret'
 Plug 'dohsimpson/vim-macroeditor'
 Plug 'vim-scripts/dbext.vim'
+Plug 'vim-ruby/vim-ruby'
 
 call plug#end()
-
-let g:syntastic_c_auto_refresh_includes = 1
-let g:syntastic_c_check_header = 1
-let g:syntastic_c_include_dirs = [ '/usr/local/include' ]
-let g:syntastic_html_tidy_exec = "tidy5"
-let g:sparkupDoubleQuote = 1
 
 " CTRL-U in insert mode deletes a lot.  Use CTRL-G u to first break undo, so
 " that you can undo CTRL-U after inserting a line break.
@@ -172,15 +167,12 @@ nnoremap Y y$
 " Make regex sane: search with perl regular expressions
 " nnoremap / /\v
 " vnoremap / /
-map /  <Plug>(incsearch-forward)
-map ?  <Plug>(incsearch-backward)
-map g/ <Plug>(incsearch-stay)\v
 
 " better moving through long lines that are wrapped
 nnoremap j gj
 nnoremap k gk
 
-imap <silent> <leader>zc <C-y>,
+" imap <silent> <leader>zc <C-y>,
 nmap <silent> <leader>zc <C-y>,
 map <leader>pc "*p
 map <silent><leader>i :set list!<cr>
@@ -190,24 +182,24 @@ map <leader>wh <C-W>H
 map <leader>wv <C-W>L
 
 " Duplicate current line below
-inoremap <leader>ll <esc>mayyp`a i
+" inoremap <leader>ll <esc>mayyp`a i
 nnoremap <leader>ll mayyp`a
 
 " insert a line above and below
-imap <leader>f <esc>+- i
+" imap <leader>f <esc>+- i
 nmap <leader>f +-
 
 " switch between php and html filetypes
-imap <leader>pp <esc>:set ft=php<cr> i
+" imap <leader>pp <esc>:set ft=php<cr> i
 nmap <leader>pp :set ft=php<cr>
-imap <leader>ph <esc>:set ft=html<cr> i
+" imap <leader>ph <esc>:set ft=html<cr> i
 nmap <leader>ph :set ft=html<cr>
 
-inoremap jk <esc>
+" inoremap jk <esc>
 
-inoremap <leader>o <ESC>o
-inoremap <leader>O <ESC>O
-inoremap <leader>A <ESC>A
+" inoremap <leader>o <ESC>o
+" inoremap <leader>O <ESC>O
+" inoremap <leader>A <ESC>A
 
 " Opens a new tab with the current buffer's path Super useful when editing
 " files in the same directory
@@ -236,11 +228,11 @@ endif
 cmap w!! %!sudo tee > /dev/null %
 
 " fugitive plugin commands
-inoremap <leader>gs :Gstatus<CR>
+" inoremap <leader>gs :Gstatus<CR>
 nnoremap <leader>gs :Gstatus<CR>
-inoremap <leader>gc :Gcommit<CR>
+" inoremap <leader>gc :Gcommit<CR>
 nnoremap <leader>gc :Gcommit<CR>
-inoremap <leader>gl :Glog<CR>
+" inoremap <leader>gl :Glog<CR>
 nnoremap <leader>gl :Glog<CR>
 " inoremap <leader>ga :Git add %
 " nnoremap <leader>ga :Git add %
