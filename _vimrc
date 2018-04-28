@@ -138,15 +138,15 @@ runtime macros/matchit.vim
 
 " Session management
 " Quick write session with F6
-nmap <silent><F6> :mksession! ~/.vim_session <CR> 
+nmap <silent><F6> :mksession! ~/.vim_session <CR>
 " And load session with F7--like Quake quick save
-nmap <silent><F7> :source ~/.vim_session <CR>     
+nmap <silent><F7> :source ~/.vim_session <CR>
 
 " F2 to save
 nmap <F2> :w!<CR>
 imap <F2> <ESC>:w!<CR> i
 
-" F5 toggles line wrapping 
+" F5 toggles line wrapping
 nmap <silent><F5> :set wrap!<CR>
 imap <silent><F5> <ESC>:set wrap!<CR>
 
@@ -262,10 +262,10 @@ source $VIMRUNTIME/ftplugin/man.vim
 map Q @@
 
 " from https://github.com/eiro/rcfiles/
- 
+
 inoremap "" ""<left>
 inoremap '' ''<left>
- 
+
 inoremap (( ()<left>
 inoremap (<cr> (<cr>)<c-o>O
 
@@ -275,7 +275,7 @@ inoremap ('; ('');<esc>hhi
 inoremap ("; ("");<esc>hhi
 inoremap (' ('')<esc>hi
 inoremap (" ("")<esc>hi
- 
+
 inoremap {{ {}<left>
 inoremap {<cr> {<cr>}<c-o>O
 inoremap {; {};<esc>hi
@@ -286,7 +286,7 @@ inoremap {'; {''};<esc>hhi
 inoremap {"; {""};<esc>hhi
 inoremap {' {''}<esc>hi
 inoremap {" {""}<esc>hi
- 
+
 inoremap [[ []<left>
 inoremap [<cr> [<cr>]<c-o>O
 inoremap [; [];<esc>hi
