@@ -47,7 +47,8 @@ Plug 'itmammoth/doorboy.vim'
 Plug 'sotte/presenting.vim'
 Plug 'wincent/ferret'
 Plug 'dohsimpson/vim-macroeditor'
-Plug 'vim-scripts/dbext.vim'
+"Plug 'vim-scripts/dbext.vim'
+Plug 'tpope/vim-dadbod'
 Plug 'vim-ruby/vim-ruby'
 
 call plug#end()
