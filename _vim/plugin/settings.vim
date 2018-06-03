@@ -104,3 +104,10 @@ endif
 
 set splitright
 set splitbelow
+
+if has('linebreak')
+    set showbreak=↪︎
+    set linebreak wrap nolist
+    set breakat+= 
+    set breakindent
+endif
