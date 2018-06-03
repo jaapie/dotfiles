@@ -28,11 +28,13 @@ set scrolloff=2
 set hidden
 set incsearch
 
-augroup vimrc-incsearch-highlight
-    autocmd!
-    autocmd CmdlineEnter /,\? :set hlsearch
-    autocmd CmdlineLeave /,\? :set nohlsearch
-augroup END
+if !has('nvim')
+    augroup vimrc-incsearch-highlight
+        autocmd!
+        autocmd CmdlineEnter /,\? :set hlsearch
+        autocmd CmdlineLeave /,\? :set nohlsearch
+    augroup END
+endif
 
 set wildignore+=.DS_Store
 set wildignore+=*.jpg,*.jpeg,*.gif,*.png,*.gif,*.psd,*.o,*.obj,*.min.js
@@ -67,9 +69,11 @@ if has('mouse')
         " tmux enter copy mode instead of selecting or scrolling inside Vim --
         " but luckily, setting it up from within autocmds works
 
-        autocmd VimEnter * set ttymouse=xterm2
-        autocmd FocusGained * set ttymouse=xterm2
-        autocmd BufEnter * set ttymouse=xterm2
+        if !has('nvim')
+            autocmd VimEnter * set ttymouse=xterm2
+            autocmd FocusGained * set ttymouse=xterm2
+            autocmd BufEnter * set ttymouse=xterm2
+        endif
     endif
 endif
 
