@@ -135,7 +135,8 @@ endif
 "
 
 let mapleader=","
-runtime macros/matchit.vim
+" runtime macros/matchit.vim
+packadd! matchit
 
 " Session management
 " Quick write session with F6
