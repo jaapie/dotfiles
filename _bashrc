@@ -340,8 +340,6 @@ HISTFILESIZE=100000
 export HISTTIMEFORMAT='%F %T '
 
 export HISTIGNORE="clear:bg:fg:jobs:cd -:cd ../:ll:ls:l"
-# Save and reload the history after each command finishes
-export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 
 bind '"\e[A":history-search-backward'
 bind '"\e[B":history-search-forward'
