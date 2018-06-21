@@ -110,7 +110,7 @@ set splitright
 set splitbelow
 
 if has('linebreak')
-    set showbreak=↪︎
+    let &showbreak='↳ '
     set linebreak wrap nolist
     set breakat+= 
     set breakindent
