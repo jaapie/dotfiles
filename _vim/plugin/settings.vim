@@ -29,11 +29,13 @@ set hidden
 set incsearch
 
 if !has('nvim')
-    augroup vimrc-incsearch-highlight
-        autocmd!
-        autocmd CmdlineEnter /,\? :set hlsearch
-        autocmd CmdlineLeave /,\? :set nohlsearch
-    augroup END
+    " augroup vimrc-incsearch-highlight
+    "     autocmd!
+    "     autocmd CmdlineEnter /,\? :set hlsearch
+    "     autocmd CmdlineLeave /,\? :set nohlsearch
+    " augroup END
+else
+    set inccommand=nosplit
 endif
 
 set wildignore+=.DS_Store
