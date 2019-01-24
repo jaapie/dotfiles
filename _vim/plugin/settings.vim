@@ -117,3 +117,6 @@ if has('linebreak')
     set breakat+= 
     set breakindent
 endif
+
+" diff options
+set diffopt+=algorithm:patience
