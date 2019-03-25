@@ -243,6 +243,22 @@ complete -F _complete_screencolours sc
 
 sc $(cat ~/.shellcolourrc 2> /dev/null || echo ocean)
 
+_reboot_required() {
+    case "$(uname)" in
+        Linux)
+            if [ -f /var/run/reboot-required ]; then
+                echo -ne "⬤  "
+                return 0
+            else
+                echo -ne ""
+            fi
+            ;;
+            *)
+                echo -ne ""
+                return 1
+    esac
+}
+
 function prompt () {
     local arg=$1
     local _ps1
@@ -270,6 +286,8 @@ function prompt () {
         echo "usage: prompt <-mbgf>|<--minimal --basic --basic-git --full>"
         return 1
     fi
+
+    _ps1="$(_c $C_RED '$(_reboot_required)')$_ps1"
     
     # save the last used prompt to a file to preserve the prompt choice across
     # sessions
