@@ -137,3 +137,5 @@ if [ "$TERM" = "linux" ]; then
 	# clear
 fi
 
+# GAM command
+gam() { "/home/jacob/bin/gam/gam" "$@" ; }
