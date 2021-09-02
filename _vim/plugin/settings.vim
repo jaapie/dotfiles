@@ -19,7 +19,7 @@ set nowrap
 set nolist listchars=tab:▸\ ,trail:·,extends:#,nbsp:·
 set foldmethod=manual
 set formatoptions=cqrj
-set tw=78
+set tw=118
 set number
 set cursorline
 set modeline
@@ -59,7 +59,7 @@ filetype plugin indent on
 syntax on
 
 if exists('+colorcolumn')
-    set colorcolumn=80
+    set colorcolumn=120
 endif
 
 if has('mouse')
