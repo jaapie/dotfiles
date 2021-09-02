@@ -50,6 +50,8 @@ Plug 'wincent/ferret'
 "Plug 'vim-scripts/dbext.vim'
 Plug 'tpope/vim-dadbod'
 Plug 'vim-ruby/vim-ruby'
+Plug 'mechatroner/rainbow_csv'
+Plug 'dense-analysis/ale'
 
 call plug#end()
 
