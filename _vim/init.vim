@@ -50,6 +50,7 @@ Plug 'dohsimpson/vim-macroeditor'
 "Plug 'vim-scripts/dbext.vim'
 Plug 'tpope/vim-dadbod'
 Plug 'vim-ruby/vim-ruby'
+Plug 'tpope/vim-speeddating'
 
 call plug#end()
 
