@@ -53,6 +53,7 @@ Plug 'vim-ruby/vim-ruby'
 Plug 'mechatroner/rainbow_csv'
 Plug 'dense-analysis/ale'
 Plug 'Glench/Vim-Jinja2-Syntax'
+Plug 'AndrewRadev/splitjoin.vim'
 
 call plug#end()
 
