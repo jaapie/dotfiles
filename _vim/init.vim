@@ -9,16 +9,10 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-markdown'
-" Plug 'itspriddle/vim-jquery'
-Plug 'StanAngeloff/php.vim'
 Plug 'tpope/vim-fugitive'
-" Plug 'godlygeek/tabular'
 Plug 'jakar/vim-json'
-" Plug 'vim-scripts/HTML-AutoCloseTag'
 Plug 'tpope/vim-ragtag'
-" Plug 'mustache/vim-mustache-handlebars'
 Plug 'tommcdo/vim-exchange'
-" Plug 'godlygeek/tabular'
 Plug 'tpope/vim-projectionist'
 Plug 'bling/vim-bufferline'
 Plug 'dietsche/vim-lastplace'
@@ -26,31 +20,22 @@ Plug 'kana/vim-textobj-user'
 Plug 'tpope/vim-dispatch'
 Plug 'nelstrom/vim-textobj-rubyblock'
 Plug 'wellle/targets.vim'
-" Plug 'haya14busa/incsearch.vim'
 Plug 'ervandew/supertab'
-" Plug 'reedes/vim-colors-pencil'
-" Plug 'tristen/vim-sparkup'
 Plug 'pangloss/vim-javascript'
-" Plug 'simonasker/vim-todo'
 Plug 'jasonlong/vim-textobj-css'
 Plug '~/.vim/plugins/colorschemes'
-" Plug 'https://github.com/reedes/vim-wordy.git'
-Plug 'vim-jp/vim-cpp'
 Plug 'joshdick/onedark.vim'
 Plug 'tpope/vim-speeddating'
 Plug 'tpope/vim-endwise'
 Plug 'tmux-plugins/vim-tmux'
 Plug 'chriskempson/base16-vim'
 Plug 'wincent/pinnacle'
-" Plug 'jacoborus/tender'
 Plug 'itmammoth/doorboy.vim'
-Plug 'sotte/presenting.vim'
 Plug 'wincent/ferret'
-Plug 'dohsimpson/vim-macroeditor'
-"Plug 'vim-scripts/dbext.vim'
 Plug 'tpope/vim-dadbod'
 Plug 'vim-ruby/vim-ruby'
 Plug 'tpope/vim-speeddating'
+Plug 'dense-analysis/ale'
 
 call plug#end()
 
@@ -265,38 +250,38 @@ map Q @@
 
 " from https://github.com/eiro/rcfiles/
 
-inoremap "" ""<left>
-inoremap '' ''<left>
+" inoremap "" ""<left>
+" inoremap '' ''<left>
 
-inoremap (( ()<left>
-inoremap (<cr> (<cr>)<c-o>O
+" inoremap (( ()<left>
+" inoremap (<cr> (<cr>)<c-o>O
 
-inoremap (; ();<esc>hi
-inoremap (<cr>; (<cr>);<c-o>O
-inoremap ('; ('');<esc>hhi
-inoremap ("; ("");<esc>hhi
-inoremap (' ('')<esc>hi
-inoremap (" ("")<esc>hi
+" inoremap (; ();<esc>hi
+" inoremap (<cr>; (<cr>);<c-o>O
+" inoremap ('; ('');<esc>hhi
+" inoremap ("; ("");<esc>hhi
+" inoremap (' ('')<esc>hi
+" inoremap (" ("")<esc>hi
 
-inoremap {{ {}<left>
-inoremap {<cr> {<cr>}<c-o>O
-inoremap {; {};<esc>hi
-inoremap {, {},<esc>hi
-inoremap {<cr>; {<cr>};<c-o>O
-inoremap {<cr>, {<cr>},<c-o>O
-inoremap {'; {''};<esc>hhi
-inoremap {"; {""};<esc>hhi
-inoremap {' {''}<esc>hi
-inoremap {" {""}<esc>hi
+" inoremap {{ {}<left>
+" inoremap {<cr> {<cr>}<c-o>O
+" inoremap {; {};<esc>hi
+" inoremap {, {},<esc>hi
+" inoremap {<cr>; {<cr>};<c-o>O
+" inoremap {<cr>, {<cr>},<c-o>O
+" inoremap {'; {''};<esc>hhi
+" inoremap {"; {""};<esc>hhi
+" inoremap {' {''}<esc>hi
+" inoremap {" {""}<esc>hi
 
-inoremap [[ []<left>
-inoremap [<cr> [<cr>]<c-o>O
-inoremap [; [];<esc>hi
-inoremap [<cr>; [<cr>];<c-o>O
-inoremap ['; [''];<esc>hhi
-inoremap ["; [""];<esc>hhi
-inoremap [' ['']<esc>hi
-inoremap [" [""]<esc>hi
+" inoremap [[ []<left>
+" inoremap [<cr> [<cr>]<c-o>O
+" inoremap [; [];<esc>hi
+" inoremap [<cr>; [<cr>];<c-o>O
+" inoremap ['; [''];<esc>hhi
+" inoremap ["; [""];<esc>hhi
+" inoremap [' ['']<esc>hi
+" inoremap [" [""]<esc>hi
 
 inoremap  <Up>     <NOP>
 inoremap  <Down>   <NOP>
