@@ -84,38 +84,30 @@ if exists('$SUDO_USER')
     set nobackup                        " don't create root-owned files
     set nowritebackup                   " don't create root-owned files
 else
-    set backupdir=~/local/.vim/tmp/backup
-    if has('nvim')
-        set backupdir+=~/.config/nvim/tmp/backup    " keep backup files out of the way
-    else
-        set backupdir+=~/.vim/tmp/backup    " keep backup files out of the way
+    if !has('nvim')
+        set backupdir=~/.local/state/vim/backup/
     endif
-    set backupdir+=.
+    set backupdir-=.
 endif
 
 if exists('$SUDO_USER')
     set noswapfile                      " don't create root-owned files
 else
-    set directory=~/local/.vim/tmp/swap//
-    if has('nvim')
-        set directory+=~/.config/nvim/tmp/swap    " keep swap files out of the way
-    else
-        set directory+=~/.vim/tmp/swap    " keep swap files out of the way
+    if !has('nvim')
+        set directory=~/.local/state/vim/swap/
     endif
-    set directory+=.
+    set directory-=.
 endif
 
 if has('persistent_undo')
     if exists('$SUDO_USER')
         set noundofile                    " don't create root-owned files
     else
-        set undodir=~/local/.vim/tmp/undo
-        if has('nvim')
-            set undodir+=~/.config/nvim/tmp/undo      " keep undo files out of the way
-        else
-            set undodir+=~/.vim/tmp/undo      " keep undo files out of the way
+        " set undodir=~/local/.vim/tmp/undo
+        if !has('nvim')
+            set undodir=~/.local/state/vim/undo/
         endif
-        set undodir+=.
+        set undodir-=.
         set undofile                      " actually use undo files
     endif
 endif
