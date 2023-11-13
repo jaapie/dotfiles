@@ -80,24 +80,28 @@ if has('mouse')
 endif
 
 " merci wincent
-if exists('$SUDO_USER')
+" if exists('$SUDO_USER')
     set nobackup                        " don't create root-owned files
     set nowritebackup                   " don't create root-owned files
-else
-    if !has('nvim')
-        set backupdir=~/.local/state/vim/backup/
-    endif
-    set backupdir-=.
-endif
+" else
+"     if !has('nvim')
+"         set backupdir=~/.local/state/vim/backup//
+"     else
+"         set backupdir=~/.local/state/nvim/backup//
+"     endif
+"     " set backupdir-=.
+" endif
 
-if exists('$SUDO_USER')
+" if exists('$SUDO_USER')
     set noswapfile                      " don't create root-owned files
-else
-    if !has('nvim')
-        set directory=~/.local/state/vim/swap/
-    endif
-    set directory-=.
-endif
+" else
+"     if !has('nvim')
+"         set directory=~/.local/state/vim/swap//
+"     else
+"         set directory=~/.local/state/nvim/swap//
+"     endif
+"     " set directory-=.
+" endif
 
 if has('persistent_undo')
     if exists('$SUDO_USER')
@@ -105,9 +109,11 @@ if has('persistent_undo')
     else
         " set undodir=~/local/.vim/tmp/undo
         if !has('nvim')
-            set undodir=~/.local/state/vim/undo/
+            set undodir=~/.local/state/vim/undo//
+        else
+            set undodir=~/.local/state/nvim/undo//
         endif
-        set undodir-=.
+        " set undodir-=.
         set undofile                      " actually use undo files
     endif
 endif

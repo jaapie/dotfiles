@@ -3,58 +3,40 @@ set nocompatible
 
 call plug#begin('~/.vim/plugged')
 
+Plug 'AndrewRadev/splitjoin.vim'
+Plug 'Glench/Vim-Jinja2-Syntax'
+Plug 'chriskempson/base16-vim'
+Plug 'dense-analysis/ale'
+Plug 'ervandew/supertab'
+Plug 'jakar/vim-json'
+Plug 'kana/vim-textobj-user'
+Plug 'jasonlong/vim-textobj-css'
+Plug 'mechatroner/rainbow_csv'
+Plug 'pangloss/vim-javascript'
+Plug 'tmux-plugins/vim-tmux'
+Plug 'jeremiahkellick/vim-textobj-rubyblock'
+Plug 'tommcdo/vim-exchange'
 Plug 'tpope/vim-abolish'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-dadbod'
+Plug 'tpope/vim-dispatch'
+Plug 'tpope/vim-markdown'
+Plug 'tpope/vim-projectionist'
+Plug 'vim-ruby/vim-ruby'
+Plug 'tpope/vim-rails'
+Plug 'tpope/vim-endwise'
+Plug 'tpope/vim-ragtag'
 Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-speeddating'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
-Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-markdown'
-" Plug 'itspriddle/vim-jquery'
-" Plug 'StanAngeloff/php.vim'
-" Plug 'tpope/vim-fugitive'
-" Plug 'godlygeek/tabular'
-Plug 'jakar/vim-json'
-" Plug 'vim-scripts/HTML-AutoCloseTag'
-Plug 'tpope/vim-ragtag'
-" Plug 'mustache/vim-mustache-handlebars'
-Plug 'tommcdo/vim-exchange'
-" Plug 'godlygeek/tabular'
-Plug 'tpope/vim-projectionist'
-" Plug 'bling/vim-bufferline'
-" Plug 'dietsche/vim-lastplace'
-Plug 'kana/vim-textobj-user'
-Plug 'tpope/vim-dispatch'
-Plug 'jeremiahkellick/vim-textobj-rubyblock'
-" Plug 'wellle/targets.vim'
-" Plug 'haya14busa/incsearch.vim'
-Plug 'ervandew/supertab'
-" Plug 'reedes/vim-colors-pencil'
-" Plug 'tristen/vim-sparkup'
-Plug 'pangloss/vim-javascript'
-" Plug 'simonasker/vim-todo'
-Plug 'jasonlong/vim-textobj-css'
-Plug '~/.vim/plugins/colorschemes'
-" Plug 'https://github.com/reedes/vim-wordy.git'
-" Plug 'vim-jp/vim-cpp'
-" Plug 'joshdick/onedark.vim'
-Plug 'tpope/vim-speeddating'
-Plug 'tpope/vim-endwise'
-Plug 'tmux-plugins/vim-tmux'
-Plug 'chriskempson/base16-vim'
-Plug 'wincent/pinnacle'
-" Plug 'jacoborus/tender'
-Plug 'itmammoth/doorboy.vim'
-" Plug 'sotte/presenting.vim'
-Plug 'wincent/ferret'
+Plug 'tpope/vim-fugitive'
 Plug 'wincent/command-t'
-" Plug 'dohsimpson/vim-macroeditor'
-"Plug 'vim-scripts/dbext.vim'
-Plug 'tpope/vim-dadbod'
-Plug 'vim-ruby/vim-ruby'
-Plug 'mechatroner/rainbow_csv'
-Plug 'dense-analysis/ale'
-Plug 'Glench/Vim-Jinja2-Syntax'
-Plug 'AndrewRadev/splitjoin.vim'
+Plug 'wincent/ferret'
+Plug 'wincent/pinnacle'
+Plug 'itmammoth/doorboy.vim'
+Plug '~/.vim/plugins/colorschemes'
+Plug 'thoughtbot/vim-rspec'
 
 call plug#end()
 
@@ -67,7 +49,7 @@ if has("termguicolors")
 
     " Don't need this in xterm-256color, but do need it inside tmux.
     " (See `:h xterm-true-color`.)
-    if &term =~# 'screen-256color'
+    if &term =~# 'screen-256color' || &term =~# 'tmux-256color'
         let &t_8f="\e[38;2;%lu;%lu;%lum"
         let &t_8b="\e[48;2;%lu;%lu;%lum"
     endif
@@ -91,6 +73,13 @@ if has("gui_running")
     else
         set guifont=Source\ Code\ Pro\ Light:h12
     endif
+endif
+
+if has('nvim')
+    let g:CommandTPreferredImplementation='lua'
+
+    noremap <C-p> :CommandT<cr>
+    noremap <C-b> :CommandTBuffer<cr>
 endif
 
 " File type stuff
@@ -146,6 +135,11 @@ let mapleader=","
 " runtime macros/matchit.vim
 packadd! matchit
 
+map <Leader>t :call RunCurrentSpecFile()<CR>
+map <Leader>s :call RunNearestSpec()<CR>
+map <Leader>l :call RunLastSpec()<CR>
+map <Leader>a :call RunAllSpecs()<CR>
+
 " Session management
 " Quick write session with F6
 nmap <silent><F6> :mksession! ~/.vim_session <CR>
@@ -190,6 +184,9 @@ map <leader>ev :tabnew ~/.vimrc<cr>
 map <leader>r <C-W>r
 map <leader>wh <C-W>H
 map <leader>wv <C-W>L
+
+map <C-W>\| :vsplit<cr>
+map <C-W>- :split<cr>
 
 " Duplicate current line below
 " inoremap <leader>ll <esc>mayyp`a i
