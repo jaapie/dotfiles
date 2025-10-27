@@ -1,6 +1,6 @@
 [user]
 	name = Jacob Degeling
-	email = me@jacobdegeling.com
+	email = jacobdegeling@redbendcc.nsw.edu.au
 [color]
 	ui = true
 [push]
@@ -30,3 +30,5 @@
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
+[diff]
+    tool = meld

@@ -340,7 +340,7 @@ function extract {
 
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
-HISTCONTROL=ignoredups:erasedups
+HISTCONTROL=ignoreboth
 
 # shell options
 # ##########################
@@ -352,8 +352,8 @@ shopt -s histappend
 shopt -s globstar
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTSIZE=100000
-HISTFILESIZE=100000
+HISTSIZE=-1
+HISTFILESIZE=-1
 
 export HISTTIMEFORMAT='%F %T '
 
@@ -411,3 +411,4 @@ fi
 if [ -f ~/.bashrc_local ]; then
     source ~/.bashrc_local
 fi
+

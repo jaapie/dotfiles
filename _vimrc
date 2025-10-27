@@ -135,11 +135,6 @@ let mapleader=","
 " runtime macros/matchit.vim
 packadd! matchit
 
-map <Leader>t :call RunCurrentSpecFile()<CR>
-map <Leader>s :call RunNearestSpec()<CR>
-map <Leader>l :call RunLastSpec()<CR>
-map <Leader>a :call RunAllSpecs()<CR>
-
 " Session management
 " Quick write session with F6
 nmap <silent><F6> :mksession! ~/.vim_session <CR>

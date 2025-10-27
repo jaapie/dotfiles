@@ -11,7 +11,11 @@ shopt -s checkwinsize
 #shopt -s globstar
 
 # vim as manpager
-export MANPAGER="/bin/sh -c \"col -b | vim -c 'set ft=man ts=8 nomod nolist nonu noma' -\""
+if which nvim > /dev/null; then
+  export MANPAGER="nvim +Man!"
+else
+  export MANPAGER="/bin/sh -c \"col -b | vim -c 'set ft=man ts=8 nomod nolist nonu noma' -\""
+fi
 
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
