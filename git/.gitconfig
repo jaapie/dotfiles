@@ -8,7 +8,7 @@
 [format]
 	pretty = oneline
 [core]
-	excludesfile = /Users/Jake/.gitignore_global
+	excludesfile = ~/.gitignore_global
 [alias]
   hist = log --pretty=format:'%C(auto)%h %ad | %s%d [%an]' --graph --date=short
 [log]
