@@ -6,17 +6,20 @@
 #if not interactive, get out of here
 [[ -z "$PS1" ]] && return
 
+# PS4='+ $(date "+%s.%N")\011 '
+# exec 3>&2 2>/tmp/bashstart.$$.log
+# set -x
+
 export PATH=/usr/local/bin:/usr/local/sbin:/usr/local/share/npm/bin:$PATH
 
 if [ -d ~/bin ]; then
     export PATH=~/bin:$PATH
 fi
 
-export EDITOR=vim
+export EDITOR=nvim
 
 # command colouring
 export CLICOLOR=1
-
 
 # define colors
 C_DEFAULT="\[\033[m\]"
@@ -52,7 +55,6 @@ C_BG_WHITE="\[\033[47m\]"
 ##############
 # functions
 ##############
-
 
 # wrapper for making a directory and changing to it in one go
 function md () {
@@ -161,26 +163,6 @@ function dataurl() {
     fi
 }
 
-##############
-# Prompt: uname in cwd on (git-branch) $
-##############
-
-function _c() {
-    colour=$1
-    text=$2
-
-    echo -ne ${colour}${text}${C_DEFAULT}
-}
-
-# Fastest possible way to check if repo is dirty.
-function parse_git_dirty() {
-    git diff --quiet --ignore-submodules HEAD 2>/dev/null; [ $? -eq 1 ] && echo '*'
-}
-
-function parse_git_branch() {
-    git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/\1$(parse_git_dirty) /"
-}
-
 function sc () {
     local colours=$1
     local brightness=$2
@@ -243,9 +225,29 @@ complete -F _complete_screencolours sc
 
 sc $(cat ~/.shellcolourrc 2> /dev/null || echo ocean)
 
-_reboot_required() {
-    case "$(uname)" in
-        Linux)
+##############
+# Prompt: uname in cwd on (git-branch) $
+##############
+
+function _c() {
+    colour=$1
+    text=$2
+
+    echo -ne ${colour}${text}${C_DEFAULT}
+}
+
+# Fastest possible way to check if repo is dirty.
+function parse_git_dirty() {
+    git diff --quiet --ignore-submodules HEAD 2>/dev/null; [ $? -eq 1 ] && echo '*'
+}
+
+function parse_git_branch() {
+    git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/\1$(parse_git_dirty) /"
+}
+
+function _reboot_required() {
+    case "$OSTYPE" in
+        linux-gnu*)
             if [ -f /var/run/reboot-required ]; then
                 echo -ne "⬤  "
                 return 0
@@ -362,6 +364,8 @@ export HISTIGNORE="clear:bg:fg:jobs:cd -:cd ../:ll:ls:l"
 bind '"\e[A":history-search-backward'
 bind '"\e[B":history-search-forward'
 
+PROMPT_COMMAND="history -a; $PROMPT_COMMAND"
+
 #####
 # moving quickly around the shell
 # thanks to: 
@@ -379,13 +383,13 @@ function unmark {
     rm -i "$MARKPATH/$1"
 }
 
-case $(uname) in
-    'Linux')
+case "$OSTYPE" in
+    linux_gnu*)
         function marks {
             ls -l "$MARKPATH" | sed 's/  / /g' | cut -d' ' -f9- | sed 's/ -/\t-/g' && echo
         }
         ;;
-    'Darwin')
+    darwin*)
         function marks {
             \ls -l "$MARKPATH" | tail -n +2 | sed 's/  / /g' | cut -d' ' -f9- | awk -F ' -> ' '{printf "%-10s -> %s\n", $1, $2}'
         }
@@ -404,11 +408,19 @@ complete -F _completemarks jump unmark
 ############## Source local bash settings
 #############
 
-if [ -f ~/.bashrc_local_$(uname) ]; then
-    source ~/.bashrc_local_$(uname)
+case "$OSTYPE" in
+    darwin*) os_name="Darwin" ;;
+    linux-gnu*) os_name="Linux" ;;
+    *) os_name=$(uname) ;;  # Fallback for unknown platforms
+esac
+
+if [ -f ~/.bashrc_local_${os_name} ]; then
+    source ~/.bashrc_local_${os_name}
 fi
 
 if [ -f ~/.bashrc_local ]; then
     source ~/.bashrc_local
 fi
 
+# set +x
+# exec 2>&3 3>&-
