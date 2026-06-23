@@ -6,10 +6,6 @@
 #if not interactive, get out of here
 [[ -z "$PS1" ]] && return
 
-# PS4='+ $(date "+%s.%N")\011 '
-# exec 3>&2 2>/tmp/bashstart.$$.log
-# set -x
-
 export PATH=/usr/local/bin:/usr/local/sbin:/usr/local/share/npm/bin:$PATH
 
 if [ -d ~/bin ]; then
@@ -17,9 +13,6 @@ if [ -d ~/bin ]; then
 fi
 
 export EDITOR=nvim
-
-# command colouring
-export CLICOLOR=1
 
 # define colors
 C_DEFAULT="\[\033[m\]"
@@ -88,12 +81,8 @@ alias weather='curl http://wttr\.in'
 
 alias grep='grep --color=auto'
 
-function o {
-  open ${@:-'.'}
-}
-
 function port {
-    port = "$@"
+    local port="$1"
 
     if [ -z "$port" ]; then
         lsof -i
@@ -107,8 +96,7 @@ function mu() {
         echo "usage: mu NAME" >&2
     else
         awk_arg='/arg_one/ {sum += $6} END { printf "%dMB\n", sum/1024 }'
-        # echo ${awk_arg/arg_one/$1}
-        ps aux | awk "${awk_arg/arg_one/$1}" 
+        ps aux | awk "${awk_arg/arg_one/$1}"
     fi
 }
 
@@ -116,36 +104,12 @@ function mu() {
 # Takes a parameter that determines the level to go up, i.e.: up 3 will
 # be the same as cd ../../../
 
-function up () {
-    levels="$@"
-
-    if [ -z "$levels" ]; then
-        levels=1
-    fi
-
-    # Test if $levels is a number; the -eq operator expects a number, and will
-    # output an error if one is not found. Any output to STDERR is redirected
-    # to the bit bucket (/dev/null) so as not to cause unnessecary output to the
-    # screen; all we
-    if [ "$levels" -eq "$levels" ] 2> /dev/null; then
-        if [ "$levels" -eq "0" ]; then
-            levels=1
-        fi
-
-        directories=""
-
-        for (( c=1; c<=levels; c++ ))
-        do
-            parent=../
-            directories=${directories}${parent}
-        done
-
-        cd $directories
-
-    #    echo Exit status: $?
-    else
-        echo up: expected a number, not $levels
-    fi
+function up() {
+    local levels=${1:-1}
+    [[ "$levels" =~ ^[1-9][0-9]*$ ]] || levels=1
+    local i dir=''
+    for ((i=0; i<levels; i++)); do dir+='../'; done
+    cd "$dir"
 }
 
 # Create a data URL from a file
@@ -208,7 +172,6 @@ _complete_screencolours() {
     local prev=${COMP_WORDS[COMP_CWORD-1]}
 
     local wordlist=$(find ~/.shellcolour/ -name '*.sh' | sed -r 's/.*base16-(.*)\.(light|dark)\.sh/\1/' | uniq)
-    # local pipelist=$(echo $wordlist | sed ':a;N;$!ba;s/\n/|/g')
 
     for word in $wordlist; do
         if [ $word = $prev ]; then
@@ -217,13 +180,13 @@ _complete_screencolours() {
         fi
     done
 
-    COMPREPLY=($(compgen -W '${wordlist[@]}' -- "$cur"))
+    COMPREPLY=($(compgen -W "$wordlist" -- "$cur"))
     return 0
 }
 
 complete -F _complete_screencolours sc
 
-sc $(cat ~/.shellcolourrc 2> /dev/null || echo ocean)
+[[ -f ~/.shellcolourrc ]] && sc "$(< ~/.shellcolourrc)" || sc catppuccin dark
 
 ##############
 # Prompt: uname in cwd on (git-branch) $
@@ -309,7 +272,7 @@ function prompt () {
 
 # set up a bash prompt, defaulting to full prompt if the ~/.prompt file
 # containing the last used prompt is not found
-prompt $(cat ~/.prompt 2> /dev/null || echo --full)
+[[ -f ~/.prompt ]] && prompt "$(< ~/.prompt)" || prompt --full
 
 # Function to easily extract files from any type of archive
 # https://github.com/xvoland/Extract/blob/master/extract.sh
@@ -319,8 +282,6 @@ function extract {
         echo "Usage: extract <path/file_name>.<zip|rar|bz2|gz|tar|tbz2|tgz|Z|7z|xz|ex|tar.bz2|tar.gz|tar.xz>"
     else
         if [ -f $1 ] ; then
-            # NAME=${1%.*}
-            # mkdir $NAME && cd $NAME
             case $1 in
               *.tar.bz2)   tar xvjf $1    ;;
               *.tar.gz)    tar xvzf $1    ;;
@@ -373,7 +334,7 @@ export HISTIGNORE="clear:bg:fg:jobs:cd -:cd ../:ll:ls:l"
 bind '"\e[A":history-search-backward'
 bind '"\e[B":history-search-forward'
 
-PROMPT_COMMAND="history -a; $PROMPT_COMMAND"
+PROMPT_COMMAND="history -a${PROMPT_COMMAND:+; $PROMPT_COMMAND}"
 
 #####
 # moving quickly around the shell
@@ -393,7 +354,7 @@ function unmark {
 }
 
 case "$OSTYPE" in
-    linux_gnu*)
+    linux-gnu*)
         function marks {
             ls -l "$MARKPATH" | sed 's/  / /g' | cut -d' ' -f9- | sed 's/ -/\t-/g' && echo
         }
@@ -408,7 +369,7 @@ esac
 _completemarks() {
   local curw=${COMP_WORDS[COMP_CWORD]}
   local wordlist=$(find $MARKPATH -type l -printf "%f\n")
-  COMPREPLY=($(compgen -W '${wordlist[@]}' -- "$curw"))
+  COMPREPLY=($(compgen -W "$wordlist" -- "$curw"))
   return 0
 }
 
@@ -431,5 +392,3 @@ if [ -f ~/.bashrc_local ]; then
     source ~/.bashrc_local
 fi
 
-# set +x
-# exec 2>&3 3>&-
