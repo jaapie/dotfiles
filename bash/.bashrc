@@ -186,7 +186,7 @@ _complete_screencolours() {
 
 complete -F _complete_screencolours sc
 
-[[ -f ~/.shellcolourrc ]] && sc "$(< ~/.shellcolourrc)" || sc catppuccin dark
+[[ -f ~/.shellcolourrc ]] && sc $(< ~/.shellcolourrc) || sc catppuccin dark
 
 ##############
 # Prompt: uname in cwd on (git-branch) $
