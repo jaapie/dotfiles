@@ -143,3 +143,126 @@ fi
 
 # GAM command
 # gam() { "/home/jacob/bin/gam/gam" "$@" ; }
+
+_ansible_combined() {
+    local cur prev inv
+    cur="${COMP_WORDS[COMP_CWORD]}"
+    prev="${COMP_WORDS[COMP_CWORD-1]}"
+    inv="${ANSIBLE_INVENTORY:-hosts}"
+
+    case "$prev" in
+        -l|--limit)
+            local hosts
+            hosts=$(ansible-inventory -i "$inv" --list 2>/dev/null | jq -r '
+                (._meta.hostvars | keys[]),
+                (keys[] | select(. != "_meta" and . != "all"))
+            ' 2>/dev/null)
+            COMPREPLY=( $(compgen -W "${hosts}" -- "${cur}") )
+            return
+            ;;
+    esac
+
+    if [[ "$cur" == -* ]]; then
+        _python_argcomplete "ansible"
+        return
+    fi
+
+    # first positional arg to `ansible` is the target pattern (host/group)
+    # crude check: no non-flag word yet other than the command itself
+    local i positional_seen=0
+    for ((i=1; i<COMP_CWORD; i++)); do
+        [[ "${COMP_WORDS[i]}" != -* ]] && positional_seen=1
+    done
+    if [[ $positional_seen -eq 0 ]]; then
+        local hosts
+        hosts=$(ansible-inventory -i "$inv" --list 2>/dev/null | jq -r '
+            (._meta.hostvars | keys[]),
+            (keys[] | select(. != "_meta" and . != "all"))
+        ' 2>/dev/null)
+        COMPREPLY=( $(compgen -W "${hosts}" -- "${cur}") )
+        return
+    fi
+
+    _python_argcomplete "ansible"
+}
+complete -o nospace -o default -F _ansible_combined ansible
+
+_ansible_playbook_combined() {
+    local cur prev inv
+    cur="${COMP_WORDS[COMP_CWORD]}"
+    prev="${COMP_WORDS[COMP_CWORD-1]}"
+    inv="${ANSIBLE_INVENTORY:-hosts}"
+
+    case "$prev" in
+        -l|--limit)
+            local hosts
+            hosts=$(ansible-inventory -i "$inv" --list 2>/dev/null | jq -r '
+                (._meta.hostvars | keys[]),
+                (keys[] | select(. != "_meta" and . != "all"))
+            ' 2>/dev/null)
+            COMPREPLY=( $(compgen -W "${hosts}" -- "${cur}") )
+            return
+            ;;
+        -i|--inventory)
+            # complete filenames for the inventory path itself
+            COMPREPLY=( $(compgen -f -- "${cur}") )
+            return
+            ;;
+    esac
+
+    if [[ "$cur" == -* ]]; then
+        _python_argcomplete "ansible-playbook"
+        return
+    fi
+
+    # default: complete .yml/.yaml playbook files
+    COMPREPLY=( $(compgen -f -X '!*.y*ml' -- "${cur}") )
+}
+complete -o nospace -o default -F _ansible_playbook_combined ansible-playbook
+
+# --- fzf fuzzy completion for ansible/ansible-playbook, trigger: **<TAB> ---
+# Plain <TAB> still runs _ansible_combined / _ansible_playbook_combined above;
+# fzf wraps them and only takes over when the word ends in the ** trigger.
+# ~/.fzf.bash is normally sourced later, from the untracked ~/.bashrc_local,
+# so pull it forward here if it hasn't loaded yet.
+if ! declare -F __fzf_defc > /dev/null 2>&1 && [ -f ~/.fzf.bash ]; then
+    source ~/.fzf.bash
+fi
+
+_ansible_fzf_hosts() {
+    local inv="${ANSIBLE_INVENTORY:-hosts}"
+    ansible-inventory -i "$inv" --list 2>/dev/null | jq -r '
+        (._meta.hostvars | keys[]),
+        (keys[] | select(. != "_meta" and . != "all"))
+    ' 2>/dev/null
+}
+
+if declare -F __fzf_defc > /dev/null 2>&1; then
+    # remember the completions registered above as fzf's fallback for non-** tab
+    __fzf_orig_completion < <(complete -p ansible ansible-playbook 2>/dev/null)
+
+    _fzf_complete_ansible() {
+        _fzf_complete --multi -- "$@" < <(_ansible_fzf_hosts)
+    }
+    _fzf_complete_ansible_post() {
+        paste -sd, -
+    }
+
+    _fzf_complete_ansible_playbook() {
+        if [[ "${COMP_WORDS[COMP_CWORD-1]}" == "-l" || "${COMP_WORDS[COMP_CWORD-1]}" == "--limit" ]]; then
+            _fzf_complete --multi -- "$@" < <(_ansible_fzf_hosts)
+        else
+            _fzf_complete -- "$@" < <(command find . -maxdepth 4 \( -name '*.yml' -o -name '*.yaml' \) 2>/dev/null | sed 's|^\./||')
+        fi
+    }
+    _fzf_complete_ansible_playbook_post() {
+        if [[ "${COMP_WORDS[COMP_CWORD-1]}" == "-l" || "${COMP_WORDS[COMP_CWORD-1]}" == "--limit" ]]; then
+            paste -sd, -
+        else
+            command cat
+        fi
+    }
+
+    __fzf_defc ansible _fzf_complete_ansible "-o default -o bashdefault"
+    __fzf_defc ansible-playbook _fzf_complete_ansible_playbook "-o default -o bashdefault"
+fi
