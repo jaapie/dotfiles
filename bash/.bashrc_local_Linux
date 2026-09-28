@@ -142,7 +142,7 @@ if [ "$TERM" = "linux" ]; then
 fi
 
 # GAM command
-# gam() { "/home/jacob/bin/gam/gam" "$@" ; }
+# gam() { "$HOME/bin/gam/gam" "$@" ; }
 
 _ansible_combined() {
     local cur prev inv
