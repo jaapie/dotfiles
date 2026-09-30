@@ -7,7 +7,7 @@ Managed with [GNU Stow](https://www.gnu.org/software/stow/).
 ```bash
 git clone git@github.com:jaapie/dotfiles.git ~/.dotfiles
 cd ~/.dotfiles
-stow bash git tmux shellcolour ack dircolors editorconfig screen jslint
+stow bash git tmux shellcolour ack dircolors editorconfig screen jslint curl
 ```
 
 ## Structure
