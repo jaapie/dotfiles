@@ -3,6 +3,8 @@
 	email = jacobdegeling@redbendcc.nsw.edu.au
 [color]
 	ui = true
+[init]
+	defaultBranch = main
 [push]
 	default = simple
 [format]
