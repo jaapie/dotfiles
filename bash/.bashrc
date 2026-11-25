@@ -63,6 +63,9 @@ function cll () {
     cd "$@" && ll
 }
 
+# Omarchy defines `alias g=git`, which would shadow this function
+unalias g 2>/dev/null
+
 function g {
     git ${@:-status -s}
 }
