@@ -206,10 +206,17 @@ function _git_dirty() {
     git diff --quiet --ignore-submodules HEAD 2>/dev/null || printf '*'
 }
 
+# Magenta ^N when there are N stashes; $1 is the colour code to switch back to.
+function _git_stash() {
+    local n
+    n=$(git stash list 2>/dev/null | wc -l)
+    (( n > 0 )) && printf '\001\033[0;35m\002^%s\001\033[%sm\002' "$n" "${1:-0;33}"
+}
+
 function parse_git_branch() {
     local b
     b=$(git symbolic-ref --short HEAD 2>/dev/null) || return
-    printf '%s%s ' "$b" "$(_git_dirty)"
+    printf '%s%s%s ' "$b" "$(_git_stash)" "$(_git_dirty)"
 }
 
 # Single git call for the full prompt's " on branch" segment.
@@ -217,7 +224,7 @@ function parse_git_branch() {
 function _prompt_git() {
     local b
     b=$(git symbolic-ref --short HEAD 2>/dev/null) || return
-    printf ' on \001\033[1;33m\002%s%s\001\033[m\002 ' "$b" "$(_git_dirty)"
+    printf ' on \001\033[1;33m\002%s%s%s\001\033[m\002 ' "$b" "$(_git_stash '1;33')" "$(_git_dirty)"
 }
 
 function _reboot_required() {
