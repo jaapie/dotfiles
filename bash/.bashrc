@@ -230,7 +230,9 @@ function _prompt_git() {
 function _reboot_required() {
     case "$OSTYPE" in
         linux-gnu*)
-            if [ -f /var/run/reboot-required ]; then
+            # /var/run/reboot-required: Debian/Ubuntu, or the pacman hook on Arch.
+            # ~/.local/state/omarchy/reboot-required: set by Omarchy migrations.
+            if [ -f /var/run/reboot-required ] || [ -f "$HOME/.local/state/omarchy/reboot-required" ]; then
                 echo -ne "⬤  "
                 return 0
             else

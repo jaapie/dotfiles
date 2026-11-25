@@ -55,7 +55,7 @@ prompt -g   # basic + git branch
 prompt -f   # full: user@host in cwd on branch $
 ```
 
-A red dot prefix is shown when a reboot is pending (`/var/run/reboot-required` exists, Linux only).
+A red dot prefix is shown when a reboot is pending (Linux only): `/var/run/reboot-required` exists (Debian/Ubuntu create it; on Arch a machine-local pacman hook, `/etc/pacman.d/hooks/reboot-required.hook`, touches it after kernel, NVIDIA, systemd, glibc, microcode or firmware upgrades), or Omarchy's `~/.local/state/omarchy/reboot-required` flag is set.
 
 ## Commit conventions
 
