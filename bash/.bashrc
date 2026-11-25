@@ -280,6 +280,14 @@ function prompt () {
     export PS1=$_ps1
 }
 
+# If starship was initialised before us (e.g. by Omarchy), unhook it so our
+# prompt isn't overwritten before every command. Keeps any PROMPT_COMMAND it wrapped.
+if declare -F starship_precmd >/dev/null; then
+    PROMPT_COMMAND=${STARSHIP_PROMPT_COMMAND-}
+    PS0=${PS0#*'):0}'}
+    unset STARSHIP_PROMPT_COMMAND
+fi
+
 # set up a bash prompt, defaulting to full prompt if the ~/.prompt file
 # containing the last used prompt is not found
 [[ -f ~/.prompt ]] && prompt "$(< ~/.prompt)" || prompt --full
